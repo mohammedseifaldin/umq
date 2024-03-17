@@ -1,0 +1,74 @@
+
+/**
+  Documentation:
+
+    - function of this class to waiting any change in socket
+
+
+      a- case chat message: wait to socket change, then return back to all waitier message
+      b- case chat user: wait to socket change, then return back to all waitier user
+ */
+class SocketWaiterSingleTone {
+
+
+  //---------------------------------------------------------------------------- public variable
+
+  /**
+   * map:
+   * pageName => callback
+   */
+  static Map<String, SocketWaiterCallbackChatMessage> mapPageWithWaiterChatMessage = Map();
+  static Map<String, SocketWaiterCallbackChatUser> mapPageWithWaiterChatUser = Map();
+
+  //---------------------------------------------------------------------- single tone
+
+  SocketWaiterSingleTone._();
+
+  //2- make one time sync
+  static bool _isSync = false;
+
+  //3- return instance
+  static SocketWaiterSingleTone instance(){
+    if( _isSync == false ) {
+      _isSync = true;
+      _startSingletoneInitlize();
+    }
+    return SocketWaiterSingleTone._();
+  }
+
+
+  static _startSingletoneInitlize() {
+    mapPageWithWaiterChatMessage = Map();
+    mapPageWithWaiterChatUser = Map();
+  }
+
+  //--------------------------------------------------------------- public : chat message
+
+  void addWaiterChatMessage(String pageName, SocketWaiterCallbackChatMessage callback ) {
+    mapPageWithWaiterChatMessage[pageName ] = callback;
+  }
+
+
+  void fireCallbackWaiterChatMessagePage(List<MChatMessage> listUpdate  ){
+    mapPageWithWaiterChatMessage.forEach((k,v)  {
+      Log.i( "fireCallbackWaiterChatMessage() - pageName: " + k.toString() );
+      v( listUpdate);
+    });
+  }
+
+  //--------------------------------------------------------------- public : chat user
+
+  void addWaiterChatUser(String pageName, SocketWaiterCallbackChatUser callback ) {
+    mapPageWithWaiterChatUser[pageName ] = callback;
+  }
+
+
+  void fireCallbackWaiterChatUserPage(List<MChatUser> listUpdate  ){
+    mapPageWithWaiterChatUser.forEach((k,v)  {
+      Log.i( "fireCallbackWaiterChatUser() - pageName: " + k.toString() );
+      v( listUpdate);
+    });
+  }
+
+
+}

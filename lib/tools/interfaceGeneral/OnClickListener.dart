@@ -1,0 +1,2 @@
+
+typedef OnClickListener = void Function();

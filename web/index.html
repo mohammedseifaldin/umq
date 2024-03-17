@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+  <title>Scuba World</title>
+<!--  <base href="$FLUTTER_BASE_HREF">-->
+
+  <meta charset="UTF-8">
+  <meta content="IE=Edge" http-equiv="X-UA-Compatible">
+  <meta name="description" content="Scuba World, Scuba-World, Scuba-KSA, scuba-ksa.com, scubaksa.com, scuba-ksa">
+
+  <!-- iOS meta tags & icons -->
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <meta name="apple-mobile-web-app-title" content="scuba">
+  <link rel="apple-touch-icon" href="icons/Icon-192.png">
+
+
+  <!-- abdo: icon -->
+  <link rel="icon" type="image/png" href="logo.png"/>
+  <link rel="shortcut icon" href="logo.png" type="image/x-icon">
+  <link rel="icon" href="logo.png" type="image/x-icon">
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" href="favicon.png"/>
+
+  <title>scuba</title>
+  <link rel="manifest" href="manifest.json">
+
+  <script>
+    // The value below is injected by flutter build, do not touch.
+    var serviceWorkerVersion = null;
+  </script>
+  <!-- This script adds the flutter initialization JS code -->
+  <script src="flutter.js" defer></script>
+
+
+  <style>
+
+        .loading {
+          display: flex;
+          flex-flow: column;
+          justify-content: center;
+          align-items: center;
+          margin: 0;
+          position: absolute;
+          top: 50%;
+          left: 50%;
+          -ms-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+        }
+
+        .loader {
+          border: 8px solid #017ca5;
+          border-radius: 50%;
+          border-top: 8px solid #00678a;
+          border-right: 8px solid #0D9ECD;
+          border-bottom: 8px solid #00678a;
+          border-left: 8px solid #0D9ECD;
+          width: 60px !important;
+          height: 60px !important;
+          -webkit-animation: spin 2s linear infinite;
+          animation: spin 2s linear infinite;
+        }
+
+        @-webkit-keyframes spin {
+          0% {
+            -webkit-transform: rotate(0deg);
+          }
+          100% {
+            -webkit-transform: rotate(360deg);
+          }
+        }
+
+        @keyframes spin {
+          0% {
+            transform: rotate(0deg);
+          }
+          100% {
+            transform: rotate(360deg);
+          }
+        }
+  </style>
+
+
+</head>
+<body>
+
+<!-- //abdo: First time loading -->
+<div class="loading">
+  <div class="loader"></div>
+</div>
+<script> defer src="main.dart.js" type="application/javascript"</script>
+
+
+
+<script>
+    window.addEventListener('load', function(ev) {
+      // Download main.dart.js
+      _flutter.loader.loadEntrypoint({
+        serviceWorker: {
+          serviceWorkerVersion: serviceWorkerVersion,
+        }
+      }).then(function(engineInitializer) {
+        return engineInitializer.initializeEngine();
+      }).then(function(appRunner) {
+
+
+          //abdo: progress end
+          var element = document.getElementsByClassName("loading");
+          element[0].parentNode.removeChild(element[0]);
+
+        return appRunner.runApp();
+      });
+    });
+  </script>
+</body>
+</html>

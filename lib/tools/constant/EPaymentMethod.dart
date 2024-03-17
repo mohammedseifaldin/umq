@@ -1,0 +1,4 @@
+enum EPaymentMethod {
+  cash,
+  online
+}

@@ -1,0 +1,5 @@
+  // DialogSyncLargeData
+  // bool isDialogSyncLargeDataShow = false;
+  // int dialogLargeData_total = 0;
+  // int dialogLargeData_progress = 0;
+  // bool isStartUserListPaginate = true; //true: cause to start load data from sql

@@ -1,0 +1,37 @@
+
+  //--------------------------------------------------------------- ios
+
+  static bool _IosSocketInilized = false;
+
+  static Future _IosSocketIniltize() async {
+    //wait
+    _IosSocketInilized = true;
+
+    /**
+        //check have data
+        if( FCMRegister.selectedNotificationPayload_ios != null ) {
+        // GoTo.homeStudent( ListenerToClickNotification.context!);
+        var w = ImageFullScreen(imageUrl: "socket: " + FCMRegister.selectedNotificationPayload_ios.toString()  );
+        NavigationTools.push( ListenerToClickNotification.context!,  w );
+
+        } else {
+        callBackReturnFailed();
+        }
+     */
+
+
+  }
+
+
+  static Future iosSocketChange() async {
+    /**
+        if( _IosSocketInilized == false ) return;
+
+        if( FCMRegister.selectedNotificationPayload_ios != null ) {
+        GoTo.homeStudent( ListenerToClickNotification.context!);
+
+        }
+
+     */
+
+  }

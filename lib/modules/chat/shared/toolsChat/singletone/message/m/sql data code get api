@@ -1,0 +1,15 @@
+    //1- here write api get last updated chat
+    new ChatLastUpdateAPI().getAllData(
+        person_target: person_target,
+        startTimestamp: startTimestamp,
+        callBack:  (status, msg, response ){
+
+          if( status == false ) return;
+
+          //2- save to socket data singleTone
+          SocketWaiterSingleTone.instance().fireCallbackWaiterChatUserPage(response.data!.userUpdate!);
+          SocketWaiterSingleTone.instance().fireCallbackWaiterChatMessagePage(response.data!.messageUpdate!);
+
+           //3- set last time update socket
+          DataLastUpdate.setLastUpdateSocket( startTimestamp);
+    });

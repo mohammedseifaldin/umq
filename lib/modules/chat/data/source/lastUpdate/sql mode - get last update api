@@ -1,0 +1,110 @@
+import 'package:fastor_app_ui_widget/fastor_app_ui_widget.dart';
+import 'package:umq/modules/profile/presentation/admin/user/list/m/list/ResponseUserList.dart';
+
+import 'package:umq/backend/options/BackendConstant.dart';
+import 'package:umq/backend/response/city/ResponseListCity.dart';
+import 'package:umq/mobile/screens/chat/screens/UserListPage/c/paginate/ChatScrollManager.dart';
+import 'package:umq/modules/chat/shared/toolsChat/api/lastUpdate/ResponseChatLastUpdate.dart';
+import 'package:umq/modules/chat/shared/toolsChat/api/userChatList/ResponseChatUserList.dart';
+import 'package:umq/tools/cache/UserSingleTone.dart';
+import 'package:fastor_app_ui_widget/fastor_app_ui_widget.dart';
+import 'package:fastor_app_ui_widget/fastor_app_ui_widget.dart';
+import 'package:umq/tools/network/ToolsAPI.dart';
+import 'package:umq/tools/values/ToolsValue.dart';
+
+typedef ChatLastUpdateAPICallBack = Function(bool status, String msg , ResponseChatLastUpdate response );
+
+class ChatLastUpdateAPI   {
+
+
+  int? offSet  = 0 ;
+  int? startTimestamp = 0;
+  int? person_target = 0; //userId another person need to get latest message
+  late ChatLastUpdateAPICallBack callBack;
+
+  //data
+  ResponseChatLastUpdate response =  ResponseChatLastUpdate();
+
+
+  Future  getPaginateByOffSet( {
+    required int person_target,
+    required int  offSet,
+    required int startTimestamp,
+    required ChatLastUpdateAPICallBack callBack  }) async {
+    this.person_target = person_target;
+    this.offSet = offSet;
+    this.callBack = callBack;
+    this.startTimestamp = startTimestamp;
+
+    await _startAPIGetAll();
+  }
+
+
+  Future  getAllData(  {
+    required int person_target,
+    required int startTimestamp,
+    required ChatLastUpdateAPICallBack callBack}) async {
+    this.person_target = person_target;
+    this.callBack = callBack;
+    this.startTimestamp = startTimestamp;
+
+    await _startAPIGetAll();
+  }
+
+  //---------------------------------------------------------------------- type apis
+
+  Future _startAPIGetAll() async  {
+
+    //url
+   // {{local_v2}}/ChatBoth/getLastUpdate?person_target=16&start=1653461180&offset=0
+    String url =  BackendConstant.baseUrl_v2 + "/ChatBoth/getLastUpdate?";
+    url += "start=" +  startTimestamp.toString()  + "&offset=" + offSet.toString()   ;
+    url += "person_target=" + person_target.toString() ;
+
+    //header
+    var token = await UserSingleTone.instance().getToken();
+    Map<String, String> header = NetworkHeaderTools.bearerToken( token );
+
+    //webservice
+    NetworkManagerDio().callBack(url, headers:  header,  callback: (status, msg, json){
+
+      if( status ) {
+        parseJson(json );
+      } else  {
+        callBack( false , msg , response );
+      }
+
+    });
+  }
+
+  //------------------------------------------------------------------- parse
+
+  void parseJson(Map<String, dynamic> mapJson ) {
+
+    try {
+
+      response = ResponseChatLastUpdate().fromJson( mapJson);
+
+      //check
+      if ( ToolsAPI.isFailed( response.code) ) {
+        callBack( false, "Failed to download", response ) ;
+        return;
+      }
+
+      //check have data
+      if ( response.data == null  ) {
+        callBack( false,"Failed to download data"  , response) ;
+        return;
+      }
+
+      //callback
+      callBack( true,"Success", response );
+    } catch (e ){
+      Log.i( "exe: " + e.toString() );
+      callBack( false, e.toString(), response ) ;
+    }
+  }
+
+
+
+}

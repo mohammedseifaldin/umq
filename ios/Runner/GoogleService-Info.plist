@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CLIENT_ID</key>
+	<string>637213655643-64r2putgvo5shcri68pal3usirko12c6.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.637213655643-64r2putgvo5shcri68pal3usirko12c6</string>
+	<key>ANDROID_CLIENT_ID</key>
+	<string>637213655643-8uc8hk6vssrljima6tk7brg4s6s2rh5i.apps.googleusercontent.com</string>
+	<key>API_KEY</key>
+	<string>AIzaSyAffnlpxjyLB9zFE0_CMAaCJaSFWrlT9eM</string>
+	<key>GCM_SENDER_ID</key>
+	<string>637213655643</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>umq.app.umq</string>
+	<key>PROJECT_ID</key>
+	<string>scuba-6780c</string>
+	<key>STORAGE_BUCKET</key>
+	<string>scuba-6780c.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<false></false>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true></true>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:637213655643:ios:46e2431f94747b0fc1357e</string>
+	<key>DATABASE_URL</key>
+	<string>https://scuba-6780c-default-rtdb.firebaseio.com</string>
+</dict>
+</plist>

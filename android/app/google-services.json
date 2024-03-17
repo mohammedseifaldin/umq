@@ -1,0 +1,99 @@
+{
+  "project_info": {
+    "project_number": "637213655643",
+    "firebase_url": "https://scuba-6780c-default-rtdb.firebaseio.com",
+    "project_id": "scuba-6780c",
+    "storage_bucket": "scuba-6780c.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:637213655643:android:8e35e785ed7829ffc1357e",
+        "android_client_info": {
+          "package_name": "com.scubaksa.scuba"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "637213655643-ksh4blmesjvubtqba2nrf2332bi93voc.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.scubaksa.scuba",
+            "certificate_hash": "f9ad46ce00d4e6496ec27da364d1f47d7022416c"
+          }
+        },
+        {
+          "client_id": "637213655643-tqio3ob905mjkcfbjokro7dqdatmsrng.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.scubaksa.scuba",
+            "certificate_hash": "92ff51bd6b3cfc90638035e367d86b9bc4eca2f8"
+          }
+        },
+        {
+          "client_id": "637213655643-fcgns4vv3dif7f641u7fl72nq51tsss8.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDrWwDoI0NL_hxl7MZg7vDXvk1LQhpvJ_o"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "637213655643-fcgns4vv3dif7f641u7fl72nq51tsss8.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "637213655643-74vnr12jdncl3aunejfn3c1l1omhtogq.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.scubaksa.scuba.scuba"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:637213655643:android:558b19b842fcea51c1357e",
+        "android_client_info": {
+          "package_name": "umq.app.umq"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "637213655643-fcgns4vv3dif7f641u7fl72nq51tsss8.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDrWwDoI0NL_hxl7MZg7vDXvk1LQhpvJ_o"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "637213655643-fcgns4vv3dif7f641u7fl72nq51tsss8.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "637213655643-74vnr12jdncl3aunejfn3c1l1omhtogq.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.scubaksa.scuba.scuba"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

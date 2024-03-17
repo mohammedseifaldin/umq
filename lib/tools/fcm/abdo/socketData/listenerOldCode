@@ -1,0 +1,52 @@
+
+//abdallah-old library - Awesome
+/**
+    //
+    AwesomeNotifications().actionStream.listen(
+    (ReceivedNotification receivedNotification){
+
+    Log.i( "onNotificationSelect() - receivedNotification: " + receivedNotification.toString() );
+
+
+    //check status
+    if( context == null ) return;
+
+    Log.i( "onNotificationSelect() - context: " +     ListenerToClickNotification.context.toString() );
+
+    //
+    var w = ImageFullScreen(imageUrl: "Test id: " + receivedNotification.body!  );
+    NavigationTools.push(     ListenerToClickNotification.context!,  w );
+    });
+
+ */
+
+//abdallah-old library - local notification flutter
+/**
+    //setting initlize
+    var initializationSettingsAndroid = const AndroidInitializationSettings( FCMRegister.drawableIconAndroid_packageFlutterLocal);
+    var initializationSettingsIOs = const IOSInitializationSettings();
+    var initSettings = InitializationSettings(
+    android: initializationSettingsAndroid,
+    iOS: initializationSettingsIOs);
+
+    //onSelectNotification
+    FlutterLocalNotificationsPlugin flutterLocalNotificationsPlugin = FlutterLocalNotificationsPlugin();
+    flutterLocalNotificationsPlugin.initialize(initSettings,
+    onSelectNotification: (payload) {
+
+    //print message
+    Log.i( "onNotificationSelect() - payload: " + payload.toString() );
+
+    //check status
+    if( context == null ) return;
+
+    Log.i( "onNotificationSelect() - context: " + context.toString() );
+    //GoTo.homeStudent(context);
+
+    // ToolsToast.i( context,  "Test id: " + payload.toString() );
+
+    //
+    var w = ImageFullScreen(imageUrl: "Test id: " + payload.toString()  );
+    NavigationTools.push( context,  w );
+    });
+ */

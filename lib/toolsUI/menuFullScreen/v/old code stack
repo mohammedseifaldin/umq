@@ -1,0 +1,44 @@
+    var statusBarHeight = StatusBarConstant.getHeight(context);
+
+    // return PageTemplate.t(this, content: contentPage() ,
+    //   //colorBackground:   HexColor( ColorProject.blueTransparentDark )
+    // );
+
+  // Widget contentPage() {
+  //   return Stack(
+  //     children: [
+  //
+  //       //shadow all page
+  //       EmptyView.colored(
+  //           DeviceTools.getWidth(context),
+  //           DeviceTools.getHeight(context),
+  //           // Colors.transparent
+  //           HexColor( ColorProject.blueTransparentDark )
+  //       ),
+  //
+  //       //dismiss
+  //       Positioned(child: bt_dismisAllPage(),  right: 20, top:  20),
+  //
+  //       //list
+  //       Positioned( child: ListItemSlide(), left: 0, right: 0,
+  //           top:  50 )
+  //
+  //     ],
+  //   );
+  // }
+
+  // Widget ListItemSlide() {
+  //   // return ColumnTemplate.t(
+  //   //     children: GenerateSlideForProject.ListItemSlideWidget(context),
+  //   //   mainAxisSize: MainAxisSize.max,
+  //   //   mainAxisAlignment: MainAxisAlignment.start,
+  //   //   crossAxisAlignment: CrossAxisAlignment.center,
+  //   //   alignGravity: Alignment.center
+  //   // );
+  //
+  //   var listWidget = GenerateSlideForProject.ListItemSlideWidget(context);
+  //   return ListViewTemplate.t(context: context,
+  //       children: listWidget,
+  //       axis: Axis.vertical);
+  // }
+
