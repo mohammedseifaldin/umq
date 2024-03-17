@@ -51,9 +51,9 @@ PODS:
     - FirebaseAnalytics (~> 10.10.0)
   - Firebase/CoreOnly (10.10.0):
     - FirebaseCore (= 10.10.0)
-  - Firebase/Crashlytics (10.20.0):
+  - Firebase/Crashlytics (10.10.0):
     - Firebase/CoreOnly
-    - FirebaseCrashlytics (~> 10.20.0)
+    - FirebaseCrashlytics (~> 10.10.0)
   - Firebase/Database (10.10.0):
     - Firebase/CoreOnly
     - FirebaseDatabase (~> 10.10.0)
