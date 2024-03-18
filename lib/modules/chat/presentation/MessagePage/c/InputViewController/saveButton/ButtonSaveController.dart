@@ -2,8 +2,6 @@ import 'package:fastor_app_ui_widget/fastor_app_ui_widget.dart';
 import 'package:umq/modules/chat/presentation/MessagePage/c/InputViewController/record/RecordController.dart';
 import 'package:umq/modules/chat/presentation/MessagePage/c/InputViewController/saveButton/CreateMessageController.dart';
 import 'package:umq/modules/chat/presentation/MessagePage/v/views/inputMessage/InputMessageView.dart';
-import 'package:umq/tools/audio/RecorderSoundInstance.dart';
-import 'package:umq/tools/meta/ToolsMeta.dart';
 import 'package:umq/toolsUI/toast/ToastTools.dart';
 
 extension ButtonSaveController on InputMessageState {

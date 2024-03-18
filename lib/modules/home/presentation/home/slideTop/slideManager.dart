@@ -4,18 +4,10 @@ import 'package:flutter/material.dart';
 import 'package:umq/modules/home/data/model/MSlider.dart';
 import 'package:umq/modules/home/presentation/home/HomePage.dart';
 import 'package:umq/modules/home/presentation/home/slideTop/SlideTop.dart';
-import 'package:umq/modules/home/provider/HomeNotifier.dart';
 
-import 'package:umq/tools/navigate/GoTo.dart';
-
-import 'SlideTop.dart';
-
-
-extension HomeSlider on  HomePageState {
-
+extension HomeSlider on HomePageState {
 //listSlider: responseHomePage.data!.slider!
-  Widget getHomeSlider( ) {
-
+  Widget getHomeSlider() {
     return Column(
       children: [
         const SizedBox(
@@ -30,15 +22,15 @@ extension HomeSlider on  HomePageState {
 
   //--------------------------------------------------------------------- slider manager view
 
-  Widget sliderView(){
-    return     Container(
-      width: DeviceTools.getWidth(context),
-      height: slideTop_frame_height,
-      // color: Colors.grey.withOpacity( 0.1),
-      child: CarouselSlider(
+  Widget sliderView() {
+    return Container(
+        width: DeviceTools.getWidth(context),
+        height: slideTopFrameHeight,
+        // color: Colors.grey.withOpacity( 0.1),
+        child: CarouselSlider(
           options: carouselOptions(),
           items: getListSliderWidegt(),
-    ));
+        ));
   }
 
   CarouselOptions carouselOptions() {
@@ -46,27 +38,25 @@ extension HomeSlider on  HomePageState {
         enableInfiniteScroll: false,
         onScrolled: (indexNewSlide) {
           setState(() {
-            provider!.activeSlider = indexNewSlide!;
+            provider.activeSlider = indexNewSlide!;
           });
         },
         aspectRatio: 16 / 8,
         enlargeCenterPage: true);
   }
 
-  List<Widget> getListSliderWidegt(){
+  List<Widget> getListSliderWidegt() {
     List<Widget> list = [];
     //check empty
-    if( provider!.responseHomePage.data == null ||
-        provider!.responseHomePage.data!.slider == null ) {
+    if (provider.responseHomePage.data == null ||
+        provider.responseHomePage.data!.slider == null) {
       return list;
     }
     //loop data
-    for( int i = 0; i <  provider!.responseHomePage.data!.slider!.length; i++ ) {
-      MSlider m =  provider!.responseHomePage.data!.slider![i];
-      list.add( getStackSliderByItem( m ) );
+    for (int i = 0; i < provider.responseHomePage.data!.slider!.length; i++) {
+      MSlider m = provider!.responseHomePage.data!.slider![i];
+      list.add(getStackSliderByItem(m));
     }
     return list;
   }
-
-
 }

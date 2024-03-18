@@ -4,7 +4,6 @@ import 'package:umq/modules/chat/presentation/MessagePage/v/ChatMessagePage.dart
 import 'package:umq/modules/chat/presentation/MessagePage/v/views/inputMessage/BoarderLayout.dart';
 import 'package:umq/modules/chat/presentation/MessagePage/v/views/inputMessage/ButtonSaveView.dart';
 import 'package:umq/modules/chat/shared/toolsChat/resource/ChatColor.dart';
-import 'package:umq/modules/chat/shared/toolsChat/resource/ChatDrawable.dart';
 import 'package:umq/toolsUI/textField/CheckerHeightTextField.dart';
 
 

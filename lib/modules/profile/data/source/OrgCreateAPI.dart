@@ -1,35 +1,32 @@
 import 'package:fastor_app_ui_widget/fastor_app_ui_widget.dart';
+import 'package:umq/tools/cache/user_single_tone.dart';
 import 'package:umq/tools/data/general/GeneralCallBack.dart';
 import 'package:umq/tools/data/general/ResponseGeneral.dart';
 import 'package:umq/tools/network/BackendConstant.dart';
-import 'package:umq/tools/cache/user_single_tone.dart';
-import 'package:fastor_app_ui_widget/fastor_app_ui_widget.dart';
-import 'package:fastor_app_ui_widget/fastor_app_ui_widget.dart';
-import 'package:fastor_app_ui_widget/fastor_app_ui_widget.dart';
 import 'package:umq/tools/network/ToolsAPI.dart';
 
 class OrgCreateAPI {
-  String name_en = "";
+  String nameEn = "";
 
   late GeneralCallBack callBack;
 
-  Future getData(String name_en, GeneralCallBack callBack) async {
+  Future getData(String nameEn, GeneralCallBack callBack) async {
     this.callBack = callBack;
-    this.name_en = name_en;
+    this.nameEn = nameEn;
 
     await _startAPI();
   }
 
   Future _startAPI() async {
-    String url = BackendConstant.baseUrlv1 + "/organization";
+    String url = "${BackendConstant.baseUrlv1}/organization";
 
     //header
-    var token = await UserSingleTone.instance().getToken();
+    var token =  UserSingleTone.instance().getToken();
     Map<String, String> header = NetworkHeaderTools.bearerToken(token);
 
     //body
-    Map<String, dynamic> body = Map();
-    body["name"] = name_en;
+    Map<String, dynamic> body = {};
+    body["name"] = nameEn;
 
     NetworkManagerDio().callBack(url,
         type: NetworkTypeDio.post,
@@ -61,7 +58,7 @@ class OrgCreateAPI {
       //callback
       callBack(1, "Success");
     } catch (e) {
-      Log.i("action api - excep: " + e.toString());
+      Log.i("action api - excep: $e");
       callBack(0, e.toString());
     }
   }

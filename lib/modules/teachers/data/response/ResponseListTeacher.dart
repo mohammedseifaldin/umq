@@ -1,5 +1,3 @@
-import 'package:fastor_app_ui_widget/fastor_app_ui_widget.dart';
-import 'package:umq/modules/place/data/model/MCity.dart';
 import 'package:umq/modules/teachers/data/model/MTeacher.dart';
 
 class ResponseListProvider {
@@ -16,7 +14,7 @@ class ResponseListProvider {
     if (json['data'] != null) {
       data = <MProvider>[];
       json['data'].forEach((v) {
-        data!.add(new MProvider().fromJson(v));
+        data!.add( MProvider().fromJson(v));
         // Log.i( "DataCity - fromJson - data: " + data.toString() );
       });
     }

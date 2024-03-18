@@ -1,24 +1,21 @@
 import 'package:fastor_app_ui_widget/fastor_app_ui_widget.dart';
+import 'package:umq/tools/cache/user_single_tone.dart';
 import 'package:umq/tools/data/general/GeneralCallBack.dart';
 import 'package:umq/tools/data/general/ResponseGeneral.dart';
 import 'package:umq/tools/network/BackendConstant.dart';
-import 'package:umq/tools/cache/user_single_tone.dart';
-import 'package:fastor_app_ui_widget/fastor_app_ui_widget.dart';
-import 'package:fastor_app_ui_widget/fastor_app_ui_widget.dart';
-import 'package:fastor_app_ui_widget/fastor_app_ui_widget.dart';
 import 'package:umq/tools/network/ToolsAPI.dart';
 
 class OrgUpdateAPI {
-  int target_id = 0;
-  String name_en = "";
+  int targetId = 0;
+  String nameEn = "";
 
   late GeneralCallBack callBack;
 
   Future getData(
-      int target_id, String name_en, GeneralCallBack callBack) async {
+      int targetId, String nameEn, GeneralCallBack callBack) async {
     this.callBack = callBack;
-    this.target_id = target_id;
-    this.name_en = name_en;
+    this.targetId = targetId;
+    this.nameEn = nameEn;
 
     await _startAPI();
   }
@@ -32,9 +29,9 @@ class OrgUpdateAPI {
 
     //body
     Map<String, dynamic> body = Map();
-    body["name"] = name_en;
+    body["name"] = nameEn;
 
-    body["id"] = target_id;
+    body["id"] = targetId;
 
     NetworkManagerDio().callBack(url,
         type: NetworkTypeDio.post,

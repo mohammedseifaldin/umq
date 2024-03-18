@@ -1,12 +1,4 @@
-import 'package:fastor_app_ui_widget/fastor_app_ui_widget.dart';
-import 'package:umq/modules/chat/presentation/UserListPage/c/ChatUserListResultController.dart';
-import 'package:umq/modules/chat/presentation/UserListPage/m/MapObjectUserToWidget.dart';
-import 'package:umq/modules/chat/presentation/UserListPage/m/UserDataFromCache.dart';
 import 'package:umq/modules/chat/presentation/UserListPage/v/ChatUserListPage.dart';
-import 'package:umq/modules/chat/data/source/userChatList/ChatUserListAPI.dart';
-import 'package:umq/modules/chat/shared/toolsChat/dataCache/lastUpdate/DataLastUpdate.dart';
-
-import 'package:umq/toolsUI/toast/ToastTools.dart';
 
 @Deprecated( "Wait for version sql offline")
 extension DialogDownloadLargeDataController on ChatUserListState {

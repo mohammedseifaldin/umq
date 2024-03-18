@@ -13,7 +13,7 @@ extension MapObjectUserToWidget on ChatUserListState {
       MChatUser mChatUser = listUserNew[ i ];
 
       //check empty
-      if( mChatUser == null ) continue;
+      
 
       Widget w = itemOfUserChatView( mChatUser );
       listWidgetUpdated.add( w );

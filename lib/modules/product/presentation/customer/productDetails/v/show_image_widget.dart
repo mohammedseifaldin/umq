@@ -1,23 +1,13 @@
 
 import 'package:fastor_app_ui_widget/fastor_app_ui_widget.dart';
 import 'package:flutter/material.dart';
-// import 'package:get/get_core/src/get_main.dart';
-// import 'package:get/get_navigation/src/extension_navigation.dart';
-import 'package:umq/modules/product/data/model/MProductTools.dart';
 import 'package:umq/modules/product/presentation/customer/productDetails/c/ProductDetailController.dart';
-
-
-
-
-import 'package:umq/modules/product/presentation/customer/productDetails/m/utils.dart';
 import 'package:umq/modules/product/presentation/customer/productDetails/view/ProductDetailView.dart';
 import 'package:umq/tools/navigate/GoTo.dart';
-import 'package:umq/tools/share/ShareInformationHelper.dart';
-import 'package:umq/toolsUI/favorite/FavoriteButton.dart';
-import 'package:umq/tools/resourceProject/ColorProject.dart';
 import 'package:umq/tools/resourceProject/DimenProject.dart';
 import 'package:umq/tools/resourceProject/DrawableProject.dart';
-import 'package:url_launcher/url_launcher.dart';
+import 'package:umq/tools/share/ShareInformationHelper.dart';
+import 'package:umq/toolsUI/favorite/FavoriteButton.dart';
 
 
 extension ShowImage on ProductDetailState {
@@ -36,8 +26,8 @@ extension ShowImage on ProductDetailState {
   Widget cardViewImage() {
     var cont = Container(
       height: 200,
-      padding: EdgeInsets.all(15),
-      margin: EdgeInsets.only(right: DimenProject.radiusScaffoldCorner/2, left: DimenProject.radiusScaffoldCorner/2, bottom: 10),
+      padding: const EdgeInsets.all(15),
+      margin: const EdgeInsets.only(right: DimenProject.radiusScaffoldCorner/2, left: DimenProject.radiusScaffoldCorner/2, bottom: 10),
       decoration: BoxDecoration(
           color: Colors.white,// HexColor(ColorProject.white_oxygen),
           borderRadius: BorderRadius.circular( DimenProject.radiusScaffoldCorner)),
@@ -86,7 +76,7 @@ extension ShowImage on ProductDetailState {
 
 
         bt_favorite(),
-        SizedBox(
+        const SizedBox(
           height: 15,
         ),
 
@@ -101,7 +91,7 @@ extension ShowImage on ProductDetailState {
       onTap: () async {
         await ShareInformationHelper.shareProduct( context, selectedProduct! );
       },
-      child: Icon(
+      child: const Icon(
         Icons.share,
         color: Colors.blue,
         size: 35,

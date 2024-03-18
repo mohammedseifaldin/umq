@@ -1,5 +1,3 @@
-import 'package:fastor_app_ui_widget/fastor_app_ui_widget.dart';
-import 'package:umq/tools/data/general/LaravelPaginateObjects.dart';
 import 'package:umq/modules/profile/data/model/m_user.dart';
 
 class ResponseUserList {
@@ -18,7 +16,7 @@ class ResponseUserList {
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = Map<String, dynamic>();
+    final Map<String, dynamic> data = {};
     data['status'] = this.status;
     data['code'] = this.code;
     if (this.dataLaravel != null) {

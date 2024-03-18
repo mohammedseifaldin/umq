@@ -2,11 +2,7 @@
 import 'package:fastor_app_ui_widget/fastor_app_ui_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:umq/modules/product/data/model/MProduct.dart';
-import 'package:umq/modules/product/data/model/MProductTools.dart';
-import 'package:umq/modules/product/presentation/customer/productDetails/view/ProductDetailView.dart';
 import 'package:umq/modules/teachers/presentation/customer/detail/TeacherDetailsPage.dart';
-import 'package:umq/tools/navigate/GoTo.dart';
-import 'package:umq/toolsUI/app_colors.dart';
 import 'package:umq/toolsUI/itemList/product/horizontal_list/ItemProductHorizontal.dart';
 import 'package:umq/toolsUI/no_data_widget.dart';
 
@@ -18,16 +14,16 @@ extension ProductsGallery on ProviderDetailsState {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        SizedBox(
+        const SizedBox(
           height: 30,
         ),
-        Text(
+        const Text(
           '* Products',
           style: TextStyle(fontSize: 18, fontWeight: FontWeight.w800
 
           ),
         ),
-        SizedBox(
+        const SizedBox(
           height: 15,
         ),
         productsGalleryWidget(),

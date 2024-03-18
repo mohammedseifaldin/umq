@@ -1,22 +1,9 @@
-//
-//
 import 'package:fastor_app_ui_widget/fastor_app_ui_widget.dart';
-
-import 'package:umq/tools/data/general/ResponseGeneral.dart';
-
-import 'package:umq/tools/network/BackendConstant.dart';
-
-import 'package:umq/modules/chat/data/response/lastUpdate/ResponseChatLastUpdate.dart';
 import 'package:umq/modules/chat/data/response/message/ResponseChatMessageList.dart';
 import 'package:umq/modules/chat/presentation/UserListPage/c/paginate/ChatScrollManager.dart';
-import 'package:umq/modules/chat/shared/toolsChat/constant/EReadStatus.dart';
-
 import 'package:umq/tools/cache/user_single_tone.dart';
-import 'package:fastor_app_ui_widget/fastor_app_ui_widget.dart';
-import 'package:fastor_app_ui_widget/fastor_app_ui_widget.dart';
-import 'package:fastor_app_ui_widget/fastor_app_ui_widget.dart';
+import 'package:umq/tools/network/BackendConstant.dart';
 import 'package:umq/tools/network/ToolsAPI.dart';
-import 'package:umq/tools/time/TimeTools.dart';
 
 typedef ChatChatMessageGetAPICallBack = Function(bool status, String msg,
     bool isFinishAllPages, ResponseChatMessageList response);

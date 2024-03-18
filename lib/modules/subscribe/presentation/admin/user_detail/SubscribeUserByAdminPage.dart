@@ -2,12 +2,8 @@ import 'package:fastor_app_ui_widget/fastor_app_ui_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:need_resume/need_resume.dart';
 import 'package:provider/provider.dart';
-import 'package:umq/modules/profile/data/model/m_user.dart';
-
-import 'package:umq/modules/subscribe/data/request/RequestCreateSubscribePackage.dart';
 import 'package:umq/modules/subscribe/data/request/RequestSubscribeUserByAdmin.dart';
 import 'package:umq/modules/subscribe/presentation/admin/user_detail/widget/ContentUserDetail.dart';
-
 import 'package:umq/modules/subscribe/provider/SubscribeChangeNotifier.dart';
 import 'package:umq/modules/subscribe/provider/SubscribeUserByAdminPage.dart';
 import 'package:umq/tools/resourceProject/ColorProject.dart';

@@ -1,15 +1,13 @@
 
 import 'package:fastor_app_ui_widget/fastor_app_ui_widget.dart';
 import 'package:flutter/material.dart';
-import 'package:umq/tools/navigate/GoToAdmin.dart';
-import 'package:umq/tools/resourceProject/ResourceDimenAdmin.dart';
-import 'package:umq/toolsUI/admin/picker/button_picker_user/button_picker_user.dart';
-import 'package:umq/modules/profile/data/model/m_user.dart';
 import 'package:umq/modules/subscribe/data/model/MSubscribePackage.dart';
 import 'package:umq/modules/subscribe/presentation/admin/user_detail/SubscribeUserByAdminPage.dart';
 import 'package:umq/modules/subscribe/provider/SubscribeUserByAdminPage.dart';
 import 'package:umq/tools/resourceProject/ColorProject.dart';
 import 'package:umq/tools/resourceProject/FontProject.dart';
+import 'package:umq/tools/resourceProject/ResourceDimenAdmin.dart';
+import 'package:umq/toolsUI/admin/picker/button_picker_user/button_picker_user.dart';
 
 
 extension ContentUserDetail on SubscribeUserByAdminState {

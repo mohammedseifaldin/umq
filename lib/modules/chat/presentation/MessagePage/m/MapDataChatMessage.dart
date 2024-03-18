@@ -1,14 +1,8 @@
-import 'package:fastor_app_ui_widget/fastor_app_ui_widget.dart';
-import 'package:flutter/material.dart';
-import 'package:umq/modules/chat/presentation/MessagePage/c/FloatButtonNewMessageController.dart';
-import 'package:umq/modules/chat/presentation/MessagePage/c/ScrollMessageController.dart';
-import 'package:umq/modules/chat/presentation/MessagePage/v/ChatMessagePage.dart';
-import 'package:umq/modules/chat/presentation/MessagePage/v/views/listview/itemlist/ItemMessageView.dart';
-
-
-
 import 'package:umq/modules/chat/data/model/MChatMessage.dart';
 import 'package:umq/modules/chat/data/modelTools/ToolsMChatMessage.dart';
+import 'package:umq/modules/chat/presentation/MessagePage/c/FloatButtonNewMessageController.dart';
+import 'package:umq/modules/chat/presentation/MessagePage/v/ChatMessagePage.dart';
+import 'package:umq/modules/chat/presentation/MessagePage/v/views/listview/itemlist/ItemMessageView.dart';
 
 extension DataChatMessage on ChatMessageState {
 

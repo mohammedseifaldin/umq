@@ -1,7 +1,6 @@
 import 'dart:async';
 
 import 'package:fastor_app_ui_widget/fastor_app_ui_widget.dart';
-import 'package:umq/modules/chat/shared/toolsChat/singletone/message/NewMessageSingleTone.dart';
 import 'package:umq/modules/chat/shared/toolsChat/singletone/socketContinue/SocketContinueDownloadData.dart';
 import 'package:umq/tools/time/TimeTools.dart';
 

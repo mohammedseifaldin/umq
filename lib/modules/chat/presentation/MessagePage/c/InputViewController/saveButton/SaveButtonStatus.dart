@@ -1,4 +1,3 @@
-import 'package:fastor_app_ui_widget/fastor_app_ui_widget.dart';
 import 'package:umq/modules/chat/presentation/MessagePage/v/views/inputMessage/InputMessageView.dart';
 
 extension SaveButtonStatus on InputMessageState {

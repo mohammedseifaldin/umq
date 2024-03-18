@@ -132,12 +132,12 @@ extension LoginNotifier on AuthChangeNotifier {
     Log.i("login - validateResponse() - start");
 
     //case no data downloaded
-    if (value == null) {
-      LockOverlay().closeOverlay();
-      progressLoginUpdateStatus(false);
-      ToolsToast.i(context, "No Internet Connection, Try Again");
-      return;
-    }
+    // if (value == null) {
+    //   LockOverlay().closeOverlay();
+    //   progressLoginUpdateStatus(false);
+    //   ToolsToast.i(context, "No Internet Connection, Try Again");
+    //   return;
+    // }
 
     //case "New User" while enter his phone as login
     if (ToolsAPI.isSuccess(value.newAccount)) {

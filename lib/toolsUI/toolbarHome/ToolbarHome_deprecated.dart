@@ -56,8 +56,8 @@ class ToolbarHome_deprecatedState extends State<ToolbarHome_deprecated> {
       children: [
         EmptyView.colored(DeviceTools.getWidth(context),
             ToolbarHome_deprecated.frameHeight, DSColor.ds_background_toolbar),
-        Align(child: titleWithImage(), alignment: Alignment.topCenter),
-        Positioned(child: imageBack(), left: 0)
+        Align(alignment: Alignment.topCenter, child: titleWithImage()),
+        Positioned(left: 0, child: imageBack())
       ],
     );
   }
@@ -67,8 +67,8 @@ class ToolbarHome_deprecatedState extends State<ToolbarHome_deprecated> {
       children: [
         EmptyView.empty(
             DeviceTools.getWidth(context), ToolbarHome_deprecated.frameHeight),
-        Positioned(child: getToolbarBackground(), left: 0, right: 0),
-        Positioned(child: title(), left: 0, right: 0),
+        Positioned(left: 0, right: 0, child: getToolbarBackground()),
+        Positioned(left: 0, right: 0, child: title()),
       ],
     );
   }
@@ -102,7 +102,7 @@ class ToolbarHome_deprecatedState extends State<ToolbarHome_deprecated> {
             color: DSColor.toolbar_title,
             decoration: TextDecoration.none));
 
-    return Container(child: txt, margin: EdgeInsets.only(top: 10));
+    return Container(margin: EdgeInsets.only(top: 10), child: txt);
   }
 
   Widget imageBack() {
@@ -121,12 +121,11 @@ class ToolbarHome_deprecatedState extends State<ToolbarHome_deprecated> {
     );
 
     var containter = Container(
-        child: gesture,
-        //   color: Colors.red,
         padding: EdgeInsets.all(5),
         margin: EdgeInsets.only(left: DSDimen.space_level_1, top: 10),
         width: 25 + 5,
-        height: 19 + 5);
+        height: 19 + 5,
+        child: gesture);
 
     return containter;
   }

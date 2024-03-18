@@ -1,7 +1,6 @@
 import 'package:fastor_app_ui_widget/fastor_app_ui_widget.dart';
-import 'package:umq/modules/teachers/data/source/TeacherDetailAPI.dart';
-import 'package:umq/modules/product/data/response/ResponseSingleProduct.dart';
 import 'package:umq/modules/teachers/data/response/ResponseSingleTeacher.dart';
+import 'package:umq/modules/teachers/data/source/TeacherDetailAPI.dart';
 import 'package:umq/modules/teachers/presentation/customer/detail/TeacherDetailsPage.dart';
 import 'package:umq/toolsUI/toast/ToastTools.dart';
 
@@ -15,7 +14,7 @@ extension DownloadProviderController on ProviderDetailsState {
      at chat page "the next page" when setState()" callred at chat, th profile
         allso change
      */
-    Log.i( "startDownloadData() - mounted " + mounted.toString() );
+    Log.i( "startDownloadData() - mounted $mounted" );
     if( mounted == false ) return;
 
 

@@ -1,11 +1,8 @@
 import 'package:fastor_app_ui_widget/fastor_app_ui_widget.dart';
+import 'package:umq/tools/cache/user_single_tone.dart';
 import 'package:umq/tools/data/general/GeneralCallBack.dart';
 import 'package:umq/tools/data/general/ResponseGeneral.dart';
 import 'package:umq/tools/network/BackendConstant.dart';
-import 'package:umq/tools/cache/user_single_tone.dart';
-import 'package:fastor_app_ui_widget/fastor_app_ui_widget.dart';
-import 'package:fastor_app_ui_widget/fastor_app_ui_widget.dart';
-import 'package:fastor_app_ui_widget/fastor_app_ui_widget.dart';
 import 'package:umq/tools/network/ToolsAPI.dart';
 
 class CityCreateAPI {

@@ -120,7 +120,7 @@ extension CartReceiptController on CartReceiptState {
             context);
 
     //api
-    new OrderCreateAPI().create(request, (status, msg, response) {
+     OrderCreateAPI().create(request, (status, msg, response) {
       //progress
       setState(() {
         progress = false;

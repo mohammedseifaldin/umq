@@ -1,27 +1,18 @@
 //
 //
 import 'package:fastor_app_ui_widget/fastor_app_ui_widget.dart';
-
-import 'package:umq/tools/data/general/ResponseGeneral.dart';
-
-import 'package:umq/tools/network/BackendConstant.dart';
-
-import 'package:umq/modules/chat/data/response/lastUpdate/ResponseChatLastUpdate.dart';
 import 'package:umq/modules/chat/shared/toolsChat/constant/EReadStatus.dart';
-
 import 'package:umq/tools/cache/user_single_tone.dart';
-import 'package:fastor_app_ui_widget/fastor_app_ui_widget.dart';
-import 'package:fastor_app_ui_widget/fastor_app_ui_widget.dart';
-import 'package:fastor_app_ui_widget/fastor_app_ui_widget.dart';
+import 'package:umq/tools/data/general/ResponseGeneral.dart';
+import 'package:umq/tools/network/BackendConstant.dart';
 import 'package:umq/tools/network/ToolsAPI.dart';
-import 'package:umq/tools/time/TimeTools.dart';
 
 typedef ChatChatMessageStatusAPICallBack = Function(
     bool status, String msg, ResponseGeneral response);
 
 class ChatMessageStatusAPI {
   String messageId = "";
-  String status_read = "";
+  String statusRead = "";
   bool allowChangeRecorder = false;
 
   late ChatChatMessageStatusAPICallBack callBack;
@@ -38,7 +29,7 @@ class ChatMessageStatusAPI {
     this.callBack = callBack;
 
     //set type
-    status_read = EReadStatus.received.name;
+    statusRead = EReadStatus.received.name;
 
     await _startAPI();
   }
@@ -52,7 +43,7 @@ class ChatMessageStatusAPI {
 
     //set type
     this.allowChangeRecorder = allowChangeRecorder;
-    status_read = EReadStatus.readed.name;
+    statusRead = EReadStatus.readed.name;
 
     await _startAPI();
   }
@@ -71,7 +62,7 @@ class ChatMessageStatusAPI {
     Map<String, dynamic> body = Map();
     body["message_id"] = messageId;
     body["sender_id"] = await UserSingleTone.instance().getUserId();
-    body["status_read"] = status_read;
+    body["status_read"] = statusRead;
     body["allowChangeRecorder"] = allowChangeRecorder;
     // body["timestamp_request"] =  TimeTools.getCurrentTimestamp() ;
 

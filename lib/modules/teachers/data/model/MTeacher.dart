@@ -1,6 +1,4 @@
 
-import 'package:fastor_app_ui_widget/fastor_app_ui_widget.dart';
-import 'package:umq/modules/product/data/model/MCategory.dart';
 import 'package:umq/modules/place/data/model/MCity.dart';
 import 'package:umq/modules/profile/data/model/MOrganization.dart';
 import 'package:umq/modules/profile/data/model/m_user.dart';

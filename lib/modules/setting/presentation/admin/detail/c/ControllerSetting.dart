@@ -1,25 +1,12 @@
-import 'dart:typed_data';
-
-
 import 'package:fastor_app_ui_widget/fastor_app_ui_widget.dart';
 import 'package:flutter/material.dart';
+import 'package:umq/modules/setting/data/source/GetSettingAdminAPI.dart';
+import 'package:umq/modules/setting/data/source/SettingAdminUpdateAPI.dart';
 import 'package:umq/modules/setting/presentation/admin/detail/c/EditUserController.dart';
 import 'package:umq/modules/setting/presentation/admin/detail/m/MapRequest.dart';
-import 'package:umq/modules/setting/data/source/SettingAdminUpdateAPI.dart';
 import 'package:umq/modules/setting/presentation/admin/detail/v/SettingDetailAdminPage.dart';
-import 'package:umq/modules/setting/data/source/GetSettingAdminAPI.dart';
-
-
-import 'package:umq/tools/resourceProject/DrawableProject.dart';
-import 'package:umq/tools/attachCapture/attach/AttachTools.dart';
-import 'package:umq/tools/attachCapture/capture/CaptureLaravel.dart';
-import 'package:fastor_app_ui_widget/fastor_app_ui_widget.dart';
-import 'package:fastor_app_ui_widget/fastor_app_ui_widget.dart';
 import 'package:umq/tools/network/ToolsAPI.dart';
-
-import 'package:umq/tools/values/ToolsValue.dart';
 import 'package:umq/toolsUI/html/editior/HtmlEditiorPage.dart';
-
 import 'package:umq/toolsUI/toast/ToastTools.dart';
 
 extension  ControllerSetting on SettingDetailAdminState {

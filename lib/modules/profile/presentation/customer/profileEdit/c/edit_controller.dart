@@ -1,17 +1,9 @@
-import 'dart:convert';
-
-import 'package:fastor_app_ui_widget/fastor_app_ui_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:mvc_pattern/mvc_pattern.dart';
 import 'package:umq/modules/place/data/model/MCity.dart';
-import 'package:umq/tools/network/BackendConstant.dart';
-import 'package:umq/modules/place/data/response/ResponseListCity.dart';
 import 'package:umq/modules/profile/presentation/customer/profileEdit/m/edit_model.dart';
 import 'package:umq/modules/profile/presentation/customer/profileEdit/m/repository.dart';
 import 'package:umq/tools/data/dynamic/ResponseGeneralDynamic.dart';
-import 'package:umq/modules/profile/presentation/customer/profileShow/m/ResponseSingleUser.dart';
-import 'package:fastor_app_ui_widget/fastor_app_ui_widget.dart';
-import 'package:fastor_app_ui_widget/fastor_app_ui_widget.dart';
 import 'package:umq/toolsUI/toast/ToastTools.dart';
 
 class EditProfileController extends ControllerMVC {

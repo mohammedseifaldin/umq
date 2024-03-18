@@ -4,16 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:umq/modules/place/presentation/admin/city/detail/c/ClickActionsUserDetails.dart';
 import 'package:umq/modules/place/presentation/admin/city/detail/c/EditController.dart';
 import 'package:umq/modules/place/presentation/admin/city/detail/v/CityDetailAdminPage.dart';
-
 import 'package:umq/tools/resourceProject/ResourceDimenAdmin.dart';
-import 'package:umq/modules/place/data/model/MCity.dart';
-import 'package:umq/modules/place/data/model/MCityTools.dart';
-import 'package:umq/tools/network/BackendConstant.dart';
-import 'package:umq/tools/resourceProject/ColorProject.dart';
-import 'package:umq/tools/resourceProject/DrawableProject.dart';
-import 'package:umq/tools/attachCapture/capture/CaptureTools.dart';
-import 'package:umq/toolsUI/textfield/mobileCountry/MobileCountryView.dart';
-import 'package:umq/toolsUI/toast/ToastTools.dart';
 
 extension ContentUserDetail on CityDetailAdminState {
 

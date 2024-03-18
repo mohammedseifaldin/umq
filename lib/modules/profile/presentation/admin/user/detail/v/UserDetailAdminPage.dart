@@ -1,18 +1,12 @@
 
-import 'dart:typed_data';
-
-
 import 'package:fastor_app_ui_widget/fastor_app_ui_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:need_resume/need_resume.dart';
+import 'package:umq/modules/place/data/model/MCity.dart';
+import 'package:umq/modules/profile/data/model/m_user.dart';
 import 'package:umq/modules/profile/presentation/admin/user/detail/c/EditUserController.dart';
 import 'package:umq/modules/profile/presentation/admin/user/detail/c/UserDownloadAdmin.dart';
 import 'package:umq/modules/profile/presentation/admin/user/detail/v/views/ContentUserDetail.dart';
-import 'package:umq/tools/resourceProject/ResourceDimenAdmin.dart';
-import 'package:umq/modules/place/data/model/MCity.dart';
-import 'package:umq/modules/profile/data/model/m_user.dart';
-import 'package:umq/tools/fastor/drawable/FastorDrawable.dart';
-import 'package:umq/tools/resourceProject/DrawableProject.dart';
 import 'package:umq/tools/responsive/fourm/ResponsiveFormMobile.dart';
 import 'package:umq/toolsUI/textfield/mobileCountry/MobileCountryView.dart';
 //import 'package:umq/toolsUI/toolbar/ToolbarSimpleFastor.dart';
@@ -21,8 +15,8 @@ class UserDetailAdminPage extends StatefulWidget {
 
   MUser? mEdit  ;
 
-  UserDetailAdminPage( { MUser? edit }) {
-    this.mEdit = edit;
+  UserDetailAdminPage( {super.key,  MUser? edit }) {
+    mEdit = edit;
   }
 
   @override

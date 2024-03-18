@@ -4,11 +4,10 @@ import 'dart:io';
 
 import 'package:flutter/foundation.dart';
 import 'package:http/http.dart' as http;
-import 'package:umq/tools/network/BackendConstant.dart';
-import 'package:umq/main.dart';
 import 'package:umq/modules/profile/presentation/customer/profileEdit/m/edit_model.dart';
-import 'package:umq/tools/data/dynamic/ResponseGeneralDynamic.dart';
 import 'package:umq/tools/cache/user_single_tone.dart';
+import 'package:umq/tools/data/dynamic/ResponseGeneralDynamic.dart';
+import 'package:umq/tools/network/BackendConstant.dart';
 
 class ApiProvider {
 

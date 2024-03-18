@@ -2,10 +2,8 @@ import 'package:fastor_app_ui_widget/fastor_app_ui_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:umq/modules/chat/presentation/MessagePage/c/InputViewController/cameraOrFile/ChatFileInputController.dart';
 import 'package:umq/modules/chat/presentation/MessagePage/c/InputViewController/cameraOrFile/ChatImageInputController.dart';
-import 'package:umq/modules/chat/presentation/MessagePage/v/ChatMessagePage.dart';
 import 'package:umq/modules/chat/presentation/MessagePage/v/views/inputMessage/InputGenericUI.dart';
 import 'package:umq/modules/chat/presentation/MessagePage/v/views/inputMessage/InputMessageView.dart';
-import 'package:umq/modules/chat/shared/toolsChat/resource/ChatColor.dart';
 import 'package:umq/modules/chat/shared/toolsChat/resource/ChatDrawable.dart';
 
 

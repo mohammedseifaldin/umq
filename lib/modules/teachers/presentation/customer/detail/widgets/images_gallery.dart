@@ -1,15 +1,8 @@
 
-import 'package:fastor_app_ui_widget/fastor_app_ui_widget.dart';
 import 'package:flutter/material.dart';
-import 'package:umq/modules/teachers/data/response/ResponseSingleTeacher.dart';
 import 'package:umq/modules/teachers/presentation/customer/detail/TeacherDetailsPage.dart';
-import 'package:umq/tools/navigate/GoTo.dart';
-import 'package:umq/toolsUI/Widgets/button_primary_widget.dart';
-import 'package:umq/toolsUI/app_colors.dart';
-import 'package:umq/toolsUI/itemList/gallery/images/v/ItemImageGallery.dart';
-import 'package:umq/tools/resourceProject/ColorProject.dart';
-import 'package:umq/tools/network/ToolsAPI.dart';
 import 'package:umq/toolsUI/circular_progress.dart';
+import 'package:umq/toolsUI/itemList/gallery/images/v/ItemImageGallery.dart';
 import 'package:umq/toolsUI/no_data_widget.dart';
 
 

@@ -1,12 +1,8 @@
 import 'package:fastor_app_ui_widget/fastor_app_ui_widget.dart';
-
 import 'package:umq/modules/setting/data/model/MSettingAdmin.dart';
-
-import 'package:umq/tools/network/BackendConstant.dart';
-
 import 'package:umq/tools/cache/user_single_tone.dart';
+import 'package:umq/tools/network/BackendConstant.dart';
 import 'package:umq/tools/network/ToolsAPI.dart';
-import 'package:umq/tools/values/ToolsValue.dart';
 
 typedef SettingAdminCallBack = Function(
     bool status, String msg, MSettingAdmin response);

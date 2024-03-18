@@ -1,21 +1,14 @@
-import 'dart:convert';
-
-import 'package:dio/dio.dart';
 import 'package:fastor_app_ui_widget/fastor_app_ui_widget.dart';
 import 'package:umq/modules/cart/data/response/ResponseCartCounter.dart';
+import 'package:umq/tools/cache/user_single_tone.dart';
 import 'package:umq/tools/data/general/GeneralCallBack.dart';
-
 import 'package:umq/tools/data/general/ResponseGeneral.dart';
 import 'package:umq/tools/network/BackendConstant.dart';
-import 'package:umq/modules/product/presentation/customer/productDetails/m/ResponseProductDetail.dart';
-import 'package:umq/tools/cache/user_single_tone.dart';
-import 'package:fastor_app_ui_widget/fastor_app_ui_widget.dart';
-import 'package:fastor_app_ui_widget/fastor_app_ui_widget.dart';
 import 'package:umq/tools/network/ToolsAPI.dart';
 
 class FavoriteProductApi {
   GeneralCallBack? callBack;
-  ResponseCartCounter response = new ResponseCartCounter();
+  ResponseCartCounter response = ResponseCartCounter();
 
   //------------------------------------------------------------------------ types
 
@@ -23,14 +16,14 @@ class FavoriteProductApi {
       int targetId, int isFavorite, GeneralCallBack callBack) async {
     this.callBack = callBack;
 
-    String url = BackendConstant.baseUrlv1 + "/fav_product";
+    String url = "${BackendConstant.baseUrlv1}/fav_product";
 
     //header
-    var token = await UserSingleTone.instance().getToken();
+    final token = UserSingleTone.instance().getToken();
     Map<String, String> header = NetworkHeaderTools.bearerToken(token);
 
     //body
-    Map<String, String> body = Map();
+    Map<String, String> body = {};
     body["product_id"] = targetId.toString();
     body["favorite"] = isFavorite.toString();
 
@@ -61,7 +54,7 @@ class FavoriteProductApi {
       //callback
       callBack!(1, "Success");
     } catch (e) {
-      Log.i("action api - excep: " + e.toString());
+      Log.i("action api - excep: $e");
       callBack!(0, e.toString());
     }
   }

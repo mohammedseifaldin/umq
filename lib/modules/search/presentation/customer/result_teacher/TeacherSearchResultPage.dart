@@ -1,26 +1,17 @@
 
 import 'package:fastor_app_ui_widget/fastor_app_ui_widget.dart';
 import 'package:flutter/material.dart';
-import 'package:mvc_pattern/mvc_pattern.dart';
 import 'package:umq/modules/search/presentation/customer/search_any/search_controller.dart';
-import 'package:umq/modules/product/data/response/ResponsePaginateCategory.dart';
-import 'package:umq/modules/search/data/response/ResponseSearchProvider.dart';
 import 'package:umq/modules/teachers/data/model/MTeacher.dart';
-import 'package:umq/tools/navigate/GoTo.dart';
 import 'package:umq/tools/resourceProject/ColorProject.dart';
 import 'package:umq/tools/resourceProject/FontProject.dart';
-
 import 'package:umq/toolsUI/Widgets/loading_widget.dart';
-import 'package:umq/toolsUI/Widgets/widget_image.dart';
 import 'package:umq/toolsUI/itemList/provider/ItemProviderVertical2.dart';
 
 
-import 'package:shimmer/shimmer.dart';
-
-
 class ProviderSearchResultPage extends StatefulWidget {
-  SearchScreenController? _con;
-  ProviderSearchResultPage(this._con);
+  final SearchScreenController? _con;
+  const ProviderSearchResultPage(this._con, {super.key});
   @override
   _PageState createState() => _PageState();
 }

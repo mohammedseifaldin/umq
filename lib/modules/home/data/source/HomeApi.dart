@@ -1,14 +1,7 @@
-import 'dart:convert';
-import 'package:dio/dio.dart';
 import 'package:fastor_app_ui_widget/fastor_app_ui_widget.dart';
 import 'package:flutter/material.dart';
-
 import 'package:umq/tools/cache/user_single_tone.dart';
-import 'package:fastor_app_ui_widget/fastor_app_ui_widget.dart';
-import 'package:fastor_app_ui_widget/fastor_app_ui_widget.dart';
 import 'package:umq/tools/constant/ConstantProject.dart';
-
-import 'package:http/http.dart' as http;
 import 'package:umq/toolsUI/app_constants.dart';
 
 import '../response/ResponseHomePage.dart';
@@ -56,15 +49,7 @@ class HomeApi {
     try {
       //parse
       var responseHomePage = ResponseHomePage.fromJson(mapJson);
-      // Log.i( "parseHomeApi() - response: " + responseHomePage.toString() );
-      // Log.i( "parseHomeApi() - callBackApiHome: " + callback.toString() );
-
-      //callback success
-      if (callback != null) {
-        callback(true, "success", responseHomePage);
-      } else {
-        Log.i("parseHomeApi() - exc - callback is null: ");
-      }
+      callback(true, "success", responseHomePage);
     } catch (e) {
       Log.i("parseHomeApi() - exc - e: $e");
     }

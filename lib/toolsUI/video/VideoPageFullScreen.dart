@@ -11,7 +11,7 @@ import '../circular_progress.dart';
 class VideoPageFullScreen extends StatefulWidget {
   String videoSrc;
 
-  VideoPageFullScreen({Key? key, required this.videoSrc}) : super(key: key);
+  VideoPageFullScreen({super.key, required this.videoSrc});
 
   @override
   State<VideoPageFullScreen> createState() => _VideoPageFullScreenState();

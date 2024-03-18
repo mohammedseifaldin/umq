@@ -1,4 +1,3 @@
-import 'package:fastor_app_ui_widget/fastor_app_ui_widget.dart';
 import 'package:umq/modules/product/data/model/MProduct.dart';
 
 class ResponseProductDetail {
@@ -13,7 +12,7 @@ class ResponseProductDetail {
 
     status = json['status'];
     code = json['code'];
-    data = json['data'] != null ? new MProduct().fromJson(json['data']) : null;
+    data = json['data'] != null ?  MProduct().fromJson(json['data']) : null;
   }
 
   @override

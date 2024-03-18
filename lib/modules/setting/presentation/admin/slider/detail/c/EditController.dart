@@ -1,7 +1,4 @@
-import 'package:fastor_app_ui_widget/fastor_app_ui_widget.dart';
 import 'package:umq/modules/setting/presentation/admin/slider/detail/v/SliderDetailAdminPage.dart';
-
-import 'package:umq/tools/values/ToolsValue.dart';
 
 extension EditController on SlideDetailAdminState {
 

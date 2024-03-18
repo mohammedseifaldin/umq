@@ -1,42 +1,33 @@
 //
 import 'package:fastor_app_ui_widget/fastor_app_ui_widget.dart';
-import 'package:umq/modules/profile/data/response/ResponseUserList.dart';
-
-import 'package:umq/tools/network/BackendConstant.dart';
-import 'package:umq/modules/place/data/response/ResponseListCity.dart';
-
 import 'package:umq/modules/chat/data/response/lastUpdate/ResponseChatLastUpdate.dart';
-import 'package:umq/modules/chat/data/response/userChatList/ResponseChatUserList.dart';
 import 'package:umq/tools/cache/user_single_tone.dart';
-import 'package:umq/tools/constant/EnvironmentConstant.dart';
-import 'package:fastor_app_ui_widget/fastor_app_ui_widget.dart';
-import 'package:fastor_app_ui_widget/fastor_app_ui_widget.dart';
-import 'package:fastor_app_ui_widget/fastor_app_ui_widget.dart';
+import 'package:umq/tools/network/BackendConstant.dart';
 import 'package:umq/tools/network/ToolsAPI.dart';
-import 'package:umq/tools/values/ToolsValue.dart';
 
 typedef ChatChatSocketContinueAPICallBack = Function(
     bool status, String msg, ResponseChatLastUpdate response);
 
 class ChatSocketContinueAPI {
-  int? user_limit = 0;
-  int? index_loop = 0;
-  int? message_greater_than_time = 0;
+  int? userLimit = 0;
+  int? indexLoop = 0;
+  int? messageGreaterThanTime = 0;
   String? countryCode;
   late ChatChatSocketContinueAPICallBack callBack;
 
   //data
   ResponseChatLastUpdate response = ResponseChatLastUpdate();
 
-  Future getData(
-      {required int user_limit,
-      required int message_greater_than_time,
-      required int index_loop,
-      required String countryCode,
-      required ChatChatSocketContinueAPICallBack callBack}) async {
-    this.user_limit = user_limit;
-    this.message_greater_than_time = message_greater_than_time;
-    this.index_loop = index_loop;
+  Future getData({
+    required int userLimit,
+    required int messageGreaterThanTime,
+    required int indexLoop,
+    required String countryCode,
+    required ChatChatSocketContinueAPICallBack callBack,
+  }) async {
+    this.userLimit = userLimit;
+    this.messageGreaterThanTime = messageGreaterThanTime;
+    this.indexLoop = indexLoop;
     this.countryCode = countryCode;
     this.callBack = callBack;
     // Log.i("getData() "   );
@@ -48,14 +39,14 @@ class ChatSocketContinueAPI {
 
   Future _startAPI() async {
     //url
-    String url = BackendConstant.baseUrlv2 + "/ChatBoth/getSocketContinue?";
-    url += "user_limit=" + user_limit.toString();
-    url += "&message_greater_than_id=" + message_greater_than_time.toString();
-    url += "&index_loop=" + index_loop.toString();
-    url += "&country_code=" + countryCode.toString();
+    String url = "${BackendConstant.baseUrlv2}/ChatBoth/getSocketContinue?";
+    url += "user_limit=$userLimit";
+    url += "&message_greater_than_id=$messageGreaterThanTime";
+    url += "&index_loop=$indexLoop";
+    url += "&country_code=$countryCode";
 
     //header
-    var token = await UserSingleTone.instance().getToken();
+    var token =  UserSingleTone.instance().getToken();
     Map<String, String> header = NetworkHeaderTools.bearerToken(token);
 
     //webservice
@@ -100,7 +91,7 @@ class ChatSocketContinueAPI {
       //callback
       callBack(true, "Success", response);
     } catch (e) {
-      Log.i("exe: " + e.toString());
+      Log.i("exe: $e");
       callBack(false, e.toString(), response);
     }
   }

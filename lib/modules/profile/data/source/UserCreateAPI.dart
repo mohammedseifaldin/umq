@@ -1,10 +1,8 @@
 import 'package:fastor_app_ui_widget/fastor_app_ui_widget.dart';
+import 'package:umq/tools/cache/user_single_tone.dart';
 import 'package:umq/tools/data/general/GeneralCallBack.dart';
 import 'package:umq/tools/data/general/ResponseGeneral.dart';
 import 'package:umq/tools/network/BackendConstant.dart';
-import 'package:umq/tools/cache/user_single_tone.dart';
-import 'package:fastor_app_ui_widget/fastor_app_ui_widget.dart';
-import 'package:fastor_app_ui_widget/fastor_app_ui_widget.dart';
 import 'package:umq/tools/network/ToolsAPI.dart';
 
 class UserCreateAPI {
@@ -12,19 +10,19 @@ class UserCreateAPI {
   String email = "";
   String country = "";
   String mobile = "";
-  int city_id = 0;
+  int cityId = 0;
   String photo = "";
 
   late GeneralCallBack callBack;
 
   Future getData(String name, String email, String country, String mobile,
-      int city_id, String photo, GeneralCallBack callBack) async {
+      int cityId, String photo, GeneralCallBack callBack) async {
     this.callBack = callBack;
     this.name = name;
     this.email = email;
     this.country = country;
     this.mobile = mobile;
-    this.city_id = city_id;
+    this.cityId = cityId;
     this.photo = photo;
 
     await _startAPI();
@@ -43,7 +41,7 @@ class UserCreateAPI {
     body["email"] = email;
     body["country"] = country;
     body["mobile"] = country + mobile;
-    body["city_id"] = city_id;
+    body["cityId"] = cityId;
     body["photo"] = photo;
 
     NetworkManagerDio().callBack(url, headers: header, body: body,

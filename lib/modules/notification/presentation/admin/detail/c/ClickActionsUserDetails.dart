@@ -1,39 +1,23 @@
-import 'dart:typed_data';
-
 import 'package:fastor_app_ui_widget/fastor_app_ui_widget.dart';
 import 'package:flutter/material.dart';
-import 'package:umq/modules/notification/data/source/NotificationCreateAPI.dart';
-
 import 'package:umq/modules/notification/data/response/ResponseNotificationAdminSingle.dart';
-
-
-import 'package:umq/tools/network/BackendConstant.dart';
+import 'package:umq/modules/notification/data/source/NotificationCreateAPI.dart';
 import 'package:umq/modules/notification/presentation/admin/detail/v/NotificationCreateAdminPage.dart';
-import 'package:umq/tools/resourceProject/DrawableProject.dart';
-import 'package:umq/tools/attachCapture/capture/CaptureTools.dart';
-import 'package:fastor_app_ui_widget/fastor_app_ui_widget.dart';
-import 'package:umq/tools/network/ToolsAPI.dart';
-
-import 'package:umq/tools/values/ToolsValue.dart';
 import 'package:umq/toolsUI/toast/ToastTools.dart';
 
 extension ClickActionsUserDetails on NotificationCreateAdminState {
-
   //--------------------------------------------------------------------- save
 
-  Future save_click() async {
-
-    FocusScope.of( context).unfocus();
+  Future saveClick() async {
+    FocusScope.of(context).unfocus();
 
     //validate
-    if( validate_save() == false ) return;
+    if (validate_save() == false) return;
 
     await _apiCreate();
-
   }
 
-  bool validate_save(){
-
+  bool validate_save() {
     // //topicSelected
     // if( ToolsValidation.isValid(topicSelected) == false ) {
     //   ToolsToast.i(context,  "Target Missed");
@@ -41,8 +25,8 @@ extension ClickActionsUserDetails on NotificationCreateAdminState {
     // }
 
     //name
-    if( ToolsValidation.isName(title_txt) == false ) {
-      ToolsToast.i(context,  "Name En Missed");
+    if (ToolsValidation.isName(title_txt) == false) {
+      ToolsToast.i(context, "Name En Missed");
       setState(() {
         title_valid = AutovalidateMode.always;
       });
@@ -50,8 +34,8 @@ extension ClickActionsUserDetails on NotificationCreateAdminState {
     }
 
     //name
-    if( ToolsValidation.isName(message_txt) == false ) {
-      ToolsToast.i(context,  "Name Ar Missed");
+    if (ToolsValidation.isName(message_txt) == false) {
+      ToolsToast.i(context, "Name Ar Missed");
       setState(() {
         message_valid = AutovalidateMode.always;
       });
@@ -64,40 +48,37 @@ extension ClickActionsUserDetails on NotificationCreateAdminState {
   //--------------------------------------------------------------------------- create new object
 
   Future _apiCreate() async {
-
-    if(prg!= null )prg!.show();
+    if (prg != null) prg!.show();
 
     //choose type
-    if( userSelected != null ) {
-      await NotificationCreateAPI().toSpecificUser(userSelected!, title_txt, message_txt, myCallBack );
+    if (userSelected != null) {
+      await NotificationCreateAPI()
+          .toSpecificUser(userSelected!, title_txt, message_txt, myCallBack);
     } else {
-      await NotificationCreateAPI().toAllUser( "all", title_txt, message_txt, myCallBack );
+      await NotificationCreateAPI()
+          .toAllUser("all", title_txt, message_txt, myCallBack);
     }
   }
 
-
   //NotificationCreateAPICallBack
 
-  void myCallBack(bool status, String msg , ResponseNotificationAdminSingle  response ) {
-
-    if(prg!= null )prg!.dismiss();
+  void myCallBack(
+      bool status, String msg, ResponseNotificationAdminSingle response) {
+    if (prg != null) prg!.dismiss();
 
     //check failed
-    if( status == false   ) {
-      ToolsToast.i(context, msg );
+    if (status == false) {
+      ToolsToast.i(context, msg);
       return;
     }
 
     //success
-    ToolsToast.i(context,  msg );
+    ToolsToast.i(context, msg);
 
     //wait
-    ToolsWait.waitToDo(300, ()  {
-
+    ToolsWait.waitToDo(300, () {
       //finish curent page
       Navigator.pop(context);
-
     });
   }
-
 }

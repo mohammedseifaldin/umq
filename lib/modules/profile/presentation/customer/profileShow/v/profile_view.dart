@@ -1,36 +1,26 @@
-import 'dart:io';
-
 import 'package:fastor_app_ui_widget/fastor_app_ui_widget.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:image_picker/image_picker.dart';
-import 'package:mvc_pattern/mvc_pattern.dart';
 import 'package:need_resume/need_resume.dart';
 import 'package:umq/modules/place/data/model/MCityTools.dart';
-import 'package:umq/toolsUI/navigation/m/EnumNavigationPage.dart';
-import 'package:umq/toolsUI/toolbarHome/ToolbarHomeScuba.dart';
 import 'package:umq/modules/profile/presentation/customer/profileShow/c/profile_controller.dart';
-import 'package:umq/modules/profile/presentation/customer/profileEdit/v/edit_screen.dart';
 import 'package:umq/modules/profile/presentation/customer/profileShow/m/ResponseSingleUser.dart';
-import 'package:umq/modules/profile/presentation/customer/profileShow/m/api/DownloadShowProfileAPI.dart';
-import 'package:umq/modules/profile/presentation/customer/profileShow/v/widgets/file_image_view.dart';
-import 'package:umq/tools/navigate/GoTo.dart';
-import 'package:umq/toolsUI/background/BackgroundFastorPageTemplate.dart';
-import 'package:umq/toolsUI/buttons/ButtonLoginGuestView.dart';
-
-import 'package:umq/toolsUI/toolbarBackButton/ToolbarProjectBack.dart';
-import 'package:umq/toolsUI/background/BackgroundAllPagesWidget.dart';
 import 'package:umq/modules/profile/presentation/customer/profileShow/v/widgets/information_back_widgets.dart';
 import 'package:umq/modules/profile/presentation/customer/profileShow/v/widgets/profile_image_view_widget.dart';
 import 'package:umq/modules/profile/presentation/customer/profileShow/v/widgets/profile_text_view_widget.dart';
-import 'package:umq/tools/cache/user_single_tone.dart';
 import 'package:umq/tools/fcm/abdo/FCMRegister.dart';
-import 'package:umq/tools/resourceProject/ColorProject.dart';
+import 'package:umq/tools/navigate/GoTo.dart';
+import 'package:umq/toolsUI/background/BackgroundAllPagesWidget.dart';
+import 'package:umq/toolsUI/background/BackgroundFastorPageTemplate.dart';
+import 'package:umq/toolsUI/buttons/ButtonLoginGuestView.dart';
+import 'package:umq/toolsUI/navigation/m/EnumNavigationPage.dart';
 import 'package:umq/toolsUI/navigation/v/NavigationScuba.dart';
+import 'package:umq/toolsUI/toolbarBackButton/ToolbarProjectBack.dart';
+import 'package:umq/toolsUI/toolbarHome/ToolbarHomeScuba.dart';
 
 class ProfileScreen extends StatefulWidget {
-  const ProfileScreen({Key? key}) : super(key: key);
+  const ProfileScreen({super.key});
 
   @override
   ProfileScreenState createState() => ProfileScreenState();

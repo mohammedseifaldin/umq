@@ -1,13 +1,4 @@
-import 'dart:io';
 
-import 'package:dio/dio.dart';
-import 'package:http_parser/http_parser.dart';
-import 'package:image_picker/image_picker.dart';
-import 'package:mime/mime.dart';
-import 'package:umq/tools/network/BackendConstant.dart';
-import 'package:umq/main.dart';
-
-import 'package:umq/tools/cache/user_single_tone.dart';
 
 // Future<String> getUp(XFile imageFile) async {
 //

@@ -1,12 +1,8 @@
+import 'package:umq/modules/place/data/model/MCity.dart';
 import 'package:umq/modules/place/presentation/admin/city/list/c/SearchDownloadController.dart';
 import 'package:umq/modules/place/presentation/admin/city/list/m/action/CityHiddenAPI.dart';
 import 'package:umq/modules/place/presentation/admin/city/list/v/CityListAdminPage.dart';
-
 import 'package:umq/tools/navigate/GoToAdmin.dart';
-import 'package:umq/modules/place/data/model/MCity.dart';
-
-
-import 'package:umq/tools/network/ToolsAPI.dart';
 
 extension ExtensionRowButtonController on CityListAdminState {
 

@@ -1,7 +1,5 @@
 
-import 'package:fastor_app_ui_widget/fastor_app_ui_widget.dart';
 import 'package:umq/modules/chat/data/model/MChatUser.dart';
-
 
 import '../../../../data/model/MChatMessage.dart';
 

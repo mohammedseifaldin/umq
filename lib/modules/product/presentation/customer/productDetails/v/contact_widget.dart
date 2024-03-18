@@ -2,16 +2,10 @@
 import 'package:fastor_app_ui_widget/fastor_app_ui_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:umq/modules/product/presentation/customer/productDetails/c/ProductDetailController.dart';
-import 'package:umq/toolsUI/buttons/BlueBlurButtonScuba.dart';
+import 'package:umq/modules/product/presentation/customer/productDetails/view/ProductDetailView.dart';
 import 'package:umq/tools/resourceProject/DrawableProject.dart';
+import 'package:umq/toolsUI/buttons/BlueBlurButtonScuba.dart';
 import 'package:umq/toolsUI/toast/ToastTools.dart';
-
-
-
-import 'package:url_launcher/url_launcher.dart';
-import 'package:umq/modules/product/presentation/customer/productDetails/view/ProductDetailView.dart';
-
-import 'package:umq/modules/product/presentation/customer/productDetails/view/ProductDetailView.dart';
 
 extension  ContactWidget on ProductDetailState {
 

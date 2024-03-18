@@ -1,7 +1,6 @@
 import 'package:fastor_app_ui_widget/fastor_app_ui_widget.dart';
-import 'package:flutter/cupertino.dart';
-import 'package:umq/modules/profile/presentation/admin/user/detail/v/UserDetailAdminPage.dart';
 import 'package:umq/modules/place/data/model/MCityTools.dart';
+import 'package:umq/modules/profile/presentation/admin/user/detail/v/UserDetailAdminPage.dart';
 import 'package:umq/tools/values/ToolsValue.dart';
 
 extension EditUserController on UserDetailAdminState {

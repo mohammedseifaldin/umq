@@ -1,8 +1,5 @@
 
 
-import 'package:fastor_app_ui_widget/fastor_app_ui_widget.dart';
-import 'package:umq/modules/place/data/response/city_response.dart';
-import 'package:umq/modules/profile/data/response/organization_response.dart';
 import 'package:umq/modules/teachers/data/model/MTeacher.dart';
 
 class ResponseSearchProvider {
@@ -18,7 +15,7 @@ class ResponseSearchProvider {
       data = <MProvider>[];
       json['data'].forEach((v) {
        // Log.i( "ResponseSearchProvider - fromJson() - v: " + v.toString()  );
-        var m = new MProvider().fromJson(v);
+        var m =  MProvider().fromJson(v);
         //Log.i( "ResponseSearchProvider - fromJson() - m: " + m.toString()  );
         data!.add( m );
       });

@@ -1,10 +1,7 @@
 import 'package:fastor_app_ui_widget/fastor_app_ui_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:umq/modules/chat/presentation/MessagePage/c/InputViewController/InputViewUpdateUI.dart';
-import 'package:umq/modules/chat/presentation/MessagePage/v/views/inputMessage/CameraAndAttachView.dart';
 import 'package:umq/modules/chat/presentation/MessagePage/v/views/inputMessage/InputMessageView.dart';
-
-import 'ButtonSaveView.dart';
 
 extension TextFieldChat on InputMessageState {
 

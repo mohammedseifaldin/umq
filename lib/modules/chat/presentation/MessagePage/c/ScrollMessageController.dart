@@ -3,41 +3,37 @@ import 'package:flutter/material.dart';
 import 'package:umq/modules/chat/presentation/MessagePage/c/FloatButtonNewMessageController.dart';
 import 'package:umq/modules/chat/presentation/MessagePage/c/MessageDownloadController.dart';
 import 'package:umq/modules/chat/presentation/MessagePage/v/ChatMessagePage.dart';
-import 'package:umq/modules/chat/presentation/UserListPage/c/paginate/ChatScrollManager.dart';
-import 'package:umq/modules/chat/data/model/MChatMessage.dart';
-
 
 extension ScrollMessageController on ChatMessageState {
-
   //----------------------------------------------------------------------- listener
 
   Future startScrollListener() async {
     scrollController.addListener(() async {
-
       //set previous
-      var current = scrollController.position.pixels;
-     // Log.i( "addListener - current: " + current.toString() );
+      // var current = scrollController.position.pixels;
+      // Log.i( "addListener - current: " + current.toString() );
 
       //for scroll at top
-      if(scrollController.position.pixels == scrollController.position.minScrollExtent){
+      if (scrollController.position.pixels ==
+          scrollController.position.minScrollExtent) {
         await _whatToDoAfterArriveTopScreen();
       }
 
       //for scroll to bottom
-      bool isGoToBottom = scrollController.position.pixels == scrollController.position.maxScrollExtent;
-      if( isGoToBottom ) {
+      bool isGoToBottom = scrollController.position.pixels ==
+          scrollController.position.maxScrollExtent;
+      if (isGoToBottom) {
         await setHideFloatButtonNow();
       }
     });
   }
 
-
   Future _whatToDoAfterArriveTopScreen() async {
     //check is waiting
-    if( isWaitingForPreviousLoading ) return;
+    if (isWaitingForPreviousLoading) return;
 
     //check is finish all pages pagination
-    if( isFinishAllPages ) return;
+    if (isFinishAllPages) return;
 
     //now start next
     startGetMessage();
@@ -46,20 +42,19 @@ extension ScrollMessageController on ChatMessageState {
   //--------------------------------------------------------------- history added
 
   Future typeAddNewPageHistory() async {
-
     //set previous
-    scrollPreviousPosition_maxLenght = scrollController.position.maxScrollExtent;
-   Log.i( "typeAddNewPageHistory() - scrollPreviousPosition_maxLenght: " + scrollPreviousPosition_maxLenght.toString() );
+    scrollPreviousPositionMaxLenght = scrollController.position.maxScrollExtent;
+    Log.i("typeAddNewPageHistory() - scrollPreviousPosition_maxLenght: " +
+        scrollPreviousPositionMaxLenght.toString());
 
     //1- show list
-    setState( (){});
+    setState(() {});
 
     //2- focus to scroll view
-    await ToolsWait.waitToDo( 100  , ( ) async {
+    await ToolsWait.waitToDo(100, () async {
       await _chooseFocusTypeAferHistoryAdded();
-    } );
+    });
   }
-
 
   Future _chooseFocusTypeAferHistoryAdded() async {
     /***
@@ -72,98 +67,86 @@ extension ScrollMessageController on ChatMessageState {
 
         c- case last page in history
      */
-   Log.i( "_startFocus() - page: " + page.toString() );
-    if( page == 2 ) {
+    Log.i("_startFocus() - page: " + page.toString());
+    if (page == 2) {
       await focusNowBottomScreenWithAnimate();
-
-    } else  if( isFinishAllPages) {
+    } else if (isFinishAllPages) {
       // await focusNowTopScreenRapid();
       await focusToPreviousPosition();
-
-    } else  {
-   // await focusTopMinesSomeRows();
+    } else {
+      // await focusTopMinesSomeRows();
       await focusToPreviousPosition();
-
     }
   }
 
   //--------------------------------------------------------------- socket waiter added
 
-  Future scrollEventSocketWaiterAdded(  ) async {
-
+  Future scrollEventSocketWaiterAdded() async {
     //2- focus to scroll view
-    await ToolsWait.waitToDo( 100  , ( ) async {
+    await ToolsWait.waitToDo(100, () async {
       await _chooseFocusTypeAfterWaiterAdded();
-    } );
-
+    });
   }
 
-
   Future _chooseFocusTypeAfterWaiterAdded() async {
-
     //check socketFoundNewMessage
-    if( socketFoundNewMessageIamSender ) {
-      bool isFirstPage  = page == 2;
-      if( isFirstPage ) {
+    if (socketFoundNewMessageIamSender) {
+      bool isFirstPage = page == 2;
+      if (isFirstPage) {
         await focusNowBottomScreenWithAnimate();
       }
       return;
     }
-
   }
 
   //---------------------------------------------------------------- focus types
 
   Future focusNowBottomScreenWithAnimate() async {
     double max = scrollController.position.maxScrollExtent;
-   Log.i( "focusNowBottomScreenWithAnimate() - max: " + max.toString()  );
+    Log.i("focusNowBottomScreenWithAnimate() - max: " + max.toString());
 
     // Scroll to that position.
     scrollController.position.animateTo(
       max,
-      duration: const Duration(milliseconds: 300 ),
+      duration: const Duration(milliseconds: 300),
       curve: Curves.easeInOut,
     );
   }
-
 
   /**
    jump immedialty without animate
    */
   Future focusBottomScreenRapid() async {
-
     double max = scrollController.position.maxScrollExtent;
     // Log.i( "focusBottomScreenRapid() - max: " + max.toString()  );
 
     // Scroll to that position.
     scrollController.position.animateTo(
       max,
-      duration: const Duration(milliseconds: 100 ),
+      duration: const Duration(milliseconds: 100),
       curve: Curves.easeInOut,
     );
   }
-
 
   Future focusNowTopScreenRapid() async {
-   Log.i( "focusNowTopScreenRapid() "   );
+    Log.i("focusNowTopScreenRapid() ");
     scrollController.position.animateTo(
       0,
-      duration: const Duration(milliseconds: 100  ),
+      duration: const Duration(milliseconds: 100),
       curve: Curves.easeInOut,
     );
   }
-
 
   Future focusToPreviousPosition() async {
     var currentMax = scrollController.position.maxScrollExtent;
-    var distanceAddedNew = currentMax - scrollPreviousPosition_maxLenght;
-    Log.i( "focusToPreviousPosition() - scrollPreviousPosition: " + scrollPreviousPosition_maxLenght.toString()  );
-    Log.i( "focusToPreviousPosition() - distanceAddedNew: " + distanceAddedNew.toString()  );
+    var distanceAddedNew = currentMax - scrollPreviousPositionMaxLenght;
+    Log.i("focusToPreviousPosition() - scrollPreviousPosition: " +
+        scrollPreviousPositionMaxLenght.toString());
+    Log.i("focusToPreviousPosition() - distanceAddedNew: " +
+        distanceAddedNew.toString());
 
-    scrollController.position.jumpTo(  distanceAddedNew  );
+    scrollController.position.jumpTo(distanceAddedNew);
   }
-
-
 }
 
 

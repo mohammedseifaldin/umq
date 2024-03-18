@@ -1,17 +1,12 @@
 
 import 'package:fastor_app_ui_widget/fastor_app_ui_widget.dart';
 import 'package:flutter/material.dart';
+import 'package:umq/modules/place/data/model/MCity.dart';
 import 'package:umq/modules/place/presentation/admin/city/list/c/ExtensionRowButtonController.dart';
-
+import 'package:umq/tools/resourceProject/ResourceDimenAdmin.dart';
 import 'package:umq/toolsUI/admin/itemRowTable/cell_button.dart';
 import 'package:umq/toolsUI/admin/itemRowTable/cell_id_primary.dart';
-
 import 'package:umq/toolsUI/admin/itemRowTable/cell_txt.dart';
-import 'package:umq/modules/place/data/model/MCity.dart';
-
-import 'package:umq/tools/resourceProject/ResourceDimenAdmin.dart';
-
-import 'package:universal_io/io.dart';
 
 import 'CityListAdminPage.dart';
 

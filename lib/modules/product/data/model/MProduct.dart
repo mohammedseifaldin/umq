@@ -1,7 +1,5 @@
 
-import 'package:fastor_app_ui_widget/fastor_app_ui_widget.dart';
 import 'package:umq/modules/product/data/model/MCategory.dart';
-import 'package:umq/modules/teachers/data/model/MTeacher.dart';
 
 class MProduct {
   /**

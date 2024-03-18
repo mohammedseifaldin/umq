@@ -1,6 +1,4 @@
-
 import 'dart:core';
-
 
 import 'package:fastor_app_ui_widget/fastor_app_ui_widget.dart';
 
@@ -8,11 +6,8 @@ import 'package:umq/modules/chat/shared/toolsChat/singletone/socketContinue/Sock
 
 import 'package:umq/modules/chat/shared/toolsChat/singletone/message/m/FcmSocketDownloadData.dart';
 
-
-
 class NewMessageSingleTone {
-
-  static int lastMessageIdDownload = 0 ; //the last message id downloaded
+  static int lastMessageIdDownload = 0; //the last message id downloaded
 
   //---------------------------------------------------------------------- single tone
 
@@ -22,14 +17,12 @@ class NewMessageSingleTone {
   static bool _isSync = false;
 
   //3- return instance
-  static NewMessageSingleTone instance(){
-    if( _isSync == false ) {
+  static NewMessageSingleTone instance() {
+    if (_isSync == false) {
       _isSync = true;
-
     }
     return NewMessageSingleTone._();
   }
-
 
   //------------------------------------------------------------------- socket controller
 
@@ -37,18 +30,16 @@ class NewMessageSingleTone {
     SocketContinueController().start();
   }
 
-
   void stopSocket() {
     SocketContinueController().stop();
   }
 
   //--------------------------------------------------------------------- add update manuel
 
-  void fcmSocketHappened(String sender_id_string, String messageId){
-
+  void fcmSocketHappened(String senderId, String messageId) {
     //to int
-    int  sender_id = int.parse( sender_id_string);
-    Log.i( "chat - fcmSocketHappened() - messageId: " + messageId.toString()  );
+    // int  senderId = int.parse( senderId);
+    Log.i("chat - fcmSocketHappened() - messageId: $messageId");
 
     //api update the list
     /** //Deprecated "not need" there is another socket
@@ -58,9 +49,6 @@ class NewMessageSingleTone {
 
     //api received notificationAdmin
 
-    updateMessageStatusReceived(  messageId );
+    updateMessageStatusReceived(messageId);
   }
-
-
 }
-

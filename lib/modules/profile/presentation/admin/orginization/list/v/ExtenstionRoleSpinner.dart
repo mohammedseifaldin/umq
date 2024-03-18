@@ -1,15 +1,7 @@
 
 import 'package:fastor_app_ui_widget/fastor_app_ui_widget.dart';
-
-
-
-// import 'package:fastor_app_ui_widget/resource/template/select/SpinnerTemplate.dart';
-import 'package:fastor_app_ui_widget/resource/template/text/TextTemplate.dart';
-
 import 'package:flutter/material.dart';
-import 'package:umq/modules/place/presentation/admin/city/list/c/SearchDownloadController.dart';
 import 'package:umq/modules/profile/presentation/admin/orginization/list/c/SearchDownloadController.dart';
-
 
 import 'OrgListAdminPage.dart';
 
@@ -19,11 +11,11 @@ const double _spinnerWidth = 100;
 extension ExtenstionRoleSpinner  on OrgListAdminState {
 
 
-  Widget spinner_role() {
+  Widget spinnerRole() {
     return Container(
-      child:  _getSpinner(),
       decoration: BoarderHelper.box(),
-      margin: EdgeInsets.only( top: 0), //top 12 : fix underline not same aligment
+      margin: const EdgeInsets.only( top: 0),
+      child:  _getSpinner(), //top 12 : fix underline not same aligment
     );
   }
 
@@ -38,8 +30,7 @@ extension ExtenstionRoleSpinner  on OrgListAdminState {
           _updateSelectedSpinner(p, isRemoveSelected );
 
         });
-    return SizedBox( child:  drop,
-    height: 40,
+    return SizedBox( height: 40, child:  drop,
     );
   }
 
@@ -65,7 +56,7 @@ extension ExtenstionRoleSpinner  on OrgListAdminState {
         levelDS: LevelDS.l2,
         color: DSColor.spinner_hint,
         gravityLayoutAlign: Alignment.centerLeft ,
-        padding: EdgeInsets.only( left: 3.5 ),
+        padding: const EdgeInsets.only( left: 3.5 ),
       width: _spinnerWidth,
       height: 55,
          );

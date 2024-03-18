@@ -1,14 +1,9 @@
 
 import 'package:flutter/material.dart';
+import 'package:umq/modules/profile/data/model/MOrganization.dart';
 import 'package:umq/modules/profile/presentation/admin/orginization/list/v/ExtenstionColum.dart';
 import 'package:umq/modules/profile/presentation/admin/orginization/list/v/ExtenstionRow.dart';
-
-
 import 'package:umq/modules/profile/presentation/admin/orginization/list/v/OrgListAdminPage.dart';
-
-import 'package:umq/modules/place/data/model/MCity.dart';
-import 'package:umq/modules/profile/data/model/MOrganization.dart';
-
 import 'package:umq/toolsUI/toast/ToastTools.dart';
 
 extension ExtenstionMapModelToWidget on OrgListAdminState {
@@ -21,7 +16,7 @@ extension ExtenstionMapModelToWidget on OrgListAdminState {
     var dataList = response.data!.data!;
 
     //check there is result after filter complete
-    bool isNoResultFound =  dataList.length == 0 ;
+    bool isNoResultFound =  dataList.isEmpty ;
     if( isNoResultFound ) {
       ToolsToast.i( context,  "No Data Found" );
       // now print

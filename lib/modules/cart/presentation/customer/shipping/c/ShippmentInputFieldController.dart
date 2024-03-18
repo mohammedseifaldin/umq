@@ -9,16 +9,17 @@ import 'package:umq/tools/values/ToolsValue.dart';
 import 'package:umq/toolsUI/toast/ToastTools.dart';
 
 extension ShippmentInputFieldController on CartShipmentState {
-
   //------------------------------------------------------------------- city download
 
   void getDownloadCity() async {
-    String url =  BackendConstant.domain  + "/public/api/v2/city/?page=1&paginator=100";
-    await NetworkManagerDio().callBack( url , type: NetworkTypeDio.get , callback: (status, msg, json ){
+    String url =
+        BackendConstant.domain + "/public/api/v2/city/?page=1&paginator=100";
+    await NetworkManagerDio().callBack(url, type: NetworkTypeDio.get,
+        callback: (status, msg, json) {
       // Log.i( "getDownloadCity() - json: " + json.toString()  );
       //check
-      if( status == false ) {
-        ToolsToast.i(context,  "Refresh the Page");
+      if (status == false) {
+        ToolsToast.i(context, "Refresh the Page");
         return;
       }
 
@@ -27,7 +28,7 @@ extension ShippmentInputFieldController on CartShipmentState {
 
       //set data
       setState(() {
-         listCity = response.data!.data!;
+        listCity = response.data!.data!;
       });
     });
   }
@@ -37,34 +38,28 @@ extension ShippmentInputFieldController on CartShipmentState {
   void setEditData() async {
     _setAddressEdit();
     _setCityForEdit();
-
   }
 
-  _setAddressEdit(){
+  _setAddressEdit() {
     String addressCurrent = OrderCurrentSingletone.instance().address;
-    if( ToolsValue.isEmpty(addressCurrent) ) {
+    if (ToolsValue.isEmpty(addressCurrent)) {
       return;
     }
 
-    setState( (){
-      address_txt = addressCurrent;
-      address_con.text = addressCurrent;
-    //  OrderCurrentSingletone.instance().address = null; //avoid set many times
+    setState(() {
+      addressText = addressCurrent;
+      addressCon.text = addressCurrent;
+      //  OrderCurrentSingletone.instance().address = null; //avoid set many times
     });
-
   }
 
-
-  _setCityForEdit(){
+  _setCityForEdit() {
     MCity cityCurrent = OrderCurrentSingletone.instance().city;
-    if( cityCurrent == null ) return;
 
-    setState( (){
+    setState(() {
       citySelectedName = MCityTools.getNameByLang(context, cityCurrent);
       citySelectedObject = cityCurrent;
       //  OrderCurrentSingletone.instance().city = null; //avoid set many times
     });
   }
-
-
 }

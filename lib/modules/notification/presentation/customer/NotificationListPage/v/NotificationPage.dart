@@ -3,19 +3,15 @@ import 'package:fastor_app_ui_widget/fastor_app_ui_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:need_resume/need_resume.dart';
 import 'package:umq/modules/notification/data/response/ResponseNotificationList.dart';
-import 'package:umq/modules/notification/data/response/ResponseNotificationListPaginate.dart';
 import 'package:umq/modules/notification/presentation/customer/NotificationListPage/c/NotificationListController.dart';
 import 'package:umq/modules/notification/presentation/customer/NotificationListPage/v/views/ItemListNotification.dart';
-
-import 'package:umq/toolsUI/navigation/m/EnumNavigationPage.dart';
-import 'package:umq/toolsUI/toolbarHome/ToolbarHomeScuba.dart';
-import 'package:umq/toolsUI/background/BackgroundFastorPageTemplate.dart';
-import 'package:umq/toolsUI/buttons/ButtonLoginGuestView.dart';
-
 import 'package:umq/tools/fcm/abdo/FCMRegister.dart';
 import 'package:umq/tools/resourceProject/DrawableProject.dart';
-import 'package:umq/tools/constant/EnvironmentConstant.dart';
+import 'package:umq/toolsUI/background/BackgroundFastorPageTemplate.dart';
+import 'package:umq/toolsUI/buttons/ButtonLoginGuestView.dart';
+import 'package:umq/toolsUI/navigation/m/EnumNavigationPage.dart';
 import 'package:umq/toolsUI/navigation/v/NavigationScuba.dart';
+import 'package:umq/toolsUI/toolbarHome/ToolbarHomeScuba.dart';
 
 class NotificationPage extends StatefulWidget {
 

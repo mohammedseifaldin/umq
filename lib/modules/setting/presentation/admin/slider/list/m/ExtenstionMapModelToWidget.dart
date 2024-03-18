@@ -1,12 +1,9 @@
 
 import 'package:flutter/material.dart';
+import 'package:umq/modules/home/data/model/MSlider.dart';
 import 'package:umq/modules/setting/presentation/admin/slider/list/v/ExtenstionColumSlider.dart';
 import 'package:umq/modules/setting/presentation/admin/slider/list/v/ExtenstionRowSlider.dart';
 import 'package:umq/modules/setting/presentation/admin/slider/list/v/SliderListAdminPage.dart';
-import 'package:umq/modules/home/data/model/MSlider.dart';
-
-
-import 'package:umq/tools/constant/EnvironmentConstant.dart';
 import 'package:umq/toolsUI/toast/ToastTools.dart';
 
 extension ExtenstionMapModelToWidget on SliderListAdminState {
@@ -19,7 +16,7 @@ extension ExtenstionMapModelToWidget on SliderListAdminState {
     var dataList = response.data!.data!;
 
     //check there is result after filter complete
-    bool isNoResultFound =  dataList.length == 0 ;
+    bool isNoResultFound =  dataList.isEmpty ;
     if( isNoResultFound ) {
       ToolsToast.i( context,  "No Data Found" );
       // now print

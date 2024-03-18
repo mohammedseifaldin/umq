@@ -1,4 +1,3 @@
-import 'package:fastor_app_ui_widget/fastor_app_ui_widget.dart';
 import 'package:umq/modules/place/data/model/MCity.dart';
 
 class ResponseCityList {
@@ -11,7 +10,7 @@ class ResponseCityList {
   ResponseCityList.fromJson(Map<String, dynamic> json) {
     status = json['status'];
     code = json['code'];
-    data = json['data'] != null ? new DataCity.fromJson(json['data']) : null;
+    data = json['data'] != null ?  DataCity.fromJson(json['data']) : null;
   }
 
   @override

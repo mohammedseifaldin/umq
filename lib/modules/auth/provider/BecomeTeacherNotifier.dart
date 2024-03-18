@@ -29,7 +29,7 @@ extension BecomeTeacherNotifier on AuthChangeNotifier {
         .showClassicLoadingOverlay(becomeTeacherScaffoldKey.currentContext);
     becomeProvdierRequest().then((value) {
       LockOverlay().closeOverlay();
-      if (value != null && value.status) {
+      if (value.status) {
         successBecomeProvider(value);
 
         // Navigator.pushNamedAndRemoveUntil(scaffoldKey.currentContext!, '/homeTest', (route) => false);

@@ -1,22 +1,10 @@
 
-import 'dart:typed_data';
-
-
 import 'package:fastor_app_ui_widget/fastor_app_ui_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:need_resume/need_resume.dart';
-import 'package:umq/modules/place/presentation/admin/city/detail/c/EditController.dart';
-import 'package:umq/modules/place/presentation/admin/city/detail/v/views/ContentUserDetail.dart';
-
-
-import 'package:umq/tools/resourceProject/ResourceDimenAdmin.dart';
-import 'package:umq/modules/place/data/model/MCity.dart';
-import 'package:umq/modules/profile/data/model/m_user.dart';
 import 'package:umq/modules/notification/presentation/admin/detail/v/views/ContentUserDetail.dart';
 import 'package:umq/modules/notification/presentation/admin/detail/v/views/SpinnerSelectTypeTopic.dart';
-
-import 'package:umq/tools/fastor/drawable/FastorDrawable.dart';
-import 'package:umq/tools/resourceProject/DrawableProject.dart';
+import 'package:umq/modules/profile/data/model/m_user.dart';
 import 'package:umq/tools/responsive/fourm/ResponsiveFormMobile.dart';
 import 'package:umq/toolsUI/textfield/mobileCountry/MobileCountryView.dart';
 //import 'package:umq/toolsUI/toolbar/ToolbarSimpleFastor.dart';

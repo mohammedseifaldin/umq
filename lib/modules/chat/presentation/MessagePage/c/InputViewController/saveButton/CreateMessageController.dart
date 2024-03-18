@@ -1,18 +1,14 @@
-import 'package:umq/modules/chat/presentation/MessagePage/c/InputViewController/InputViewUpdateUI.dart';
-import 'package:umq/modules/chat/presentation/MessagePage/c/ScrollMessageController.dart';
-
-import 'package:umq/modules/chat/presentation/MessagePage/v/views/inputMessage/InputMessageView.dart';
-import 'package:umq/modules/chat/data/source/message/ChatMessageCreateAPI.dart';
 import 'package:umq/modules/chat/data/model/MChatMessage.dart';
 import 'package:umq/modules/chat/data/modelTools/ToolsMChatMessage.dart';
+import 'package:umq/modules/chat/presentation/MessagePage/c/InputViewController/InputViewUpdateUI.dart';
+import 'package:umq/modules/chat/presentation/MessagePage/v/views/inputMessage/InputMessageView.dart';
 import 'package:umq/tools/keyboard/ToolsKeyboard.dart';
-import 'package:umq/toolsUI/toast/ToastTools.dart';
 
 extension CreateMessageController on InputMessageState {
 
   Future createMessageTypeText() async {
 
-    int receiverId = chatMessageState.widget.userTargetSmall!.id!;
+    int receiverId = chatMessageState.widget.userTargetSmall!.id;
 
     //map data
     MChatMessage mMessageNew = ToolsMChatMessage.generateText(

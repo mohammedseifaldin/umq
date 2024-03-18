@@ -1,12 +1,8 @@
-import 'dart:convert';
-
-
 import 'package:umq/modules/favorite/data/source/FavoriteTeacherApi.dart';
 import 'package:umq/modules/teachers/presentation/customer/detail/TeacherDetailsPage.dart';
-import 'package:umq/modules/teachers/presentation/customer/detail/widgets/provider_details_header.dart';
+import 'package:umq/tools/cache/user_single_tone.dart';
 import 'package:umq/toolsUI/dialog/CheckoutLoginDialog.dart';
 import 'package:umq/toolsUI/snack_bar.dart';
-import 'package:umq/tools/cache/user_single_tone.dart';
 
 extension ProviderInfoController on ProviderDetailsState {
 

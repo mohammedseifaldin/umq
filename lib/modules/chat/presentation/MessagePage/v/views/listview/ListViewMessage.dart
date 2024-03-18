@@ -1,12 +1,6 @@
 import 'package:fastor_app_ui_widget/fastor_app_ui_widget.dart';
 import 'package:flutter/material.dart';
-import 'package:umq/modules/chat/presentation/MessagePage/m/MapDataChatMessage.dart';
-
 import 'package:umq/modules/chat/presentation/MessagePage/v/ChatMessagePage.dart';
-import 'package:umq/modules/chat/presentation/MessagePage/v/views/inputMessage/InputMessageView.dart';
-import 'package:umq/modules/chat/presentation/MessagePage/v/views/listview/itemlist/ItemMessageView.dart';
-
-import 'package:umq/modules/chat/data/model/MChatMessage.dart';
 import 'package:umq/tools/constant/EnvironmentConstant.dart';
 
 extension ListViewMessage  on ChatMessageState {

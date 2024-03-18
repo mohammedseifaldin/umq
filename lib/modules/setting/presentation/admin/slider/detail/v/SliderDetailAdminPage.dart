@@ -1,28 +1,19 @@
 
-import 'dart:typed_data';
-
-
 import 'package:fastor_app_ui_widget/fastor_app_ui_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:need_resume/need_resume.dart';
+import 'package:umq/modules/home/data/model/MSlider.dart';
 import 'package:umq/modules/setting/presentation/admin/slider/detail/c/EditController.dart';
 import 'package:umq/modules/setting/presentation/admin/slider/detail/v/views/ContentDetail.dart';
-
-
-import 'package:umq/modules/home/data/model/MSlider.dart';
-
-import 'package:umq/tools/fastor/drawable/FastorDrawable.dart';
-import 'package:umq/tools/resourceProject/DrawableProject.dart';
 import 'package:umq/tools/responsive/fourm/ResponsiveFormMobile.dart';
-import 'package:umq/toolsUI/textfield/mobileCountry/MobileCountryView.dart';
 //import 'package:umq/toolsUI/toolbar/ToolbarSimpleFastor.dart';
 
 class SlideDetailAdminPage extends StatefulWidget {
 
   MSlider? mEdit  ;
 
-  SlideDetailAdminPage( { MSlider? edit }) {
-    this.mEdit = edit;
+  SlideDetailAdminPage( {super.key,  MSlider? edit }) {
+    mEdit = edit;
   }
 
   @override

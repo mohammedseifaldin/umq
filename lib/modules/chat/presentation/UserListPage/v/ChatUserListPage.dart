@@ -1,22 +1,17 @@
 import 'package:fastor_app_ui_widget/fastor_app_ui_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:need_resume/need_resume.dart';
-
+import 'package:umq/modules/chat/data/model/MChatUser.dart';
 import 'package:umq/modules/chat/presentation/UserListPage/c/WaiterUserListController.dart';
 import 'package:umq/modules/chat/presentation/UserListPage/c/paginate/ChatScrollManager.dart';
-import 'package:umq/modules/chat/presentation/UserListPage/v/views/DialogSyncLargeData.dart';
 import 'package:umq/modules/chat/presentation/UserListPage/v/views/ListViewUser/ListUserView.dart';
-import 'package:umq/modules/chat/data/model/MChatUser.dart';
-
 import 'package:umq/modules/chat/shared/toolsChat/resource/ChatColor.dart';
 import 'package:umq/modules/chat/shared/toolsChat/singletone/lifeCycle/LifeCycleSingletone.dart';
 import 'package:umq/modules/chat/shared/toolsChat/singletone/message/NewMessageSingleTone.dart';
-import 'package:umq/tools/navigate/GoTo.dart';
-import 'package:umq/toolsUI/textview/ErrorMessageView.dart';
 import 'package:umq/tools/cache/user_single_tone.dart';
 import 'package:umq/tools/fcm/abdo/FCMRegister.dart';
-
-import 'package:umq/splash_screen.dart';
+import 'package:umq/tools/navigate/GoTo.dart';
+import 'package:umq/toolsUI/textview/ErrorMessageView.dart';
 
 import 'views/toolbar/ToolbarChatHome.dart';
 

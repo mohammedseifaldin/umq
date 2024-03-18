@@ -1,20 +1,15 @@
 
 import 'package:fastor_app_ui_widget/fastor_app_ui_widget.dart';
 import 'package:flutter/material.dart';
-import 'package:need_resume/need_resume.dart';
-import 'package:umq/modules/teachers/data/model/MTeacher.dart';
-import 'package:umq/modules/teachers/presentation/customer/detail/logic/ProviderInfoController.dart';
 import 'package:umq/modules/teachers/presentation/customer/detail/TeacherDetailsPage.dart';
+import 'package:umq/modules/teachers/presentation/customer/detail/logic/ProviderInfoController.dart';
 import 'package:umq/modules/teachers/presentation/customer/detail/widgets/provider_details_button.dart';
-import 'package:umq/tools/navigate/GoTo.dart';
-import 'package:umq/toolsUI/dialog/CheckoutLoginDialog.dart';
-import 'package:umq/toolsUI/rateDialog/RateProviderDialog.dart';
-
 import 'package:umq/tools/cache/user_single_tone.dart';
+import 'package:umq/tools/navigate/GoTo.dart';
 import 'package:umq/tools/resourceProject/DimenProject.dart';
 import 'package:umq/tools/resourceProject/DrawableProject.dart';
-import 'package:url_launcher/url_launcher.dart';
 import 'package:umq/toolsUI/app_colors.dart';
+import 'package:umq/toolsUI/dialog/CheckoutLoginDialog.dart';
 import 'package:umq/toolsUI/rating_stars.dart';
 
 
@@ -39,22 +34,22 @@ extension ProviderDetailsHeader on ProviderDetailsState {
     );
   }
 
-  /**
-   name, rate, buttons
-   */
+  
+  // name, rate, buttons
+   
   Widget cardMain(){
     var col =   Column(
       crossAxisAlignment: CrossAxisAlignment.center,
       children: [
-        SizedBox(
+        const SizedBox(
           height: 35,
         ),
         providerName(),
-        SizedBox(
+        const SizedBox(
           height: 5,
         ),
         providerRate(),
-        SizedBox(
+        const SizedBox(
           height: 20,
         ),
         buttonsRow()
@@ -64,9 +59,9 @@ extension ProviderDetailsHeader on ProviderDetailsState {
     //decoration
     return Container(
       width: DeviceTools.getWidth(context),
-      margin: EdgeInsets.only(top: 25), //to make the manPhoto in middle
-      padding: EdgeInsets.fromLTRB(15, 10, 15, 10),
-      decoration: BoxDecoration(
+      margin: const EdgeInsets.only(top: 25), //to make the manPhoto in middle
+      padding: const EdgeInsets.fromLTRB(15, 10, 15, 10),
+      decoration: const BoxDecoration(
           color: Color.fromARGB(255, 220, 247, 248),
           borderRadius: BorderRadius.all(Radius.circular( DimenProject.radiusScaffoldCorner))),
       child:  col,
@@ -78,7 +73,7 @@ extension ProviderDetailsHeader on ProviderDetailsState {
     return Text(
       widget.provider!.users!.name??"NA",
       style:
-          TextStyle(color: darkBlue, fontSize: 18, fontWeight: FontWeight.w800),
+          const TextStyle(color: darkBlue, fontSize: 18, fontWeight: FontWeight.w800),
     );
   }
 
@@ -105,7 +100,7 @@ extension ProviderDetailsHeader on ProviderDetailsState {
             //launch('tel://${widget.provider!.users!.mobile ??""}');
           },
         ),
-        SizedBox(
+        const SizedBox(
           width: 10,
         ),
         ProviderDetailsButton(
@@ -114,7 +109,7 @@ extension ProviderDetailsHeader on ProviderDetailsState {
             await showRateDialog();
           },
         ),
-        SizedBox(
+        const SizedBox(
           width: 10,
         ),
         ProviderDetailsButton(

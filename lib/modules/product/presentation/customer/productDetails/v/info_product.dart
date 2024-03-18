@@ -1,13 +1,7 @@
 
 import 'package:fastor_app_ui_widget/fastor_app_ui_widget.dart';
 import 'package:flutter/material.dart';
-import 'package:umq/modules/product/data/model/MProduct.dart';
-import 'package:umq/modules/product/data/model/MCategoryTools.dart';
 import 'package:umq/modules/product/data/model/MProductTools.dart';
-
-
-
-
 import 'package:umq/modules/product/presentation/customer/productDetails/view/ProductDetailView.dart';
 import 'package:umq/tools/resourceProject/ColorProject.dart';
 

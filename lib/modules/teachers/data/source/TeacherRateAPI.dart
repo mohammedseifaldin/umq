@@ -1,21 +1,14 @@
 import 'package:fastor_app_ui_widget/fastor_app_ui_widget.dart';
-import 'package:umq/tools/data/general/ResponseGeneral.dart';
 import 'package:umq/modules/teachers/data/response/ResponseRateTeacher.dart';
-import 'package:umq/modules/product/data/model/MProduct.dart';
-import 'package:umq/tools/network/BackendConstant.dart';
-import 'package:umq/modules/product/data/response/ResponseSingleProduct.dart';
-import 'package:umq/modules/teachers/data/response/ResponseSingleTeacher.dart';
 import 'package:umq/tools/cache/user_single_tone.dart';
-import 'package:fastor_app_ui_widget/fastor_app_ui_widget.dart';
-import 'package:fastor_app_ui_widget/fastor_app_ui_widget.dart';
-import 'package:fastor_app_ui_widget/fastor_app_ui_widget.dart';
+import 'package:umq/tools/network/BackendConstant.dart';
 import 'package:umq/tools/network/ToolsAPI.dart';
 
 typedef ProviderRateCallBack = Function(
     bool status, String msg, ResponseRateProvider response);
 
 class ProviderRateAPI {
-  ResponseRateProvider response = new ResponseRateProvider();
+  ResponseRateProvider response =  ResponseRateProvider();
 
   late ProviderRateCallBack callBack;
   int providerId = 0; //0 means unblock, 1 means block

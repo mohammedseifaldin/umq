@@ -1,16 +1,9 @@
 import 'package:fastor_app_ui_widget/fastor_app_ui_widget.dart';
-import 'package:umq/modules/profile/data/response/ResponseUserList.dart';
-
-import 'package:umq/tools/network/BackendConstant.dart';
-import 'package:umq/modules/place/data/response/ResponseListCity.dart';
-
 import 'package:umq/modules/chat/data/response/userChatList/ResponseChatUserList.dart';
 import 'package:umq/modules/chat/presentation/UserListPage/c/paginate/ChatScrollManager.dart';
 import 'package:umq/tools/cache/user_single_tone.dart';
-import 'package:fastor_app_ui_widget/fastor_app_ui_widget.dart';
-import 'package:fastor_app_ui_widget/fastor_app_ui_widget.dart';
+import 'package:umq/tools/network/BackendConstant.dart';
 import 'package:umq/tools/network/ToolsAPI.dart';
-import 'package:umq/tools/values/ToolsValue.dart';
 
 typedef ChatUserListAPICallBack = Function(
     bool status, String msg, ResponseChatUserList response);

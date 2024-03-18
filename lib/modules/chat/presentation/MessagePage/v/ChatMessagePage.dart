@@ -3,69 +3,52 @@ import 'dart:async';
 import 'package:fastor_app_ui_widget/fastor_app_ui_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:need_resume/need_resume.dart';
-import 'package:umq/modules/profile/data/model/m_user.dart';
+import 'package:umq/modules/chat/data/model/MChatMessage.dart';
+import 'package:umq/modules/chat/data/model/MChatUser.dart';
 import 'package:umq/modules/chat/data/source/message/ChatMessageCreateAPI.dart';
-
 import 'package:umq/modules/chat/presentation/MessagePage/c/MessageDownloadController.dart';
 import 'package:umq/modules/chat/presentation/MessagePage/c/ScrollMessageController.dart';
-import 'package:umq/modules/chat/presentation/MessagePage/c/WaiterMessageController.dart';
 import 'package:umq/modules/chat/presentation/MessagePage/v/views/floatButton/FloatButtonNewMessageView.dart';
 import 'package:umq/modules/chat/presentation/MessagePage/v/views/inputMessage/InputMessageView.dart';
 import 'package:umq/modules/chat/presentation/MessagePage/v/views/listview/ListViewMessage.dart';
-import 'package:umq/modules/chat/presentation/MessagePage/v/views/listview/itemlist/ItemMessageView.dart';
 import 'package:umq/modules/chat/presentation/MessagePage/v/views/toolbarMessage/MessageToolbar.dart';
-import 'package:umq/modules/chat/presentation/UserListPage/c/paginate/ChatScrollManager.dart';
-import 'package:umq/modules/chat/data/model/MChatMessage.dart';
-import 'package:umq/modules/chat/data/model/MChatUser.dart';
-
 import 'package:umq/modules/chat/shared/toolsChat/resource/ChatColor.dart';
 import 'package:umq/modules/chat/shared/toolsChat/singletone/lifeCycle/LifeCycleSingletone.dart';
-import 'package:umq/tools/resourceProject/DrawableProject.dart';
+import 'package:umq/modules/profile/data/model/m_user.dart';
 import 'package:umq/tools/audio/RecorderSoundInstance.dart';
-import 'package:umq/tools/audio/sound/SoundSingleTone.dart';
 import 'package:umq/toolsUI/toast/ToastTools.dart';
 
-
-int chatTargetId = 0 ;  //user id target to chat with him
+int chatTargetId = 0; //user id target to chat with him
 ChatMessageState? myStateChatMessagePage;
 
 class ChatMessagePage extends StatefulWidget {
+  bool isTypeGroup = false; //not used until version 1 chat
 
-
-  bool isTypeGroup = false ; //not used until version 1 chat
-
-   MChatUser? mChatUser;
-   MUser? userTargetSmall;
-
+  MChatUser? mChatUser;
+  MUser? userTargetSmall;
 
   ChatMessagePage({
+    super.key,
     required int targetId,
-    required bool isTypeGroup,
-    MChatUser? mChatUser
-}) {
+    required this.isTypeGroup,
+    this.mChatUser,
+  }) {
     chatTargetId = targetId;
-    this.isTypeGroup = isTypeGroup;
 
     //set chat user
-    this.mChatUser = mChatUser;
-    if( this.mChatUser != null  ){
+    if (mChatUser != null) {
       userTargetSmall = mChatUser!.user!;
     }
-
   }
-
 
   @override
   ChatMessageState createState() {
     myStateChatMessagePage = ChatMessageState();
     return myStateChatMessagePage!;
   }
-
 }
 
-
-class ChatMessageState extends ResumableState<ChatMessagePage > {
-
+class ChatMessageState extends ResumableState<ChatMessagePage> {
   //----------------------------------------------------------------------- varaible
 
   //data
@@ -86,9 +69,9 @@ class ChatMessageState extends ResumableState<ChatMessagePage > {
   // Stream<MChatMessage> myStream = Stream() ;
 
   //scroll
-  var scrollController = new ScrollController();
+  var scrollController = ScrollController();
   var isWaitingForPreviousLoading = false;
-  var scrollPreviousPosition_maxLenght = 0.0;
+  var scrollPreviousPositionMaxLenght = 0.0;
 
   //progress
   var progressStatus = false;
@@ -122,9 +105,8 @@ class ChatMessageState extends ResumableState<ChatMessagePage > {
     Log.i("ChatMessagePage - onResume");
 
     //set life
-    LifeCycleSingletone.instance().setChatMessagePage( this  );
+    LifeCycleSingletone.instance().setChatMessagePage(this);
   }
-
 
   @override
   void initState() {
@@ -139,24 +121,20 @@ class ChatMessageState extends ResumableState<ChatMessagePage > {
   //----------------------------------------------------------------------- download
 
   Future apiCreateMessage(MChatMessage mMessageNew) async {
-
-    await ChatMessageCreateAPI().createNew(mMessageNeeded: mMessageNew,
-        callBack: (status, msg, response ) async {
-
+    await ChatMessageCreateAPI().createNew(
+        mMessageNeeded: mMessageNew,
+        callBack: (status, msg, response) async {
           //check failed
-          if( status == false ) {
+          if (status == false) {
             ToolsToast.i(context, msg);
             return;
           }
 
-
           //wait socket return the data
-          ToolsWait.waitToDo( 50, ()  async {
+          ToolsWait.waitToDo(50, () async {
             //focus
             await focusBottomScreenRapid();
           });
-
-
         });
   }
 
@@ -164,18 +142,18 @@ class ChatMessageState extends ResumableState<ChatMessagePage > {
 
   @override
   Widget build(BuildContext context) {
-
-    return PageTemplate.t( this,
+    return PageTemplate.t(this,
         title: "Message",
 
         //status
-        statusBarColorCustom : ChatColor.statusBarColor,
+        statusBarColorCustom: ChatColor.statusBarColor,
 
         //home button theme
         homeButtonsBackgroundColor: ChatColor.homeButtonBarColor,
 
         //toolbar
-        toolbar: MessageToolbar( context, widget.userTargetSmall, (s ) => stateToolbar = s ),
+        toolbar: MessageToolbar(
+            context, widget.userTargetSmall, (s) => stateToolbar = s),
         toolbar_height: MessageToolbar.height_Frame,
 
         // example
@@ -183,8 +161,8 @@ class ChatMessageState extends ResumableState<ChatMessagePage > {
         // assetBackgroundOpacity: 0.6,
 
         //bottom
-        navigationBottom: InputMessageWidget( this ),
-        navigationBottom_height:  InputMessageState.height_Frame,
+        navigationBottom: InputMessageWidget(this),
+        navigationBottom_height: InputMessageState.height_Frame,
 
         //float
         floatBottom: getFloatButtonNewMessage(),
@@ -193,40 +171,38 @@ class ChatMessageState extends ResumableState<ChatMessagePage > {
         scrollController: scrollController,
 
         //content
-        content: getContent() );
+        content: getContent());
   }
 
+  Widget getContent() {
+    return Stack(
+      children: [
+        EmptyView.allDeviceWidth(context),
 
-  Widget getContent(){
-    return Stack( children: [
+        //test
+        // TextTemplate.t( "target user id : " + ChatMessagePage.targetId.toString()  ),
 
-      EmptyView.allDeviceWidth(context),
+        //list message
+        getListViewMessage(),
 
-      //test
-      // TextTemplate.t( "target user id : " + ChatMessagePage.targetId.toString()  ),
-
-      //list message
-      getListViewMessage(),
-
-      //progress
-      getProgresView(),
-
-    ],);
+        //progress
+        getProgresView(),
+      ],
+    );
   }
 
-  Widget getProgresView(){
+  Widget getProgresView() {
     //check show or not
-    if( progressStatus == false ) {
+    if (progressStatus == false) {
       return EmptyView.zero();
     }
 
     //view
     var prg = ProgressSpinkit.get();
-    return Container( child:  prg,
+    return Container(
+      child: prg,
       width: DeviceTools.getWidth(context),
       alignment: Alignment.center,
     );
   }
-
-
 }

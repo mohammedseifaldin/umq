@@ -5,14 +5,11 @@ import 'package:need_resume/need_resume.dart';
 import 'package:umq/modules/teachers/data/model/MTeacher.dart';
 import 'package:umq/modules/teachers/data/response/ResponseSingleTeacher.dart';
 import 'package:umq/modules/teachers/presentation/customer/detail/logic/DownloadProviderController.dart';
-import 'package:umq/modules/teachers/presentation/customer/detail/widgets/provider_details_header.dart';
-import 'package:umq/toolsUI/app_colors.dart';
-import 'package:umq/modules/teachers/presentation/customer/detail/widgets/products_gallery.dart';
 import 'package:umq/modules/teachers/presentation/customer/detail/widgets/ProviderInfoView.dart';
+import 'package:umq/modules/teachers/presentation/customer/detail/widgets/products_gallery.dart';
+import 'package:umq/modules/teachers/presentation/customer/detail/widgets/provider_details_header.dart';
 import 'package:umq/modules/teachers/presentation/customer/detail/widgets/videos_gallery.dart';
 import 'package:umq/toolsUI/scaffold/ScubaScaffoldSimple.dart';
-import 'package:umq/tools/resourceProject/ColorProject.dart';
-
 
 import 'widgets/images_gallery.dart';
 
@@ -20,7 +17,7 @@ class ProviderDetailsPage extends StatefulWidget {
   MProvider? provider;
   int? providerId;
 
-  ProviderDetailsPage( {
+  ProviderDetailsPage( {super.key, 
   MProvider? provider,
   int? providerId
   } ) {

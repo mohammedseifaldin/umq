@@ -2,23 +2,18 @@
 import 'package:fastor_app_ui_widget/fastor_app_ui_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:need_resume/need_resume.dart';
+import 'package:umq/modules/profile/data/model/m_user.dart';
 import 'package:umq/modules/setting/presentation/admin/slider/detail/v/SliderDetailAdminPage.dart';
 import 'package:umq/modules/setting/presentation/admin/slider/list/c/SearchDownloadController.dart';
 import 'package:umq/modules/setting/presentation/admin/slider/list/m/list/ResponseSliderList.dart';
-
-import 'package:umq/toolsUI/admin/toolbar/AdminToolbar.dart';
-import 'package:umq/toolsUI/admin/toolbar/ExtenstionToolbarInfo.dart';
-import 'package:umq/tools/navigate/GoToAdmin.dart';
-import 'package:umq/toolsUI/admin/paginate/v/PaginateAdminWidget.dart';
-
-import 'package:umq/modules/profile/data/model/m_user.dart';
-
-import 'package:umq/tools/resourceProject/DrawableProject.dart';
-
 import 'package:umq/tools/constant/EnvironmentConstant.dart';
+import 'package:umq/toolsUI/admin/paginate/v/PaginateAdminWidget.dart';
+import 'package:umq/toolsUI/admin/toolbar/AdminToolbar.dart';
 //import 'package:umq/toolsUI/toolbar/ToolbarSimpleFastor.dart';
 
 class SliderListAdminPage extends StatefulWidget {
+  const SliderListAdminPage({super.key});
+
 
   @override
   SliderListAdminState createState() {

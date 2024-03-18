@@ -1,39 +1,28 @@
-import 'dart:convert';
-
-
 import 'package:fastor_app_ui_widget/fastor_app_ui_widget.dart';
-
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:mvc_pattern/mvc_pattern.dart';
 import 'package:umq/modules/place/data/model/MCity.dart';
-import 'package:umq/tools/network/BackendConstant.dart';
-import 'package:umq/modules/place/data/response/ResponseListCity.dart';
 import 'package:umq/modules/profile/presentation/customer/profileEdit/c/DownloadCityController.dart';
 import 'package:umq/modules/profile/presentation/customer/profileEdit/c/edit_controller.dart';
+import 'package:umq/modules/profile/presentation/customer/profileEdit/m/edit_model.dart';
 import 'package:umq/modules/profile/presentation/customer/profileEdit/m/repository.dart';
+import 'package:umq/modules/profile/presentation/customer/profileEdit/v/widgets/edit_button.dart';
 import 'package:umq/modules/profile/presentation/customer/profileEdit/v/widgets/logoutButtonView.dart';
 import 'package:umq/modules/profile/presentation/customer/profileEdit/v/widgets/title_widget.dart';
-import 'package:umq/modules/profile/presentation/customer/profileShow/c/profile_controller.dart';
 import 'package:umq/modules/profile/presentation/customer/profileShow/m/ResponseSingleUser.dart';
-import 'package:umq/modules/profile/presentation/customer/profileEdit/m/edit_model.dart';
-import 'package:umq/tools/data/dynamic/ResponseGeneralDynamic.dart';
-import 'package:umq/modules/profile/presentation/customer/profileEdit/m/city_model.dart';
-
-import 'package:umq/toolsUI/toolbarBackButton/ToolbarProjectBack.dart';
 import 'package:umq/toolsUI/background/BackgroundAllPagesWidget.dart';
 import 'package:umq/toolsUI/dropbox/dropdownCity/CityDropDownWidget.dart';
-import 'package:umq/modules/profile/presentation/customer/profileEdit/v/widgets/edit_button.dart';
 import 'package:umq/toolsUI/textField/TextFieldBordered.dart';
-import 'package:fastor_app_ui_widget/fastor_app_ui_widget.dart';
+import 'package:umq/toolsUI/toolbarBackButton/ToolbarProjectBack.dart';
 
 class EditScreen extends StatefulWidget {
   final ResponseSingleUser response;
 
   const EditScreen({
-    Key? key,
+    super.key,
     required this.response,
-  }) : super(key: key);
+  });
 
   @override
   EditProfileState createState() => EditProfileState();

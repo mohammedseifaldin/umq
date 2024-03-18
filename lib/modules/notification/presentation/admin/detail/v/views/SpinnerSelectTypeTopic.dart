@@ -1,12 +1,9 @@
 import 'package:fastor_app_ui_widget/fastor_app_ui_widget.dart';
 import 'package:flutter/material.dart';
-
-import 'package:umq/tools/navigate/GoToAdmin.dart';
-import 'package:umq/tools/resourceProject/ResourceDimenAdmin.dart';
-import 'package:umq/modules/profile/data/model/m_user.dart';
 import 'package:umq/modules/notification/presentation/admin/detail/c/PickerListener.dart';
 import 'package:umq/modules/notification/presentation/admin/detail/v/NotificationCreateAdminPage.dart';
 import 'package:umq/modules/notification/presentation/admin/detail/v/views/ContentUserDetail.dart';
+import 'package:umq/tools/resourceProject/ResourceDimenAdmin.dart';
 
 
 const double _spinnerWidth = 170; //AdminDSDimen.inputFiled_value_width;

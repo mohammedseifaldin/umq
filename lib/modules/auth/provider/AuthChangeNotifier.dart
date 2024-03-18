@@ -1,10 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:provider/provider.dart';
+import 'package:umq/modules/auth/provider/mobile_otp/FirebaseWebAuthenticationController.dart';
 import 'package:umq/modules/place/data/model/MCity.dart';
 import 'package:umq/modules/profile/data/model/MOrganization.dart';
-import 'package:umq/modules/auth/presentation/customer/MobileVerification/SignWithMobilePage.dart';
-import 'package:umq/modules/auth/provider/mobile_otp/FirebaseWebAuthenticationController.dart';
 
 class AuthChangeNotifier extends ChangeNotifier {
   //------------------------------------------------------------------------ variable

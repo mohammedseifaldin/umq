@@ -94,11 +94,11 @@ extension RegisterNotifier on AuthChangeNotifier {
       }
 
       //case no data downloaded
-      if (response == null) {
-        LockOverlay().closeOverlay();
-        ToolsToast.i(context, "No Internet Connection, Try Again");
-        return;
-      }
+      // if (response == null) {
+      //   LockOverlay().closeOverlay();
+      //   ToolsToast.i(context, "No Internet Connection, Try Again");
+      //   return;
+      // }
 
       //case user phone already register
       Log.i(

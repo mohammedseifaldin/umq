@@ -1,10 +1,8 @@
 import 'package:fastor_app_ui_widget/fastor_app_ui_widget.dart';
+import 'package:umq/tools/cache/user_single_tone.dart';
 import 'package:umq/tools/data/general/GeneralCallBack.dart';
 import 'package:umq/tools/data/general/ResponseGeneral.dart';
 import 'package:umq/tools/network/BackendConstant.dart';
-import 'package:umq/tools/cache/user_single_tone.dart';
-import 'package:fastor_app_ui_widget/fastor_app_ui_widget.dart';
-import 'package:fastor_app_ui_widget/fastor_app_ui_widget.dart';
 import 'package:umq/tools/network/ToolsAPI.dart';
 
 class CityHiddenAPI {
@@ -19,7 +17,7 @@ class CityHiddenAPI {
   }
 
   Future _startAPI() async {
-    String url = BackendConstant.baseUrlv2 + "/city/hidden";
+    String url = "${BackendConstant.baseUrlv2}/city/hidden";
 
     //header
     var token = await UserSingleTone.instance().getToken();
@@ -58,7 +56,7 @@ class CityHiddenAPI {
       //callback
       callBack(1, "Success");
     } catch (e) {
-      Log.i("action api - excep: " + e.toString());
+      Log.i("action api - excep: $e");
       callBack(0, e.toString());
     }
   }

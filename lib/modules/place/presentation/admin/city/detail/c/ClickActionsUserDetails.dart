@@ -1,18 +1,9 @@
-import 'dart:typed_data';
-
 import 'package:fastor_app_ui_widget/fastor_app_ui_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:umq/modules/place/presentation/admin/city/detail/m/CityCreateAPI.dart';
 import 'package:umq/modules/place/presentation/admin/city/detail/m/CityUpdateAPI.dart';
 import 'package:umq/modules/place/presentation/admin/city/detail/v/CityDetailAdminPage.dart';
-
-import 'package:umq/tools/network/BackendConstant.dart';
-import 'package:umq/tools/resourceProject/DrawableProject.dart';
-import 'package:umq/tools/attachCapture/capture/CaptureTools.dart';
-import 'package:fastor_app_ui_widget/fastor_app_ui_widget.dart';
 import 'package:umq/tools/network/ToolsAPI.dart';
-
-import 'package:umq/tools/values/ToolsValue.dart';
 //import 'package:umq/toolsUI/toast/ToastTools.dart';
 import 'package:umq/toolsUI/toast/ToastTools.dart';
 

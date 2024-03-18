@@ -1,30 +1,18 @@
 import 'dart:io';
 
 import 'package:fastor_app_ui_widget/fastor_app_ui_widget.dart';
-import 'package:flutter/material.dart';
 import 'package:flutter_phone_direct_caller/flutter_phone_direct_caller.dart';
-import 'package:umq/modules/cart/data/source/CartCounterApi.dart';
-import 'package:umq/modules/cart/data/response/ResponseCartCounter.dart';
-import 'package:umq/tools/data/general/ResponseGeneral.dart';
-import 'package:umq/modules/product/data/model/MProduct.dart';
+import 'package:umq/modules/cart/provider/CartChangeNotifier.dart';
 import 'package:umq/modules/product/data/model/MProductTools.dart';
-import 'package:umq/tools/network/BackendConstant.dart';
 import 'package:umq/modules/product/presentation/customer/productDetails/m/ResponseProductDetail.dart';
 import 'package:umq/modules/product/presentation/customer/productDetails/m/api_helper_detail.dart';
-
-import 'package:umq/modules/product/presentation/customer/productDetails/m/utils.dart';
 import 'package:umq/modules/product/presentation/customer/productDetails/view/ProductDetailView.dart';
-import 'package:umq/modules/cart/provider/CartChangeNotifier.dart';
-import 'package:umq/toolsUI/dialog/CheckoutLoginDialog.dart';
 import 'package:umq/tools/cache/user_single_tone.dart';
-import 'package:fastor_app_ui_widget/fastor_app_ui_widget.dart';
-import 'package:fastor_app_ui_widget/fastor_app_ui_widget.dart';
+import 'package:umq/tools/data/general/ResponseGeneral.dart';
+import 'package:umq/tools/network/BackendConstant.dart';
 import 'package:umq/tools/network/ToolsAPI.dart';
-import 'package:umq/toolsUI/toast/ToastTools.dart';
-
+import 'package:umq/toolsUI/dialog/CheckoutLoginDialog.dart';
 import 'package:url_launcher/url_launcher.dart';
-import 'package:whatsapp_unilink/whatsapp_unilink.dart';
-import 'package:flutter_share/flutter_share.dart';
 
 extension ProductDetailController on ProductDetailState {
   Future getSingleProduct(int id) async {
@@ -34,8 +22,8 @@ extension ProductDetailController on ProductDetailState {
 
     // await ApiHelper.apiHelper.singleProduct(id).then((value) {
 
-    String url = BackendConstant.baseUrlv2Public + "/product/$id";
-    String token = await UserSingleTone.instance().getToken();
+    String url = "${BackendConstant.baseUrlv2Public}/product/$id";
+    String token =  UserSingleTone.instance().getToken();
 
     Map<String, String> header = NetworkHeaderTools.bearerToken(token);
 
@@ -46,7 +34,7 @@ extension ProductDetailController on ProductDetailState {
       //show
       if (progressCircleState != null) progressCircleState?.dismiss();
 
-      Log.i("getSingleProduct() - response: " + response.toString());
+      Log.i("getSingleProduct() - response: $response");
 
       setState(() {
         selectedProduct = response.data;
@@ -56,7 +44,7 @@ extension ProductDetailController on ProductDetailState {
 
   Future changeFavoriteStatus() async {
     //check login
-    if (await UserSingleTone.instance().isGuest()) {
+    if ( UserSingleTone.instance().isGuest()) {
       CheckoutLoginDialog.show(context);
       return;
     }
@@ -70,7 +58,7 @@ extension ProductDetailController on ProductDetailState {
     ResponseGeneral response = await ApiHelper.apiHelper
         .favoriteApi(selectedProduct!.id!, changeStatusTo);
 
-    Log.i("changeFavoriteStatus() - response: " + response.toString());
+    Log.i("changeFavoriteStatus() - response: $response");
 
     if (ToolsAPI.isFailed(response.code)) {
       setState(() {
@@ -82,7 +70,7 @@ extension ProductDetailController on ProductDetailState {
 
   postIncrement() async {
     //check login
-    if (await UserSingleTone.instance().isGuest()) {
+    if ( UserSingleTone.instance().isGuest()) {
       CheckoutLoginDialog.show(context);
       return;
     }
@@ -90,9 +78,7 @@ extension ProductDetailController on ProductDetailState {
     int productId = selectedProduct!.id ?? 0;
     int providerId = selectedProduct!.provider!.id ?? 0;
     String productName = MProductTools.getNameByLang(context, selectedProduct);
-    Log.i("postIncrement() productId: " +
-        productId.toString() +
-        " /providerId: $providerId");
+    Log.i("postIncrement() productId: $productId /providerId: $providerId");
 
     await CartChangeNotifier.getListenFalse(context)
         .increment(context, productId, providerId, productName);
@@ -131,7 +117,7 @@ extension ProductDetailController on ProductDetailState {
 
   postDecrement() async {
     //check login
-    if (await UserSingleTone.instance().isGuest()) {
+    if ( UserSingleTone.instance().isGuest()) {
       CheckoutLoginDialog.show(context);
       return;
     }
@@ -139,9 +125,7 @@ extension ProductDetailController on ProductDetailState {
     int productId = selectedProduct!.id ?? 0;
     int providerId = selectedProduct!.provider!.id ?? 0;
     String productName = MProductTools.getNameByLang(context, selectedProduct);
-    Log.i("postDecrement() productId: " +
-        productId.toString() +
-        " /providerId: $providerId");
+    Log.i("postDecrement() productId: $productId /providerId: $providerId");
 
     await CartChangeNotifier.getListenFalse(context)
         .decrement(context, productId, providerId, productName);
@@ -187,16 +171,13 @@ extension ProductDetailController on ProductDetailState {
   //-------------------------------------------------- whats
 
   openwhatsapp(String phoneWithCountry) async {
-    String msg = "Scuba-ksa.com" + "\n\n" + "Hello";
-    Log.i("openwhatsapp() phone: " +
-        phoneWithCountry.toString() +
-        " /msg: " +
-        msg);
+    String msg = "Scuba-ksa.com\n\nHello";
+    Log.i("openwhatsapp() phone: $phoneWithCountry /msg: $msg");
     if (Platform.isIOS) {
       await launch("https://wa.me/$phoneWithCountry?text=${Uri.parse(msg)}",
           forceSafariVC: false);
     } else {
-      await launch("whatsapp://send?phone=$phoneWithCountry&text=" + msg);
+      await launch("whatsapp://send?phone=$phoneWithCountry&text=$msg");
     }
   }
 

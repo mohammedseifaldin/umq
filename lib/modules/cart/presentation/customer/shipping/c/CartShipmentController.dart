@@ -26,7 +26,7 @@ extension CartShipmentController on CartShipmentState {
     var result = true; //default good
 
     //address
-    if (ToolsValidation.isMoreThan2(address_txt) == false) {
+    if (ToolsValidation.isMoreThan2(addressText) == false) {
       ToolsToast.i(context, "Enter your Address");
       return false;
     }

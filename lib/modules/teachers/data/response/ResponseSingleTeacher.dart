@@ -1,14 +1,9 @@
-import 'package:fastor_app_ui_widget/fastor_app_ui_widget.dart';
-import 'package:umq/modules/place/data/model/MCity.dart';
-import 'package:umq/modules/teachers/data/model/MImageGallery.dart';
-import 'package:umq/modules/profile/data/model/MOrganization.dart';
 import 'package:umq/modules/product/data/model/MProduct.dart';
+import 'package:umq/modules/teachers/data/model/MImageGallery.dart';
 import 'package:umq/modules/teachers/data/model/MTeacher.dart';
 import 'package:umq/modules/teachers/data/model/MVideoGallery.dart';
 
-/**
- show callery
- */
+
 class ResponseSingleProvider {
   String? status;
   int? code;
@@ -17,7 +12,7 @@ class ResponseSingleProvider {
   ResponseSingleProvider  fromJson(Map<String, dynamic> json) {
     status = json['status'];
     code = json['code'];
-    data = json['data'] != null ? new DataSingleProvider.fromJson(json['data']) : null;
+    data = json['data'] != null ?  DataSingleProvider.fromJson(json['data']) : null;
     return this;
   }
 

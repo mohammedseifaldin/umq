@@ -3,21 +3,16 @@ import 'package:fastor_app_ui_widget/fastor_app_ui_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:umq/modules/product/data/model/MProduct.dart';
 import 'package:umq/modules/search/presentation/customer/search_any/search_controller.dart';
-import 'package:umq/modules/search/data/response/ResponseSearchProduct.dart';
-import 'package:umq/tools/navigate/GoTo.dart';
 import 'package:umq/tools/resourceProject/ColorProject.dart';
 import 'package:umq/tools/resourceProject/FontProject.dart';
-
-
-
 import 'package:umq/toolsUI/Widgets/loading_widget.dart';
 import 'package:umq/toolsUI/itemList/product/ItemProductVertical.dart';
 
 class ProductSearchResultPage extends StatefulWidget {
-  SearchScreenController? _con;
+  final SearchScreenController? _con;
   BuildContext pageContext;
 
-  ProductSearchResultPage(this.pageContext, this._con);
+  ProductSearchResultPage(this.pageContext, this._con, {super.key});
 
   @override
   _PageState createState() => _PageState();

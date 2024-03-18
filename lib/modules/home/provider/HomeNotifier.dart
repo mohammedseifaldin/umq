@@ -1,15 +1,11 @@
 import 'package:fastor_app_ui_widget/fastor_app_ui_widget.dart';
 import 'package:flutter/material.dart';
-import 'package:umq/modules/teachers/data/model/MTeacher.dart';
 import 'package:umq/modules/home/data/model/MSlider.dart';
-import 'package:umq/modules/home/data/response/ResponseHomePage.dart';
 import 'package:umq/modules/home/provider/HomeChangeNotifier.dart';
-
+import 'package:umq/modules/teachers/data/model/MTeacher.dart';
 import 'package:umq/tools/cache/user_single_tone.dart';
 import 'package:umq/tools/constant/ConstantProject.dart';
-
 import 'package:umq/toolsUI/toast/ToastTools.dart';
-
 
 import '../data/source/HomeApi.dart';
 

@@ -1,11 +1,8 @@
-import 'dart:convert';
-
 import 'package:dio/dio.dart';
 import 'package:fastor_app_ui_widget/fastor_app_ui_widget.dart';
+import 'package:umq/tools/cache/user_single_tone.dart';
 import 'package:umq/tools/data/general/ResponseGeneral.dart';
 import 'package:umq/tools/network/BackendConstant.dart';
-import 'package:umq/modules/product/presentation/customer/productDetails/m/ResponseProductDetail.dart';
-import 'package:umq/tools/cache/user_single_tone.dart';
 
 class ApiHelper {
   ApiHelper._();
@@ -15,10 +12,10 @@ class ApiHelper {
   Dio dio = Dio();
 
   Future<ResponseGeneral> favoriteApi(int id, int changeStatusTo) async {
-    String url = BackendConstant.baseUrlv1 + '/fav_product';
+    String url = '${BackendConstant.baseUrlv1}/fav_product';
 
-    String token = await UserSingleTone.instance().getToken();
-    int userId = await UserSingleTone.instance().getUserId();
+    String token =  UserSingleTone.instance().getToken();
+    int userId =  UserSingleTone.instance().getUserId();
 
     Response response = await dio.post(url,
         options: Options(
@@ -32,8 +29,7 @@ class ApiHelper {
           "product_id": "$id",
           "favorite": "$changeStatusTo"
         });
-    Log.i("favoriteApi - response.statusCode - response: " +
-        response.data.toString());
+    Log.i("favoriteApi - response.statusCode - response: ${response.data}");
 
     ResponseGeneral responseGeneral = ResponseGeneral().fromJson(response.data);
     return responseGeneral;
@@ -41,7 +37,7 @@ class ApiHelper {
 
   Future incrementCart(int id) async {
     Dio dio = Dio();
-    String url = BackendConstant.baseUrlv2 + "/cart_product/increment";
+    String url = "${BackendConstant.baseUrlv2}/cart_product/increment";
 
     String token = await UserSingleTone.instance().getToken();
 
@@ -61,7 +57,7 @@ class ApiHelper {
 
   Future<dynamic> singleProduct(int id) async {
     Dio dio = Dio();
-    String url = BackendConstant.baseUrlv2Public + "/product/$id";
+    String url = "${BackendConstant.baseUrlv2Public}/product/$id";
 
     String token = await UserSingleTone.instance().getToken();
     //Log.i( "singleProduct - token " + token );
@@ -77,7 +73,7 @@ class ApiHelper {
   }
 
   Future decrementCart(int id) async {
-    String url = BackendConstant.baseUrlv2 + "/cart_product/decrement";
+    String url = "${BackendConstant.baseUrlv2}/cart_product/decrement";
 
     String token = await UserSingleTone.instance().getToken();
 

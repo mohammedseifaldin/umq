@@ -32,13 +32,13 @@ class WalkThroughPageState extends ResumableState<WalkThroughPage> {
 
   Map<Object, Object>? socketFCMContent;
 
-  void initSocketFCM() {
-    if (context == null  )return;
+  // void initSocketFCM() {
+    
     // ListenerToAndroidSocketFCM.setupCallBack(context, this , (isSocketDataFound, socket){
     //   Log.i( "WalkThroughPage - setupCallBack() - result: " +  socket.toString()  );
     //
     // });
-  }
+  // }
 
   //---------------------------------------------------------------------- life style
 
@@ -49,12 +49,12 @@ class WalkThroughPageState extends ResumableState<WalkThroughPage> {
     onResume();
   }
 
-  @override
-  void onResume() {
-    // TODO: implement onResume
-    super.onResume();
-    initSocketFCM();
-  }
+  // @override
+  // void onResume() {
+  //   // TODO: implement onResume
+  //   super.onResume();
+  //   initSocketFCM();
+  // }
 
   //---------------------------------------------------------------------- build stack
 

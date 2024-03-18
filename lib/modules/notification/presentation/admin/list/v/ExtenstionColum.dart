@@ -1,8 +1,6 @@
 
 import 'package:fastor_app_ui_widget/fastor_app_ui_widget.dart';
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
-
 import 'package:umq/tools/resourceProject/ResourceDimenAdmin.dart';
 
 import 'NotificationListAdminPage.dart';
@@ -14,8 +12,7 @@ extension ExtenstionColum  on NotificationListAdminState {
    var row =  Row(children: cellHeaderList() );
   //   return EmptyView.colored( 500 , 50, Colors.orange );
 
-    return Container( child:  row ,
-        margin: EdgeInsets.symmetric(horizontal: DSDimen.space_level_1 )
+    return Container( margin: EdgeInsets.symmetric(horizontal: DSDimen.space_level_1 ), child:  row
     );
   }
 

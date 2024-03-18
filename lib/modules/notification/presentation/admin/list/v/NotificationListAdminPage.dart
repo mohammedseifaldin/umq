@@ -2,22 +2,17 @@
 import 'package:fastor_app_ui_widget/fastor_app_ui_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:need_resume/need_resume.dart';
-
-import 'package:umq/toolsUI/admin/toolbar/AdminToolbar.dart';
-
-import 'package:umq/toolsUI/admin/paginate/v/PaginateAdminWidget.dart';
-
 import 'package:umq/modules/notification/data/model/MNotificationAdmin.dart';
-
-
-import 'package:umq/modules/place/data/response/ResponseListCity.dart';
 import 'package:umq/modules/notification/data/response/ResponseNotificationListPaginate.dart';
 import 'package:umq/modules/notification/presentation/admin/detail/v/NotificationCreateAdminPage.dart';
 import 'package:umq/modules/notification/presentation/admin/list/c/SearchDownloadController.dart';
-
 import 'package:umq/tools/constant/EnvironmentConstant.dart';
+import 'package:umq/toolsUI/admin/paginate/v/PaginateAdminWidget.dart';
+import 'package:umq/toolsUI/admin/toolbar/AdminToolbar.dart';
 
 class NotificationListAdminPage extends StatefulWidget {
+  const NotificationListAdminPage({super.key});
+
 
   @override
   NotificationListAdminState createState() {

@@ -1,4 +1,3 @@
-import 'package:fastor_app_ui_widget/fastor_app_ui_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:need_resume/need_resume.dart';
 import 'package:umq/modules/chat/presentation/UserListPage/c/paginate/c/ChatScrollController.dart';
