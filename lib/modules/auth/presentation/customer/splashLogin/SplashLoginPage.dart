@@ -11,24 +11,23 @@ import 'package:umq/tools/resourceProject/DrawableProject.dart';
 import 'package:umq/toolsUI/background/ScubaBackgroundImage.dart';
 
 class SplashLoginPage extends StatefulWidget {
+  const SplashLoginPage({super.key});
+
   @override
-  _PageState createState() => _PageState();
+  PageState createState() => PageState();
 }
 
-class _PageState extends ResumableState<SplashLoginPage> {
+class PageState extends ResumableState<SplashLoginPage> {
   @override
   void initState() {
     super.initState();
     waitForSplashLogin();
   }
 
-  late BuildContext context;
-
   //--------------------------------------------------------------------- system bar color + status bar
 
   @override
   Widget build(BuildContext context) {
-    this.context = context;
     return systemDeviceBar();
   }
 
@@ -45,8 +44,8 @@ class _PageState extends ResumableState<SplashLoginPage> {
       this,
       statusBarColorCustom: HexColor(ColorProject.blueCerulean_3),
       content: getContentPage(),
-      widgetBackground: ScubaBackgroundImage.getImageResponsive(context),
-      //    assetBackground: DrawableProject.images_with_extension( "background_auth.jpeg" )
+      widgetBackground: const ScubaBackgroundImage(),
+      resizeToAvoidBottomInset: false,
     );
   }
 
@@ -55,44 +54,34 @@ class _PageState extends ResumableState<SplashLoginPage> {
   Widget getContentPage() {
     return Stack(children: [
       EmptyView.allDeviceScreen(context),
-
-      // Positioned( child: logoIm(), left: 0, right: 0, top: 100,),
-
       Positioned(
-        child: versionNumber(),
         left: 0,
         right: 0,
         bottom: 20,
+        child: versionNumber(),
       )
     ]);
   }
 
-  Widget logoIm() {
-    //return Center(   child: Image.asset('assets/images/logo.png') );
-    var logo = ImageView(
-      width: 300, //DeviceTools.get75PercentageWidth(context),
-      height: 300, //DeviceTools.get75PercentageWidth(context) ,
+  Widget logoIm(BuildContext context) {
+    return ImageFastor(
+      width: 300,
+      height: 300,
+      context: context,
       assetAspectRatio: DrawableProject.images("logo"),
     );
-
-    return logo;
   }
 
   Widget versionNumber() {
-    String msg = "version 1.0." + EnvironmentConstant.version.toString();
+    String msg = "version 1.0.${EnvironmentConstant.version}";
     return TextTemplate.t(msg,
         levelDS: LevelDS.l4,
         color: HexColor(ColorProject.white_sun_1),
-        margin: EdgeInsets.only(bottom: 30));
+        margin: const EdgeInsets.only(bottom: 30));
   }
 
   waitForSplashLogin() async {
-    var time = 1100 + 300;
-    // if( EnvironmentConstant.isTest ) time = 300;
-
-    //Log.i( "waitForSplashScreen() - start"  );
-    Timer(Duration(milliseconds: time), () {
-      // Log.i( "waitForSplashScreen() - end"  );
+    Timer(const Duration(milliseconds: 1400), () {
       GoTo.login(context);
     });
   }

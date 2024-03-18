@@ -11,35 +11,29 @@ import 'package:umq/toolsUI/background/ScubaBackgroundImage.dart';
 import 'package:umq/toolsUI/toolbar/transparentToolbar/ToolbarTransparent.dart';
 
 import '../../../provider/mobile_otp/mobile_verification_controller.dart';
- 
 
-typedef SignToOtpFirebaseCallBack = Function( bool status, String useridFirebaseAuth );
+typedef SignToOtpFirebaseCallBack = Function(
+    bool status, String useridFirebaseAuth);
 
 class SignWithMobilePage extends StatefulWidget {
-
   SignToOtpFirebaseCallBack callback;
   String mobileToCheck = "";
 
-  SignWithMobilePage( this.callback, {super.key, 
-    required String mobile
-  }) {
-    mobileToCheck = mobile  ;
+  SignWithMobilePage(this.callback, {super.key, required String mobile}) {
+    mobileToCheck = mobile;
   }
 
   @override
   State<StatefulWidget> createState() {
     // TODO: implement createState
-    return PageStateFirebaseAuthMobile(  );
+    return PageStateFirebaseAuthMobile();
   }
 }
 
 class PageStateFirebaseAuthMobile extends StateMVC<SignWithMobilePage> {
-
   //------------------------------------------------------------------------ variable
 
-
   AuthChangeNotifier? provider;
-
 
   //------------------------------------------------------------------------ life cycle
 
@@ -52,7 +46,7 @@ class PageStateFirebaseAuthMobile extends StateMVC<SignWithMobilePage> {
     provider!.setTokenMessage();
   }
 
-  void setDefaultValuesOnCreatePage(){
+  void setDefaultValuesOnCreatePage() {
     provider!.mobileToCheck = widget.mobileToCheck;
     provider!.callback = widget.callback;
   }
@@ -68,81 +62,73 @@ class PageStateFirebaseAuthMobile extends StateMVC<SignWithMobilePage> {
       key: provider!.scaffoldKey,
       backgroundColor: Theme.of(context).backgroundColor,
       body: SafeArea(
-        child: Container(
-          height: MediaQuery.of(context).size.height,
-          child: SingleChildScrollView(
-            keyboardDismissBehavior: ScrollViewKeyboardDismissBehavior.onDrag,
-            child: pageContent(),
-          ),
+        child: SingleChildScrollView(
+          keyboardDismissBehavior: ScrollViewKeyboardDismissBehavior.onDrag,
+          child: pageContent(),
         ),
-      ));
+      ),
+    );
   }
 
-  Widget pageContent(){
+  Widget pageContent() {
     return Stack(
       children: [
-        ScubaBackgroundImage.getImageResponsive( context),
+        const ScubaBackgroundImage(),
         containerAllContent(),
       ],
     );
   }
 
-
   //---------------------------------------------------------------------  content
 
-  Widget containerAllContent(){
-   // Log.i( "containerAllContent() - _con!.isSendedOTP: " + _con!.isSendedOTP.toString() );
-    return   Container(
-      margin: EdgeInsets.all(10),
+  Widget containerAllContent() {
+    return Container(
+      margin: const EdgeInsets.all(10),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.center,
         mainAxisAlignment: MainAxisAlignment.start,
         mainAxisSize: MainAxisSize.min,
         children: [
-
-          ToolbarTransparent( context, "Welcome", HexColor(ColorProject.white_sun_4)),
-
-         mobileViewWhenFirstTimeOpenPage(),
+          ToolbarTransparent(
+              context, "Welcome", HexColor(ColorProject.white_sun_4)),
+          mobileViewWhenFirstTimeOpenPage(),
           otpTextFieldView(),
-          SizedBox(height: 50,),
+          const SizedBox(
+            height: 50,
+          ),
           buttonNext()
-
         ],
       ),
-
     );
-
   }
 
   //------------------------------------------------------------------------- otp
- 
 
-  Widget otpTextFieldView(){
-   // check to change status to refresh
-    if( provider!.isSendedOTP == false  ) {
-     return EmptyView.zero();
+  Widget otpTextFieldView() {
+    // check to change status to refresh
+    if (provider!.isSendedOTP == false) {
+      return EmptyView.zero();
     }
 
     // check to change status to refresh
-    if( provider!.isRetryToSendOTP ) {
+    if (provider!.isRetryToSendOTP) {
       return EmptyView.zero();
     }
 
     //view s
-    var otp =  OTPTextFieldFastor(
+    var otp = OTPTextFieldFastor(
       countNumber: 6,
       decoration: BoarderHelper.box(
           colorLine: HexColor(ColorProject.blue_fish_back),
-          colorBackground: HexColor(ColorProject.blue_fish_back)
-      ),
+          colorBackground: HexColor(ColorProject.blue_fish_back)),
       fontFamily: FontProject.beach,
       fontSize: 13,
       colorText: Colors.white,
-      onComplete: ( isComplete ){
+      onComplete: (isComplete) {
         Log.i("otpFields() - isComplete: $isComplete");
         provider!.confirmPinNumberClick(context);
       },
-      onChangeCode: (codeUpdate ) {
+      onChangeCode: (codeUpdate) {
         Log.i("otpFields() - onChangeCode: $codeUpdate");
         provider!.PIN = codeUpdate;
       },
@@ -158,52 +144,46 @@ class PageStateFirebaseAuthMobile extends StateMVC<SignWithMobilePage> {
     // }, countNumber: null,);
 
     return Container(
-      margin: EdgeInsets.only(top: 50),
+      margin: const EdgeInsets.only(top: 50),
       child: otp,
     );
   }
 
-
   //------------------------------------------------------------------------- button next
 
-  Widget buttonNext(){
-   // Log.i( "buttonNext() - _con!.isSendedOTP: " + _con!.isSendedOTP.toString()  );
+  Widget buttonNext() {
+    // if (DeviceTools.isPlatformWeb()) {
+    //   return SizedBox(width: 200, child: bt);
+    // }
 
-    var bt =    ButtonPrimaryWidget( getButtonName(),onTap: (){
+    return ButtonPrimaryWidget(
+      getButtonName(),
+      onTap: () {
+        //case retry send opt
+        if (provider!.isRetryToSendOTP) {
+          provider!.retrySendOTP();
+          return;
+        }
 
-      //case retry send opt
-      if( provider!.isRetryToSendOTP ) {
-        provider!.retrySendOTP();
-        return;
-      }
+        //case already send otp
+        if (provider!.isSendedOTP) {
+          provider!.confirmPinNumberClick(context);
+        }
 
-      //case already send otp
-      if(provider!.isSendedOTP){
-        provider!.confirmPinNumberClick(context);
-      }
-
-      //case not send otp before, it's first time to send otp
-      provider!.sendOTPClick();
-    },);
-
-    //responsive web
-    if( DeviceTools.isPlatformWeb() ) {
-      return SizedBox( child: bt, width: 200 );
-    }
-
-    return bt;
+        //case not send otp before, it's first time to send otp
+        provider!.sendOTPClick();
+      },
+    );
   }
 
-
-
-  String getButtonName(){
+  String getButtonName() {
     //case retry send opt
-    if( provider!.isRetryToSendOTP ) {
+    if (provider!.isRetryToSendOTP) {
       return 'Retry Send OTP';
     }
-    if( provider!.isSendedOTP ) {
+    if (provider!.isSendedOTP) {
       return 'Verify OTP';
-    } else if( provider!.isFirstTimeOpenPage() ){
+    } else if (provider!.isFirstTimeOpenPage()) {
       return 'Confirm';
     } else {
       return 'SEND';
@@ -212,43 +192,35 @@ class PageStateFirebaseAuthMobile extends StateMVC<SignWithMobilePage> {
 
   //---------------------------------------------------------------- mobile view
 
-
-
   Widget mobileViewWhenFirstTimeOpenPage() {
-    if( provider!.isFirstTimeOpenPage() ) {
+    if (provider!.isFirstTimeOpenPage()) {
       return _showMobileToConfirmSendOtp();
     } else {
-      return SizedBox();
+      return const SizedBox();
     }
   }
 
-
-  Widget _showMobileToConfirmSendOtp(){
+  Widget _showMobileToConfirmSendOtp() {
     String msg = "Confirm This Mobile Number\n";
     msg += widget.mobileToCheck;
-    var txt =  TextFastor(  msg ,
-        fontSize: 20,
-        color: HexColor(ColorProject.white_oxygen),
+    var txt = TextFastor(
+      msg,
+      fontSize: 20,
+      color: HexColor(ColorProject.white_oxygen),
     );
 
     //responsive web
-    if( DeviceTools.isPlatformWeb() ) {
+    if (DeviceTools.isPlatformWeb()) {
       return Container(
         alignment: Alignment.center,
         child: txt,
       );
     } else {
       return Container(
-        margin: EdgeInsets.symmetric(horizontal:10 ),
+        margin: const EdgeInsets.symmetric(horizontal: 10),
         alignment: Alignment.topLeft,
         child: txt,
       );
     }
-
-
-
   }
-
-
-
 }

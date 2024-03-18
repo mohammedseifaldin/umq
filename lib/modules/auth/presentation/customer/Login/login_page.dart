@@ -45,7 +45,8 @@ class LoginMobileState extends ResumableState<LoginMobilePage> {
       this,
       title: "Login",
       content: formBody(),
-      widgetBackground: ScubaBackgroundImage.getImageResponsive(context),
+      widgetBackground: const ScubaBackgroundImage(),
+      resizeToAvoidBottomInset: false,
     );
   }
 

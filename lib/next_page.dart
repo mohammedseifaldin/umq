@@ -1,6 +1,5 @@
 import 'package:fastor_app_ui_widget/fastor_app_ui_widget.dart';
 
-
 import 'package:umq/tools/navigate/GoTo.dart';
 import 'package:umq/tools/cache/user_single_tone.dart';
 import 'package:umq/tools/constant/EnvironmentConstant.dart';
@@ -10,34 +9,27 @@ import 'package:umq/splash_screen.dart';
 
 import 'tools/cache/constant_save.dart';
 
+// next page after splash
 
- // next page after splash
- 
 extension NextPage on SplashScreenState {
-
-
   //---------------------------------------------------------------------------- launch page
 
-  Future nextPage() async   {
-    if( EnvironmentConstant.isLive ) {
+  Future nextPage() async {
+    if (EnvironmentConstant.isLive) {
       nextPageLive();
       return;
     } else {
       nextPageTest();
       return;
     }
-
   }
 
-
-  Future<bool> isOpenWalkThrougBefore() async{
-    final time = await Save.getString( ConstantSave.firstTimeOpenApp );
-    return ToolsValidation.isEmpty( time ) ;
+  Future<bool> isOpenWalkThrougBefore() async {
+    final time = await Save.getString(ConstantSave.firstTimeOpenApp);
+    return ToolsValidation.isEmpty(time);
   }
-
 
   Future nextPageLive() async {
-
     //-++++++++++++ Web : open admin directly
     /**
         if(  DeviceTools.isPlatformWeb() ) {
@@ -48,23 +40,22 @@ extension NextPage on SplashScreenState {
 
     //-++++++++++++ first time open by mobile
 
-    bool isFirstTime = await isOpenWalkThrougBefore()  ;
+    bool isFirstTime = await isOpenWalkThrougBefore();
     //Log.i( "nextPage() - localeName: " + localeName.toString() );
-    if( isFirstTime ) {
-
+    if (isFirstTime) {
       /**
        set arabic app when setting is arabic
        */
-      if( EnvironmentConstant.business_english_only == false ) {
+      if (EnvironmentConstant.businessEnglishOnly == false) {
         LanguageTools.setArabicWhenDeviceLangaugeIsArabic(context);
       }
 
-      GoTo.walkThrough( context );
-      return ;
+      GoTo.walkThrough(context);
+      return;
     }
 
     //choose english in this part app
-    if( EnvironmentConstant.business_english_only) {
+    if (EnvironmentConstant.businessEnglishOnly) {
       LanguageTools.setEnglish(context);
     }
 
@@ -77,7 +68,7 @@ extension NextPage on SplashScreenState {
     // }
 
     //check already login
-    if(UserSingleTone.instance().isLogin() ) {
+    if (UserSingleTone.instance().isLogin()) {
       GoTo.chooseHomeByTypeRoleUser(context);
       return;
     }
@@ -87,11 +78,9 @@ extension NextPage on SplashScreenState {
     GoTo.homeStudent(context);
   }
 
-
   Future nextPageTest() async {
-
     //choose english in this part app
-    if( EnvironmentConstant.business_english_only) {
+    if (EnvironmentConstant.businessEnglishOnly) {
       LanguageTools.setEnglish(context);
     }
 
@@ -103,17 +92,17 @@ extension NextPage on SplashScreenState {
 
     //test language
     //LanguageTools.setArabic( context);
-   //LanguageTools.setEnglish( context);
+    //LanguageTools.setEnglish( context);
 
     //---------------------------------------------------------- App : Mobile
 
     //+++++++++++++++++++++ auth
 
-   // GoTo.splashLogin( context );
+    // GoTo.splashLogin( context );
     GoTo.login(context);
-   // GoTo.register_student(context,  "+20",  "1063499773");
-   //mobileVerifyTest();
-  // GoTo.registerChooseTypeUser(context);
+    // GoTo.register_student(context,  "+20",  "1063499773");
+    //mobileVerifyTest();
+    // GoTo.registerChooseTypeUser(context);
 
     //+++++++++++++++++++++++ my account
 
@@ -121,29 +110,29 @@ extension NextPage on SplashScreenState {
 
     //++++++++++++++++++++++++ home
 
-   // GoTo.walkThrough( context );
-   //  GoTo.homeStudent(context);
+    // GoTo.walkThrough( context );
+    //  GoTo.homeStudent(context);
 
     //++++++++++++++++++++ filter
 
-   // GoTo.searchPage( context);
+    // GoTo.searchPage( context);
 
-   //++++++++++++++++++++++ product
+    //++++++++++++++++++++++ product
 
-   //   GoTo.productDetail_byId(context, 1 );
+    //   GoTo.productDetail_byId(context, 1 );
 
     //+++++++++++++++++++++  provider detail
-  // GoTo.providerDetail_by_id(context, 7);
+    // GoTo.providerDetail_by_id(context, 7);
 
     //++++++++++++++++++++++++ cart
 
-     // GoTo.cartMain(context);
- //   GoTo.cartShipmentPage(context);
+    // GoTo.cartMain(context);
+    //   GoTo.cartShipmentPage(context);
 //      GoTo.cartPaymentMethod(context);
 
-  //++++++++++++++++++++++++++ payment
+    //++++++++++++++++++++++++++ payment
 
-  //   openPagePaymentOnline();
+    //   openPagePaymentOnline();
 
     //++++++++++++++++++++++++ menu pages
 
@@ -153,12 +142,12 @@ extension NextPage on SplashScreenState {
 
     //++++++++++++++++++++++ login / dashboard / slide menu
     //  GoToAdmin.loginPageAdmin(context);
-   // GoToAdmin.dashboard(context);
-   //  GoToAdmin.menuFullPage(context);
+    // GoToAdmin.dashboard(context);
+    //  GoToAdmin.menuFullPage(context);
 
     //+++++++++++++++++++++ pages
-   // GoToAdmin.userList(context);
-   //  GoToAdmin.userDetail_create(context, null );
+    // GoToAdmin.userList(context);
+    //  GoToAdmin.userDetail_create(context, null );
     // GoToAdmin.cityList(context);
     // GoToAdmin.orgiizationList(context);
     // GoToAdmin.slideList( context );
@@ -172,7 +161,6 @@ extension NextPage on SplashScreenState {
     // GoToAdmin.settingAdmin(context);
     // openEditorHtmlTerms();
 
-
     //-------------------------------------------------------------- app : chat
 
     // GoTo.chatMainPage(context);
@@ -182,7 +170,6 @@ extension NextPage on SplashScreenState {
     // var page = SimpleRecorder();
     // NavigationTools.push(context, page);
   }
-
 
   Future openPagePaymentOnline() async {
     String urlPaypalScuba = "https://scuba-world.net/paypal?price_target=1.0";
@@ -194,27 +181,28 @@ extension NextPage on SplashScreenState {
     // var page = WebviewPaymentPage(url:  scubaUrl, urlChange: (updateUrl ){});
     // NavigationTools.push(context, page);
 
-    GoTo.onlinePaymentPayPal( context: context,
-        price:  1,
+    GoTo.onlinePaymentPayPal(
+        context: context,
+        price: 1,
         callback: (bool status, String msg, String orderId) {
-          Log.i( "onlinePaymentPayPal() - status: $status /orderId: $orderId");
+          Log.i("onlinePaymentPayPal() - status: $status /orderId: $orderId");
 
-          if( status ) {
+          if (status) {
             ToolsToast.i(context, "PayPal Success");
           } else {
             ToolsToast.i(context, "PayPal Payment Not Complete");
           }
-
         });
   }
 
   Future openEditorHtmlTerms() async {
-    var page = HtmlEditiorPage(uniqueName: "terms",
-        edit_url_content:  "https://scubaworld.000webhostapp.com/scuba_laravel/storage/app/public/terms.html",
-        callback:  (result){
-          Log.i( "openEditorHtmlTerms() - result: " + result );
-        }
-    );
+    var page = HtmlEditiorPage(
+        uniqueName: "terms",
+        edit_url_content:
+            "https://scubaworld.000webhostapp.com/scuba_laravel/storage/app/public/terms.html",
+        callback: (result) {
+          Log.i("openEditorHtmlTerms() - result: " + result);
+        });
     NavigationTools.push(context, page);
   }
 
@@ -223,7 +211,4 @@ extension NextPage on SplashScreenState {
   //       ToolsToast.i(context,  "Success " + userIdFireabase.toString() );
   //   });
   // }
-
-
-
 }
