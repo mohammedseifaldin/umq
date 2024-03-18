@@ -1,5 +1,5 @@
 class ColorProject {
-
+  ColorProject._();
   //transparent
   static const blueTransparent = "#5000678a";
   static const blueTransparentDark = "#9000678a";
@@ -8,9 +8,9 @@ class ColorProject {
 
   //white from scuba sun light
   static const white_sun_1 = "#92daff"; //dark semi to blue
-  static const white_sun_2 =   "#ccedfc";  //blue light
+  static const white_sun_2 = "#ccedfc"; //blue light
   static const white_sun_3 = "#d0fdff";
-  static const white_sun_4 =   "#fdfdfd";
+  static const white_sun_4 = "#fdfdfd";
 
   //white from oxygen pump
   static const white_oxygen = "#e9fdf2";
@@ -20,7 +20,6 @@ class ColorProject {
   static const black_2 = "#000002";
   static const black_3 = "#030c19";
   static const black_4 = "#02213d";
-
 
   //blue water scuba
   static const blueCerulean_1 = "#00678a"; //darker
@@ -46,7 +45,6 @@ class ColorProject {
   static const yellow_1 = "#595629";
   static const yellow_2 = "#54560a";
   static const yellow_3 = "#525e1c";
-
 
   //------------------------------------------------------ old app ui
 

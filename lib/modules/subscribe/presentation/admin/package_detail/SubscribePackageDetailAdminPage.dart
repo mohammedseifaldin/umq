@@ -6,24 +6,22 @@ import 'package:umq/modules/subscribe/data/request/RequestCreateSubscribePackage
 import 'package:umq/modules/subscribe/presentation/admin/package_detail/logic/EditData.dart';
 import 'package:umq/modules/subscribe/presentation/admin/package_detail/widget/ContentUserDetail.dart';
 import 'package:umq/modules/subscribe/provider/SubscribeChangeNotifier.dart';
+import 'package:umq/tools/resourceProject/ColorProject.dart';
 import 'package:umq/tools/responsive/fourm/ResponsiveFormMobile.dart';
 
 class SubscribePackageDetailAdminPage extends StatefulWidget {
+  MSubscribePackage? mEdit;
 
-  MSubscribePackage? mEdit  ;
-
-  SubscribePackageDetailAdminPage( {  this.mEdit });
+  SubscribePackageDetailAdminPage({this.mEdit});
 
   @override
   SubscribePackageDetailAdminState createState() {
-    return SubscribePackageDetailAdminState(  );
+    return SubscribePackageDetailAdminState();
   }
-
 }
 
-
-class SubscribePackageDetailAdminState extends ResumableState<SubscribePackageDetailAdminPage > {
-
+class SubscribePackageDetailAdminState
+    extends ResumableState<SubscribePackageDetailAdminPage> {
   //-------------------------------------------------------------------- variable
   String pageTitle = "Package";
 
@@ -38,20 +36,17 @@ class SubscribePackageDetailAdminState extends ResumableState<SubscribePackageDe
     setEditDataIfFound();
   }
 
-
   @override
   void onReady() {
     super.onReady();
     onResume();
   }
 
-
   @override
-  void onResume(){
+  void onResume() {
     super.onResume();
-    Log.i( "lifecycle - onResume - $pageTitle");
+    Log.i("lifecycle - onResume - $pageTitle");
   }
-
 
   //-------------------------------------------------------------------- build
 
@@ -62,45 +57,43 @@ class SubscribePackageDetailAdminState extends ResumableState<SubscribePackageDe
     this.contextPage = context;
     provider = SubscribeChangeNotifier.getListenFalse(context);
 
-    return PageFastor(this,
-        title: getTitleText(),
-        content: pageResponsiveWebOrMobile(),
-        toolbar: ToolbarSimpleFastor(  contextPage!,  pageTitle, iconColorBack: Colors.black ),
-        toolbar_height: ToolbarSimpleFastor.frameHeight,
+    return PageFastor(
+      this,
+      title: getTitleText(),
+      statusBarColorCustom: HexColor(ColorProject.black_4),
+      content: pageResponsiveWebOrMobile(),
+      toolbar: ToolbarSimpleFastor(contextPage!, pageTitle,
+          iconColorBack: Colors.black),
+      toolbar_height: ToolbarSimpleFastor.frameHeight,
     );
   }
 
-
-  String getTitleText(){
-    if( widget.mEdit != null ) {
-      pageTitle = "Edit" + " " + pageTitle;
+  String getTitleText() {
+    if (widget.mEdit != null) {
+      pageTitle = "Edit $pageTitle";
     }
     return pageTitle;
   }
 
-
   Widget pageResponsiveWebOrMobile() {
-    return ResponsiveFourmMobile.wrapHeight(  contextPage!, getContent() );
+    return ResponsiveFourmMobile.wrapHeight(contextPage!, getContent());
   }
 
   Widget getContent() {
-    return ColumnTemplate.t( children: [
-      name_en(),
-      name_ar(),
-      desc_en(),
-      desc_ar(),
-      price(),
-      period(),
-      product_numbers(),
-      allow_chat(),
-
-      save()
-    ],
-    mainAxisAlignment: MainAxisAlignment.start,
-    mainAxisSize: MainAxisSize.max,
-    crossAxisAlignment: CrossAxisAlignment.start
-    );
+    return ColumnTemplate.t(
+        children: [
+          name_en(),
+          name_ar(),
+          desc_en(),
+          desc_ar(),
+          price(),
+          period(),
+          product_numbers(),
+          allow_chat(),
+          save()
+        ],
+        mainAxisAlignment: MainAxisAlignment.start,
+        mainAxisSize: MainAxisSize.max,
+        crossAxisAlignment: CrossAxisAlignment.start);
   }
-
-
 }

@@ -1,10 +1,9 @@
 name: umq
 description: UMQ APP | SCUBA WORLD
-#name: umq
 publish_to: 'none' # Remove this line if you wish to publish to pub.dev
 
 
-version: 1.1.380
+version: 1.2.380
 
 environment:
   sdk: '>=3.0.3 <4.0.0'  #flutter sdk 3.10.4
@@ -41,9 +40,9 @@ dependencies:
   firebase_analytics: ^10.4.3
   firebase_crashlytics: ^3.3.3
   firebase_messaging: ^14.6.4
-  flutter_local_notifications: ^15.0.1
-  clear_all_notifications: ^0.0.3
-  permission_handler: ^10.4.1
+  flutter_local_notifications: ^17.0.0
+  clear_all_notifications: ^1.0.0
+  permission_handler: ^11.3.0
 
   #--------------------------------------------------------------- state manager
 
@@ -74,7 +73,7 @@ dependencies:
   country_code_picker: ^3.0.0
 
   #time stamp
-  intl: ^0.17.0
+  intl: ^0.19.0
 
   #recorder and audio and file picker
   flutter_sound: ^9.2.13
@@ -89,7 +88,7 @@ dependencies:
   country_dial_code: ^1.2.0
 
   #paypal-webview-payment
-  flutter_inappwebview: ^5.7.2+3
+  flutter_inappwebview: ^6.0.0
 
   #--------------------------------------------------------------- developer
 
@@ -123,7 +122,7 @@ dependencies:
 
   #html editior
   quill_html_editor: ^2.2.6
-  flutter_widget_from_html: ^0.10.4
+  flutter_widget_from_html: ^0.14.11
 
 flutter_icons:
   android: "launcher_icon"
@@ -134,7 +133,7 @@ flutter_icons:
 dev_dependencies:
   flutter_test:
     sdk: flutter
-  flutter_lints: ^2.0.0
+  flutter_lints: ^3.0.1
 
 flutter:
   uses-material-design: true

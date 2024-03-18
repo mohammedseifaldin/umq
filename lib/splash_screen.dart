@@ -50,7 +50,7 @@ class SplashScreenState extends ResumableState<SplashScreen> {
       content: contentPage(),
       homeButtonsBackgroundColor: HexColor(ColorProject.black_4),
       statusBarColorCustom: HexColor(ColorProject.black_4),
-      colorBackground: HexColor(ColorProject.blue_fish_back),
+      backgroundColor: HexColor(ColorProject.blue_fish_back),
     );
   }
 

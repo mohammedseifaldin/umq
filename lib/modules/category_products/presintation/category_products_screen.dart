@@ -2,6 +2,7 @@ import 'package:fastor_app_ui_widget/fastor_app_ui_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:umq/modules/category_products/provider/category_products_notifier.dart';
 import 'package:umq/modules/category_products/provider/get_category_products_notifier.dart';
+import 'package:umq/tools/resourceProject/ColorProject.dart';
 import 'package:umq/toolsUI/background/BackgroundFastorPageTemplate.dart';
 import 'package:umq/toolsUI/itemList/product/category_product_view.dart';
 import 'package:umq/toolsUI/toolbarHome/ToolbarHomeScuba.dart';
@@ -36,6 +37,7 @@ class CategoryProductsState extends State<CategoryProductsScreen> {
       this,
       title: "Category Products",
       content: getContent(),
+      statusBarColorCustom:HexColor(ColorProject.black_4),
       scrollController: provider.scrollController,
       widgetBackground:
           BackgroundCardPage(toolbarHeight: ToolbarHomeScuba.frameHeight),

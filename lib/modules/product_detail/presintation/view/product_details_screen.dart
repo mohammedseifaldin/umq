@@ -8,6 +8,7 @@ import 'package:umq/modules/product_detail/presintation/v/product_image.dart';
 import 'package:umq/modules/product_detail/presintation/v/provider_widget.dart';
 import 'package:umq/modules/product_detail/provider/get_product_details_notifier.dart';
 import 'package:umq/modules/product_detail/provider/product_details_notifier.dart';
+import 'package:umq/tools/resourceProject/ColorProject.dart';
 import 'package:umq/toolsUI/background/BackgroundFastorPageTemplate.dart';
 import 'package:umq/toolsUI/toolbarHome/ToolbarHomeScuba.dart';
 
@@ -39,6 +40,7 @@ class ProductDetailsState extends State<ProductDetailsScreen> {
 
     return PageFastor(
       this,
+      statusBarColorCustom: HexColor(ColorProject.black_4),
       title: "Product Details",
       content: getContent(),
       scrollController: provider.scrollController,

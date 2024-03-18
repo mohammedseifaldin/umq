@@ -59,6 +59,8 @@ class HomePageState extends ResumableState<HomePage> {
 
     return PageFastor(
       this,
+      statusBarColorCustom: HexColor(ColorProject.blueCerulean_2),
+
       content: getContent(),
       // isPlaceBodyInsideScroll: true,
       // stateFullWidget: this,

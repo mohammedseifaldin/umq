@@ -78,6 +78,7 @@ class HtmlEditorState extends ResumableState<HtmlEditiorPage> {
     return PageFastor( this,
         //toolbar
         toolbar: tooblarWidget() ,
+        statusBarColorCustom: HexColor(ColorProject.black_4),
         toolbar_height:  getToolbarHeight(),
         thumbVisibility: true,
         floatBottom: floatingButtonForSaveInMobileOnly(),
