@@ -1,5 +1,5 @@
-import 'package:fastor_app_ui_widget/fastor_app_ui_widget.dart';
-import 'package:firebase_auth/firebase_auth.dart';
+
+
 
 
 typedef WebAuthCallBackConfirmOTP = Function(bool isSuccess);
@@ -8,46 +8,46 @@ class FirebaseWebAuthenticationController {
 
 
   String phoneNumber = "";
-  ConfirmationResult? confirmationResult;
+  // ConfirmationResult? confirmationResult;
 
-  Future sendOTP(String phoneNumber) async {
-    // Log.i("sendOTP() - phoneNumber: $phoneNumber");
-    this.phoneNumber = phoneNumber;
-    FirebaseAuth auth = FirebaseAuth.instance;
-    confirmationResult = await auth.signInWithPhoneNumber(
-      '$phoneNumber',
-    );
-   // Log.i("sendOTP() - confirmationResult: $confirmationResult");
-    return confirmationResult;
-  }
+  // Future sendOTP(String phoneNumber) async {
+  //   // Log.i("sendOTP() - phoneNumber: $phoneNumber");
+  //   this.phoneNumber = phoneNumber;
+  //   FirebaseAuth auth = FirebaseAuth.instance;
+  //   confirmationResult = await auth.signInWithPhoneNumber(
+  //     '$phoneNumber',
+  //   );
+  //  // Log.i("sendOTP() - confirmationResult: $confirmationResult");
+  //   return confirmationResult;
+  // }
 
-  Future<bool> verifyMyOtpCode(String otp, WebAuthCallBackConfirmOTP callback) async {
-    if(confirmationResult == null ) {
-      Log.i( "verifyMyOtpCode() - confirmationResult == null - stop  "  );
-      callback(false);
-      return false;
-    }
-    UserCredential userCredential = await confirmationResult!.confirm(otp);
-   Log.i( "verifyMyOtpCode() - userCredential  "  + userCredential.toString() );
+  // Future<bool> verifyMyOtpCode(String otp, WebAuthCallBackConfirmOTP callback) async {
+  //   if(confirmationResult == null ) {
+  //     Log.i( "verifyMyOtpCode() - confirmationResult == null - stop  "  );
+  //     callback(false);
+  //     return false;
+  //   }
+  //   UserCredential userCredential = await confirmationResult!.confirm(otp);
+  //  Log.i( "verifyMyOtpCode() - userCredential  "  + userCredential.toString() );
 
-    //check success login
-    FirebaseAuth _auth = FirebaseAuth.instance;
-    if( _auth == null  ||
-        _auth.currentUser == null ||
-      _auth.currentUser!.uid == null
-    ) {
-      callback(false);
-      return false ;
-    }
-   // Log.i("verifyMyOtpCode() - _auth.currentUser!.uid: " + _auth.currentUser!.uid.toString() );
+  //   //check success login
+  //   FirebaseAuth _auth = FirebaseAuth.instance;
+  //   if( _auth == null  ||
+  //       _auth.currentUser == null ||
+  //     _auth.currentUser!.uid == null
+  //   ) {
+  //     callback(false);
+  //     return false ;
+  //   }
+  //  // Log.i("verifyMyOtpCode() - _auth.currentUser!.uid: " + _auth.currentUser!.uid.toString() );
 
-    //bool isNewUserLoginNow = userCredential.additionalUserInfo
-    //Log.i("verifyMyOtpCode() - isNewUserLoginNow: $isNewUserLoginNow");
+  //   //bool isNewUserLoginNow = userCredential.additionalUserInfo
+  //   //Log.i("verifyMyOtpCode() - isNewUserLoginNow: $isNewUserLoginNow");
 
-    //finish
-    callback(true);
-    return true;
-  }
+  //   //finish
+  //   callback(true);
+  //   return true;
+  // }
 
 
 }

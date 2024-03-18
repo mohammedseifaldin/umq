@@ -15,7 +15,6 @@ import 'package:umq/tools/laravel/upload/UploadFileLaravelAPI.dart';
 import 'package:umq/tools/navigate/GoTo.dart';
 import 'package:umq/tools/network/BackendConstant.dart';
 import 'package:umq/tools/network/ToolsAPI.dart';
-import 'package:umq/tools/values/ToolsValue.dart';
 import 'package:umq/toolsUI/progress/lock_overlay/lock_overlay.dart';
 import 'package:umq/toolsUI/toast/ToastTools.dart';
 
@@ -30,29 +29,29 @@ extension RegisterNotifier on AuthChangeNotifier {
   void startMobileVerify(BuildContext context) async {
     //start
     // loginFullPhone =  PhoneEgyption.getFullPhone( loginCountryCode, loginPhoneController.value.text);
-    loginPhone = ToolsPhone.fixEgyptAndSaudiNumber(
-        loginCountryCode, emailController.value.text);
+    // loginPhone = ToolsPhone.fixEgyptAndSaudiNumber(
+    //     loginCountryCode, emailController.value.text);
 
-    GoTo.mobileVerifyGeneric(context, mobileToCheck: loginPhone,
-        callback: (status, firebaseUId) {
-      //check failed
-      if (status == false || ToolsValue.isEmpty(firebaseUId)) {
-        LockOverlay().closeOverlay();
-        ToolsToast.i(context, "Failed To Register");
-        return;
-      }
+    // GoTo.mobileVerifyGeneric(context, mobileToCheck: loginPhone,
+    //     callback: (status, firebaseUId) {
+    //   //check failed
+    //   if (status == false || ToolsValue.isEmpty(firebaseUId)) {
+    //     LockOverlay().closeOverlay();
+    //     ToolsToast.i(context, "Failed To Register");
+    //     return;
+    //   }
 
-      Log.i(
-          "mobileVerifyCreateAccount() - mobileVerifyGeneric - phoneController.value.text: ${emailController.value.text}");
-      Log.i(
-          "mobileVerifyCreateAccount() - mobileVerifyGeneric - fullPhone: $loginPhone");
+    //   Log.i(
+    //       "mobileVerifyCreateAccount() - mobileVerifyGeneric - phoneController.value.text: ${emailController.value.text}");
+    //   Log.i(
+    //       "mobileVerifyCreateAccount() - mobileVerifyGeneric - fullPhone: $loginPhone");
 
-      //set
-      loginUid = firebaseUId;
+    //   //set
+    //   loginUid = firebaseUId;
 
-      //start api
-      registerMobile(context);
-    });
+    //   //start api
+    //   registerMobile(context);
+    // });
   }
 
   /** ------ Cases call this method:

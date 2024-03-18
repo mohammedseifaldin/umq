@@ -46,37 +46,37 @@ extension LoginNotifier on AuthChangeNotifier {
     notifyListeners();
   }
 
-  Future _startListenerToVerifyMobile(BuildContext context) async {
-    String phone = emailController.value.text;
-    loginPhone = ToolsPhone.fixEgyptAndSaudiNumber(loginCountryCode, phone);
+  // Future _startListenerToVerifyMobile(BuildContext context) async {
+  //   String phone = emailController.value.text;
+  //   loginPhone = ToolsPhone.fixEgyptAndSaudiNumber(loginCountryCode, phone);
 
-    //wait
-    GoTo.mobileVerifyGeneric(
-      context,
-      mobileToCheck: loginPhone,
-      callback: (status, firebaseUId) {
-        Log.i("mobileVerifyGeneric - status: $status ");
+  //   //wait
+  //   GoTo.mobileVerifyGeneric(
+  //     context,
+  //     mobileToCheck: loginPhone,
+  //     callback: (status, firebaseUId) {
+  //       Log.i("mobileVerifyGeneric - status: $status ");
 
-        //check failed
-        if (status == false || ToolsValue.isEmpty(firebaseUId)) {
-          LockOverlay().closeOverlay();
-          //progress login
-          progressLoginUpdateStatus(false);
-          ToolsToast.i(context, "Failed To Login");
-          return;
-        }
+  //       //check failed
+  //       if (status == false || ToolsValue.isEmpty(firebaseUId)) {
+  //         LockOverlay().closeOverlay();
+  //         //progress login
+  //         progressLoginUpdateStatus(false);
+  //         ToolsToast.i(context, "Failed To Login");
+  //         return;
+  //       }
 
-        ///progress login start after verify otp done
-        progressLoginUpdateStatus(true);
+  //       ///progress login start after verify otp done
+  //       progressLoginUpdateStatus(true);
 
-        //set
-        loginUid = firebaseUId;
+  //       //set
+  //       loginUid = firebaseUId;
 
-        //start api
-        _loginOrCreateAccount(context);
-      },
-    );
-  }
+  //       //start api
+  //       _loginOrCreateAccount(context);
+  //     },
+  //   );
+  // }
 
   Future _loginOrCreateAccount(BuildContext context) async {
     Log.i("login - loginApiStart() - start");

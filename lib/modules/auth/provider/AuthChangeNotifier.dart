@@ -66,7 +66,7 @@ class AuthChangeNotifier extends ChangeNotifier {
   String? token;
 
   var webFirebaseController = FirebaseWebAuthenticationController();
-  SignToOtpFirebaseCallBack? callback;
+  // SignToOtpFirebaseCallBack? callback;
 
   //------------------------------------------------------------------------ instance
 

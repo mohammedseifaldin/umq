@@ -1,13 +1,5 @@
-import 'package:fastor_app_ui_widget/fastor_app_ui_widget.dart';
-import 'package:firebase_auth/firebase_auth.dart';
-import 'package:flutter/material.dart';
 import 'package:umq/modules/auth/provider/AuthChangeNotifier.dart';
-import 'package:umq/tools/constant/EnvironmentConstant.dart';
-import 'package:umq/tools/values/ToolsValue.dart';
-import 'package:umq/toolsUI/progress/lock_overlay/lock_overlay.dart';
 
-import 'mobile_verification_controller.dart';
-// import 'package:firebase_auth_web/firebase_auth_web.dart';
 
 extension ConfirmPinController on AuthChangeNotifier {
   bool isFirstTimeOpenPage() {
@@ -20,103 +12,103 @@ extension ConfirmPinController on AuthChangeNotifier {
   }
 //---------------------------------------------------------------------- verfiy otp
 
-  void confirmPinNumberClick(BuildContext context) async {
-    //keyboard
-    FocusScope.of(context).unfocus();
+  // void confirmPinNumberClick(BuildContext context) async {
+  //   //keyboard
+  //   FocusScope.of(context).unfocus();
 
-    //choose platform
-    if (DeviceTools.isPlatformWeb()) {
-      await verifyOTP_web(context);
-    } else {
-      await _verifyOTP_mobile(context);
-    }
-  }
+  //   //choose platform
+  //   if (DeviceTools.isPlatformWeb()) {
+  //     await verifyOTP_web(context);
+  //   } else {
+  //     await _verifyOTP_mobile(context);
+  //   }
+  // }
 
   //---------------------------------------------------------------------- mobile platform
 
-  Future _verifyOTP_mobile(
-    BuildContext context,
-  ) async {
-    //credential object
-    FirebaseAuth _auth = FirebaseAuth.instance;
-    var _authCredential = PhoneAuthProvider.credential(
-        verificationId: VERIFICATIONID, smsCode: PIN);
+  // Future _verifyOTP_mobile(
+  //   BuildContext context,
+  // ) async {
+  //   //credential object
+  //   FirebaseAuth _auth = FirebaseAuth.instance;
+  //   var _authCredential = PhoneAuthProvider.credential(
+  //       verificationId: VERIFICATIONID, smsCode: PIN);
 
-    //check if null means failed
-    if (_authCredential == null) {
-      showErrorMessage(
-          context,
-          "_verifyOTP_mobile() - _authCredential is (null) object, VERIFICATIONID: " +
-              VERIFICATIONID);
-      return;
-    }
+  //   //check if null means failed
+  //   if (_authCredential == null) {
+  //     showErrorMessage(
+  //         context,
+  //         "_verifyOTP_mobile() - _authCredential is (null) object, VERIFICATIONID: " +
+  //             VERIFICATIONID);
+  //     return;
+  //   }
 
-    //progresss
-    LockOverlay().showClassicLoadingOverlay(scaffoldKey.currentContext);
+  //   //progresss
+  //   LockOverlay().showClassicLoadingOverlay(scaffoldKey.currentContext);
 
-    //sign the credential
-    await _auth.signInWithCredential(_authCredential).catchError((error) {
-      //progress
-      LockOverlay().closeOverlay();
+  //   //sign the credential
+  //   await _auth.signInWithCredential(_authCredential).catchError((error) {
+  //     //progress
+  //     LockOverlay().closeOverlay();
 
-      if (error is FirebaseAuthException) {
-        Log.i("_verifyOTP_mobile() - catchError() error: " + error.toString());
-        Log.i("_verifyOTP_mobile() - catchError() error.code: " + error.code);
+  //     if (error is FirebaseAuthException) {
+  //       Log.i("_verifyOTP_mobile() - catchError() error: " + error.toString());
+  //       Log.i("_verifyOTP_mobile() - catchError() error.code: " + error.code);
 
-        if (error.code == "invalid-verification-code") {
-          showErrorMessage(context, "Invalid OTP");
-        } else {
-          showErrorMessage(context, "${error.message}");
-        }
-      } else {
-        showErrorMessage(context, "${error.messageRemote}");
-      }
-    }).then((value) async {
-      //check the confirmation enter right
-      /**
-       case real phone number, and user enter wrong PIN code,
-       it's pring here
-       */
-      try {
-        if (value.user == null || ToolsValue.isEmpty(value.user!.uid)) {
-          showErrorMessage(context, "Wrong Code entered");
-          return;
-        }
-      } catch (e) {
-        Log.i("general - e: " + e.toString());
-        showErrorMessage(context, "Wrong Code entered");
-        return;
-      }
+  //       if (error.code == "invalid-verification-code") {
+  //         showErrorMessage(context, "Invalid OTP");
+  //       } else {
+  //         showErrorMessage(context, "${error.message}");
+  //       }
+  //     } else {
+  //       showErrorMessage(context, "${error.messageRemote}");
+  //     }
+  //   }).then((value) async {
+  //     //check the confirmation enter right
+  //     /**
+  //      case real phone number, and user enter wrong PIN code,
+  //      it's pring here
+  //      */
+  //     try {
+  //       if (value.user == null || ToolsValue.isEmpty(value.user!.uid)) {
+  //         showErrorMessage(context, "Wrong Code entered");
+  //         return;
+  //       }
+  //     } catch (e) {
+  //       Log.i("general - e: " + e.toString());
+  //       showErrorMessage(context, "Wrong Code entered");
+  //       return;
+  //     }
 
-      Log.i("_verifyOTP_mobile() - success ");
-      whatToDoAfterSuccess(value.user!.uid);
-    });
-  }
+  //     Log.i("_verifyOTP_mobile() - success ");
+  //     whatToDoAfterSuccess(value.user!.uid);
+  //   });
+  // }
 
-  //---------------------------------------------------------------------- web platform
+  // //---------------------------------------------------------------------- web platform
 
-  Future verifyOTP_web(
-    BuildContext context,
-  ) async {
-    // Log.i( "_verifyOTP_web() - start  " );
-    await webFirebaseController.verifyMyOtpCode(PIN, (isSuccess) {
-      if (isSuccess == false) {
-        failed(context, "Failed to authentication");
-        return;
-      }
+  // Future verifyOTP_web(
+  //   BuildContext context,
+  // ) async {
+  //   // Log.i( "_verifyOTP_web() - start  " );
+  //   await webFirebaseController.verifyMyOtpCode(PIN, (isSuccess) {
+  //     if (isSuccess == false) {
+  //       failed(context, "Failed to authentication");
+  //       return;
+  //     }
 
-      successConfirmOTPByWeb();
-    });
-  }
+  //     // successConfirmOTPByWeb();
+  //   });
+  // }
 
-  Future successConfirmOTPByWeb() async {
-    FirebaseAuth _auth = FirebaseAuth.instance;
-    String uid = _auth.currentUser!.uid.toString();
+  // Future successConfirmOTPByWeb() async {
+  //   FirebaseAuth _auth = FirebaseAuth.instance;
+  //   String uid = _auth.currentUser!.uid.toString();
 
-    if (EnvironmentConstant.isTest) {
-      Log.i("successConfirmOTPByWeb() - uid: " + uid);
-    }
+  //   if (EnvironmentConstant.isTest) {
+  //     Log.i("successConfirmOTPByWeb() - uid: " + uid);
+  //   }
 
-    whatToDoAfterSuccess(uid);
-  }
+  //   whatToDoAfterSuccess(uid);
+  // }
 }

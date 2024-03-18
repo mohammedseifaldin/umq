@@ -100,17 +100,17 @@ class GoTo {
     NavigationTools.pushAndRemoveUntil(context, const LoginMobilePage());
   }
 
-  static void mobileVerifyGeneric(BuildContext context,
-      {required SignToOtpFirebaseCallBack callback,
-      required String mobileToCheck}) {
-    NavigationTools.push(
-      context,
-      SignWithMobilePage(
-        callback,
-        mobile: mobileToCheck,
-      ),
-    );
-  }
+  // static void mobileVerifyGeneric(BuildContext context,
+  //     {required SignToOtpFirebaseCallBack callback,
+  //     required String mobileToCheck}) {
+  //   NavigationTools.push(
+  //     context,
+  //     SignWithMobilePage(
+  //       callback,
+  //       mobile: mobileToCheck,
+  //     ),
+  //   );
+  // }
 
   static void registerStudent(
       BuildContext context, String country, String phone) {
