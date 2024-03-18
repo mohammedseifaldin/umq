@@ -45,11 +45,11 @@ PODS:
     - Firebase/Core
   - Firebase/Auth (10.10.0):
     - Firebase/CoreOnly
-    - FirebaseAuth (~> 10.10.0)
+    - FirebaseAuth (~> 10.22.0)
   - Firebase/Core (10.10.0):
     - Firebase/CoreOnly
     - FirebaseAnalytics (~> 10.10.0)
-  - Firebase/CoreOnly (10.10.0):
+  - Firebase/CoreOnly (10.22.0):
     - FirebaseCore (= 10.10.0)
   - Firebase/Crashlytics (10.10.0):
     - Firebase/CoreOnly
@@ -69,7 +69,7 @@ PODS:
     - firebase_core
     - Flutter
   - firebase_core (2.14.0):
-    - Firebase/CoreOnly (= 10.10.0)
+    - Firebase/CoreOnly (= 10.22.0)
     - Flutter
   - firebase_database (10.2.3):
     - Firebase/Database (= 10.10.0)
