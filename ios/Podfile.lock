@@ -71,10 +71,6 @@ PODS:
   - firebase_core (2.14.0):
     - Firebase/CoreOnly (= 10.10.0)
     - Flutter
-  - firebase_crashlytics (3.3.3):
-    - Firebase/Crashlytics (= 10.10.0)
-    - firebase_core
-    - Flutter
   - firebase_database (10.2.3):
     - Firebase/Database (= 10.10.0)
     - firebase_core
@@ -268,7 +264,6 @@ DEPENDENCIES:
   - firebase_analytics (from `.symlinks/plugins/firebase_analytics/ios`)
   - firebase_auth (from `.symlinks/plugins/firebase_auth/ios`)
   - firebase_core (from `.symlinks/plugins/firebase_core/ios`)
-  - firebase_crashlytics (from `.symlinks/plugins/firebase_crashlytics/ios`)
   - firebase_database (from `.symlinks/plugins/firebase_database/ios`)
   - firebase_messaging (from `.symlinks/plugins/firebase_messaging/ios`)
   - Flutter (from `Flutter`)
@@ -341,8 +336,6 @@ EXTERNAL SOURCES:
     :path: ".symlinks/plugins/firebase_auth/ios"
   firebase_core:
     :path: ".symlinks/plugins/firebase_core/ios"
-  firebase_crashlytics:
-    :path: ".symlinks/plugins/firebase_crashlytics/ios"
   firebase_database:
     :path: ".symlinks/plugins/firebase_database/ios"
   firebase_messaging:
@@ -407,7 +400,6 @@ SPEC CHECKSUMS:
   firebase_analytics: 1a5ad75876257318ba5fdc6bf7aae73b6e98d0cf
   firebase_auth: 9905bc3d82328b5050a8b7cb410a959f150b6549
   firebase_core: 85b6664038311940ad60584eaabc73103c61f5de
-  firebase_crashlytics: cd12245f604099a4ef6557fb36490abe309a118a
   firebase_database: e6efdeffa31750d0f5664a8dc161e04a73c3f888
   firebase_messaging: c55f70dd48a998dea00a29ccf94572e1e4d454b2
   FirebaseAnalytics: 7bc7de519111dae802f5bc0c9c083918f8b8870d

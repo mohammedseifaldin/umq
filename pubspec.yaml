@@ -34,7 +34,6 @@ dependencies:
   #flutter_local_notifications: ^11.0.0  #2023-07  (while try to fix error Because timezone_to_country >=2.1.0 depends on timezone ^0.9.2 and flutter_local_notifications >=9.0.0 <11.0.0 depends on timezone ^0.8.0, )
 # permission_handler: ^10.0.0
 
-  #update 2023-07-06
   firebase_core: ^2.14.0
   firebase_auth: ^4.6.3
   firebase_analytics: ^10.4.3
