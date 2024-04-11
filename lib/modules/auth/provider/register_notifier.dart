@@ -54,12 +54,11 @@ extension RegisterNotifier on AuthChangeNotifier {
     // });
   }
 
-  /** ------ Cases call this method:
-      1- case user click on button "Register New Account"
-      2- case user enter phone number not found in DB, means he his new user,
-      by click wrong button "login" instead of "register" button.
+  /// ------ Cases call this method:
+  /// 1- case user click on button "Register New Account"
+  /// 2- case user enter phone number not found in DB, means he his new user,
+  /// by click wrong button "login" instead of "register" button.
 
-   */
   void registerMobile(BuildContext context) async {
     progressLoginUpdateStatus(true);
 

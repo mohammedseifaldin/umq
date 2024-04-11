@@ -3,7 +3,7 @@ description: UMQ APP | SCUBA WORLD
 publish_to: 'none' # Remove this line if you wish to publish to pub.dev
 
 
-version: 1.2.380
+version: 1.2.3
 
 environment:
   sdk: '>=3.0.3 <4.0.0'  #flutter sdk 3.10.4
@@ -38,7 +38,7 @@ dependencies:
   # firebase_auth: ^4.6.3
   firebase_analytics: ^10.4.3
   # firebase_crashlytics: ^3.4.19
-  firebase_messaging: ^14.6.4
+  firebase_messaging: ^14.7.19
   flutter_local_notifications: ^17.0.0
   clear_all_notifications: ^1.0.0
   permission_handler: ^11.3.0

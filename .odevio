@@ -1,0 +1,9 @@
+app-key=RKEE
+build-type=distribution
+flutter=3.16.5
+minimal-ios-version=13.0
+app-version=1.2.3
+build-number=4
+mode=release
+target=lib/main.dart
+tunnel-host=localhost
