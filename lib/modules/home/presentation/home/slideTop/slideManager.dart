@@ -23,7 +23,7 @@ extension HomeSlider on HomePageState {
   //--------------------------------------------------------------------- slider manager view
 
   Widget sliderView() {
-    return Container(
+    return SizedBox(
         width: DeviceTools.getWidth(context),
         height: slideTopFrameHeight,
         // color: Colors.grey.withOpacity( 0.1),
@@ -54,7 +54,7 @@ extension HomeSlider on HomePageState {
     }
     //loop data
     for (int i = 0; i < provider.responseHomePage.data!.slider!.length; i++) {
-      MSlider m = provider!.responseHomePage.data!.slider![i];
+      MSlider m = provider.responseHomePage.data!.slider![i];
       list.add(getStackSliderByItem(m));
     }
     return list;

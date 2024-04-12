@@ -132,7 +132,7 @@ class ProfileScreenState extends ResumableState<ProfileScreen> {
     return Container(
       width: DeviceTools.getWidth(context),
       alignment: Alignment.topCenter,
-      margin: EdgeInsets.only(top: 100),
+      margin: const EdgeInsets.only(top: 100),
       child: CircularProgressIndicator(
         color: DSColor.ds_progress,
       ),
@@ -148,7 +148,7 @@ class ProfileScreenState extends ResumableState<ProfileScreen> {
           mainAxisSize: MainAxisSize.max,
           mainAxisAlignment: MainAxisAlignment.start,
           crossAxisAlignment: CrossAxisAlignment.center,
-          padding: EdgeInsets.all(20)),
+          padding: const EdgeInsets.all(20)),
     );
   }
 
@@ -176,7 +176,7 @@ class ProfileScreenState extends ResumableState<ProfileScreen> {
             height: 24,
           ),
           informationUser(),
-          SizedBox(
+          const SizedBox(
             height: 24,
           ),
           becomeProviderButton()
@@ -325,7 +325,7 @@ class ProfileScreenState extends ResumableState<ProfileScreen> {
 
     return TextTemplate.t("Become a Trainer",
         levelDS: LevelDS.l2,
-        padding: EdgeInsets.all(10),
+        padding: const EdgeInsets.all(10),
         textDecoration: TextDecoration.underline, onPressed: () {
       GoTo.becomeTeacher(context);
     });

@@ -1,5 +1,3 @@
-import 'dart:io' as io;
-
 import 'package:fastor_app_ui_widget/fastor_app_ui_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -63,10 +61,10 @@ class AttachTools {
       //success
       callBack(true, "success", xFile.path, null, xFile);
     } on PlatformException catch (e) {
-      Log.i("_pickerFile() - exc: " + e.toString());
+      Log.i("_pickerFile() - exc: $e");
       //return failed
-      callBack(false, "Picker image failed, error: " + e.toString(), "",
-          placeHolderImage, null);
+      callBack(
+          false, "Picker image failed, error: $e", "", placeHolderImage, null);
       return;
     }
   }

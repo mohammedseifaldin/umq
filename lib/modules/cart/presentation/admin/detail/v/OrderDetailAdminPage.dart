@@ -16,8 +16,8 @@ import 'package:umq/toolsUI/textfield/mobileCountry/MobileCountryView.dart';
 class OrderDetailAdminPage extends StatefulWidget {
   MOrder mShow;
 
-  OrderDetailAdminPage(this.mShow) {
-    this.mShow = mShow;
+  OrderDetailAdminPage(this.mShow, {super.key}) {
+    mShow = mShow;
   }
 
   @override
@@ -47,22 +47,9 @@ class OrderDetailAdminState extends ResumableState<OrderDetailAdminPage> {
   //------------------------------------------------------------------- life cycle
 
   @override
-  void initState() {
-    super.initState();
-
-    // setEditDataIfFound();
-  }
-
-  @override
   void onReady() {
     super.onReady();
     onResume();
-  }
-
-  @override
-  void onResume() {
-    super.onResume();
-    //Log.i( "lifecycle - onResume - cityDetail");
   }
 
   //-------------------------------------------------------------------- build

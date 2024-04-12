@@ -1,20 +1,13 @@
 import 'package:fastor_app_ui_widget/fastor_app_ui_widget.dart';
 import 'package:flutter/material.dart';
-import 'package:umq/toolsUI/background/BackgroundAllPagesWidget.dart';
 import 'package:umq/tools/resourceProject/ColorProject.dart';
-import 'package:umq/tools/resourceProject/DrawableProject.dart';
 
 class BackgroundCardPage extends StatelessWidget {
-
   double toolbarHeight;
 
   BuildContext? context;
 
-
-  BackgroundCardPage( {
-    required double this.toolbarHeight
-  });
-
+  BackgroundCardPage({super.key, required this.toolbarHeight});
 
   @override
   Widget build(BuildContext context) {
@@ -22,33 +15,29 @@ class BackgroundCardPage extends StatelessWidget {
     return colorBackgroundView();
   }
 
-
-
-  Widget colorBackgroundView(){
-    return Container( child:  cardShape(),
-      color: DSColor.ds_background_toolbar, //background //ColorProject.grey
+  Widget colorBackgroundView() {
+    return Container(
+      color: DSColor.ds_background_toolbar,
+      child: cardShape(), //background //ColorProject.grey
     );
   }
 
-  Widget cardShape(){
+  Widget cardShape() {
     return Container(
       width: DeviceTools.getWidth(context!),
-
       margin: EdgeInsets.only(top: toolbarHeight),
-
-      decoration:   BoxDecoration(
-        color: HexColor( ColorProject.white_sun_4 ) , //ColorProject.white_sun_4
+      decoration: BoxDecoration(
+        color: HexColor(ColorProject.white_sun_4), //ColorProject.white_sun_4
         borderRadius: BorderRadius.only(
-          topLeft: Radius.circular(DSDimen.space_level_2),  //32
+          topLeft: Radius.circular(DSDimen.space_level_2), //32
           topRight: Radius.circular(DSDimen.space_level_2),
         ),
       ),
-      child:  bodyPage(),
+      child: bodyPage(),
     );
   }
 
-  Widget bodyPage(){
-
+  Widget bodyPage() {
     /** ---- show background example
         return ImageViewTemplate(
         context: context!,
@@ -61,5 +50,4 @@ class BackgroundCardPage extends StatelessWidget {
 
     return EmptyView.allDeviceScreen(context!);
   }
-
 }

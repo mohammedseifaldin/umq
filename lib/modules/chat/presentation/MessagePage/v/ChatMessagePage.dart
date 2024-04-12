@@ -200,9 +200,9 @@ class ChatMessageState extends ResumableState<ChatMessagePage> {
     //view
     var prg = ProgressSpinkit.get();
     return Container(
-      child: prg,
       width: DeviceTools.getWidth(context),
       alignment: Alignment.center,
+      child: prg,
     );
   }
 }

@@ -3,8 +3,8 @@ import 'package:flutter/material.dart';
 class ProviderDetailsButton extends StatefulWidget {
   void Function() buttonFn;
   String title;
-  ProviderDetailsButton({Key? key, required this.buttonFn, required this.title})
-      : super(key: key);
+  ProviderDetailsButton(
+      {super.key, required this.buttonFn, required this.title});
 
   @override
   State<ProviderDetailsButton> createState() => _ProviderDetailsButtonState();
@@ -19,13 +19,13 @@ class _ProviderDetailsButtonState extends State<ProviderDetailsButton> {
         onTap: widget.buttonFn,
         child: Container(
           alignment: Alignment.center,
-          padding: EdgeInsets.all(15),
-          decoration: BoxDecoration(
+          padding: const EdgeInsets.all(15),
+          decoration: const BoxDecoration(
               color: Color.fromARGB(255, 10, 50, 109),
               borderRadius: BorderRadius.all(Radius.circular(20))),
           child: Text(
             widget.title,
-            style: TextStyle(
+            style: const TextStyle(
                 color: Colors.white, fontWeight: FontWeight.bold, fontSize: 16),
           ),
         ),

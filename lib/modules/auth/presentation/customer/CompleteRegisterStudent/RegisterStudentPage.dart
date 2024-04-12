@@ -17,7 +17,7 @@ class RegisterStudentPage extends StatefulWidget {
   String phone;
   @override
   RegisterStudentState createState() => RegisterStudentState();
-  RegisterStudentPage(this.phone);
+  RegisterStudentPage(this.phone, {super.key});
 }
 
 class RegisterStudentState extends StateMVC<RegisterStudentPage> {
@@ -54,14 +54,14 @@ class RegisterStudentState extends StateMVC<RegisterStudentPage> {
       children: [
         imagePickerWidget(),
         Positioned(
-          child: Visibility(
-            child: CircularProgressIndicator(color: Colors.blue),
-            visible: provider!.registerIsLoading,
-          ),
           top: 1,
           bottom: 1,
           left: 1,
           right: 1,
+          child: Visibility(
+            visible: provider!.registerIsLoading,
+            child: const CircularProgressIndicator(color: Colors.blue),
+          ),
         )
       ],
     );
@@ -124,8 +124,8 @@ class RegisterStudentState extends StateMVC<RegisterStudentPage> {
           ),
           Center(
               child: Padding(
+            padding: const EdgeInsets.symmetric(vertical: 10),
             child: SubTextHelper.SubText('OR', color: Colors.white),
-            padding: EdgeInsets.symmetric(vertical: 10),
           )),
 
           //
@@ -133,7 +133,7 @@ class RegisterStudentState extends StateMVC<RegisterStudentPage> {
           //   GoTo.splashLogin(context);
           //
           // },),
-          SizedBox(
+          const SizedBox(
             height: 50,
           ),
         ],

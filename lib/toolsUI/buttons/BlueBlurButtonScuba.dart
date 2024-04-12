@@ -1,21 +1,20 @@
-
 import 'package:flutter/material.dart';
 import 'package:umq/toolsUI/ThemeColor.dart';
 
 class BlueBlurButtonScuba extends StatelessWidget {
-
   String title;
   double width;
   double height;
   GestureTapCallback onTapCallback;
 
-  BlueBlurButtonScuba(this.title, this.width, this.height, this.onTapCallback);
+  BlueBlurButtonScuba(this.title, this.width, this.height, this.onTapCallback,
+      {super.key});
 
   @override
   Widget build(BuildContext context) {
-
-    return GestureDetector(child: containerAddToBasket(),
+    return GestureDetector(
       onTap: onTapCallback,
+      child: containerAddToBasket(),
     );
   }
 
@@ -28,7 +27,7 @@ class BlueBlurButtonScuba extends StatelessWidget {
           gradient: LinearGradient(
             begin: Alignment.topRight,
             end: Alignment.bottomLeft,
-            stops: [0.1, 0.5,0.7],
+            stops: const [0.1, 0.5, 0.7],
             colors: [
               ThemeColor.hexToColor('#05A8F1'),
               ThemeColor.hexToColor('#005190'),
@@ -47,8 +46,8 @@ class BlueBlurButtonScuba extends StatelessWidget {
       child: Center(
         child: Text(
           title,
-        //  'Add to Basket',
-          style: TextStyle(
+          //  'Add to Basket',
+          style: const TextStyle(
               decoration: TextDecoration.none,
               color: Colors.white,
               fontSize: 18),
@@ -56,6 +55,4 @@ class BlueBlurButtonScuba extends StatelessWidget {
       ),
     );
   }
-
-
 }

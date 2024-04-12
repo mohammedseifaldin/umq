@@ -1,65 +1,53 @@
-
+import 'package:fastor_app_ui_widget/fastor_app_ui_widget.dart';
+import 'package:flutter/material.dart';
+import 'package:umq/tools/responsive/ResponsiveRectangle.dart';
 import 'package:umq/toolsUI/admin/paginate_number/logic/NumberController.dart';
 import 'package:umq/toolsUI/admin/paginate_number/widget/ButtonBarPaginate.dart';
 import 'package:umq/toolsUI/admin/paginate_number/widget/TotalInformationBarPaginate.dart';
-import 'package:umq/tools/responsive/ResponsiveRectangle.dart';
-import 'package:fastor_app_ui_widget/fastor_app_ui_widget.dart';
-import 'package:flutter/material.dart';
 
-typedef PaginateNumberChange  = Function(int page );
+typedef PaginateNumberChange = Function(int page);
 
-class PaginateNumberWidget extends StatefulWidget{
-
-
+class PaginateNumberWidget extends StatefulWidget {
   PaginateNumberChange paginateNumberChange;
-  int currentPage  ;  //example pages: 1,  Current page selected
-  int pageTotal ;       //pages: 10 , How many page will be avaliable to download from backend
-  int limitPerPage ; //example paginator: 10, limit per every page
+  int currentPage; //example pages: 1,  Current page selected
+  int pageTotal; //pages: 10 , How many page will be avaliable to download from backend
+  int limitPerPage; //example paginator: 10, limit per every page
   int? maxPage;
   bool progress;
 
-  PaginateNumberWidget(  {
-    required this.currentPage,
-    required this.pageTotal,
-    required this.limitPerPage,
-    required this.progress,
-    required this.paginateNumberChange,
-    int? maxPage
-}){
-    this.maxPage ??=  1000000; //pages: 999, means if there is 1000 page it will show to only page 999 maxPage;
+  PaginateNumberWidget(
+      {super.key,
+      required this.currentPage,
+      required this.pageTotal,
+      required this.limitPerPage,
+      required this.progress,
+      required this.paginateNumberChange,
+      int? maxPage}) {
+    this.maxPage ??=
+        1000000; //pages: 999, means if there is 1000 page it will show to only page 999 maxPage;
   }
-
 
   @override
   PaginateNumberState createState() {
-
     return PaginateNumberState();
   }
 
-  static double getHeightFrame(BuildContext context){
-
-    if( DeviceTools.isPortrait( context ) ) {
+  static double getHeightFrame(BuildContext context) {
+    if (DeviceTools.isPortrait(context)) {
       return 145.0; // 200.0;
     }
     return 105.0;
   }
-
-
-
 }
 
 class PaginateNumberState extends State<PaginateNumberWidget> {
-
   //numbers of page
   List<Widget> listNumberWidget = [];
-  int  recordTotal = 0; //example pages: 100,  the totalBar database record
-
+  int recordTotal = 0; //example pages: 100,  the totalBar database record
 
   //go to by search text
   int pageGoTo = 0;
-  late TextEditingController tf_goto_controller  = TextEditingController();
-
-
+  late TextEditingController tf_goto_controller = TextEditingController();
 
   @override
   void initState() {
@@ -71,38 +59,36 @@ class PaginateNumberState extends State<PaginateNumberWidget> {
     });
   }
 
-
   @override
   Widget build(BuildContext context) {
     return Container(
-        child: widget.progress ?  progressView() : barTabButtonAndSearchBarResponsiveBetweenMobileAndDesktop(),
-    color: Colors.white,
-    padding: EdgeInsets.symmetric(vertical: DSDimen.space_level_4 )
-    );
+        color: Colors.white,
+        padding: EdgeInsets.symmetric(vertical: DSDimen.space_level_4),
+        child: widget.progress
+            ? progressView()
+            : barTabButtonAndSearchBarResponsiveBetweenMobileAndDesktop());
   }
 
   //--------------------------------------------------------------------- progress view
 
-  Widget progressView(){
-
+  Widget progressView() {
     var prg = ProgressCircleFastor();
 
-    return Container( child: prg,
-      width: DeviceTools.getWidth(context),
-      alignment: Alignment.center,
+    return Container(
+        width: DeviceTools.getWidth(context),
+        alignment: Alignment.center,
         color: Colors.white,
-      height: PaginateNumberWidget.getHeightFrame(context),
-      padding: EdgeInsets.symmetric(vertical: DSDimen.space_level_4 )
-    );
+        height: PaginateNumberWidget.getHeightFrame(context),
+        padding: EdgeInsets.symmetric(vertical: DSDimen.space_level_4),
+        child: prg);
   }
 
   //--------------------------------------------------------------------- tabs view
 
-  Widget barTabButtonAndSearchBarResponsiveBetweenMobileAndDesktop(){
-    return   ResponsiveToLandscape.portraitVertical_to_landscapeHorizontal( context, children: [
-      buttonBarPaginate(),
-      totalBarPaginate()
-    ]);
+  Widget barTabButtonAndSearchBarResponsiveBetweenMobileAndDesktop() {
+    return ResponsiveToLandscape.portraitVertical_to_landscapeHorizontal(
+        context,
+        children: [buttonBarPaginate(), totalBarPaginate()]);
   }
 
   //
@@ -161,7 +147,4 @@ class PaginateNumberState extends State<PaginateNumberWidget> {
   //   drawListNumberWidget();
   // }
   //
-
-
-
 }

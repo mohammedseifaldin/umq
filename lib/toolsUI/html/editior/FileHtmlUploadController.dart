@@ -29,7 +29,7 @@ extension FileHtmlUploadController on HtmlEditorState {
   }
 
   Future _networkGenerateFileHtmlAsUrl(String htmlData) async {
-    String urlApiLink = BackendConstant.baseUrlv2 + "/file-generate";
+    String urlApiLink = "${BackendConstant.baseUrlv2}/file-generate";
 
     //listener
     await GenerateFileLaravelAPI().getDataByPostContent(

@@ -20,7 +20,7 @@ class ItemProductCartView extends StatefulWidget {
   MCartSingleProduct mCart;
   int position;
 
-  ItemProductCartView(this.parentState, this.mCart, this.position);
+  ItemProductCartView(this.parentState, this.mCart, this.position, {super.key});
 
   @override
   ItemProductCartState createState() {
@@ -50,12 +50,12 @@ class ItemProductCartState extends State<ItemProductCartView> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      child: _getCartContent(),
       decoration: BoarderHelper.cardView(),
       margin: EdgeInsets.only(
           left: DSDimen.space_level_2,
           right: DSDimen.space_level_2,
           top: DSDimen.space_level_3),
+      child: _getCartContent(),
     );
   }
 
@@ -73,12 +73,12 @@ class ItemProductCartState extends State<ItemProductCartView> {
         cancel(),
 
         //favorite
-        Positioned(child: bt_favorite(), right: 0),
+        Positioned(right: 0, child: bt_favorite()),
 
         //column
         Positioned(
-            child: productInfoAndPlusMinus(),
-            left: widget.frame_width_image + DSDimen.space_level_3)
+            left: widget.frame_width_image + DSDimen.space_level_3,
+            child: productInfoAndPlusMinus())
       ],
     );
   }
@@ -92,7 +92,7 @@ class ItemProductCartState extends State<ItemProductCartView> {
       heightNeeded: 50,
       radius_all: 25,
       //  colorBackground: HexColor( ColorProject.blue_fish_front),
-      padding: EdgeInsets.all(15),
+      padding: const EdgeInsets.all(15),
       onPressed: () async {
         await widget.parentState.cancelClick(widget.mCart);
       },
@@ -100,9 +100,9 @@ class ItemProductCartState extends State<ItemProductCartView> {
     );
 
     return Container(
-      child: im,
       margin: EdgeInsets.only(
           top: DSDimen.space_level_2, left: DSDimen.space_level_2),
+      child: im,
     );
   }
 
@@ -130,11 +130,11 @@ class ItemProductCartState extends State<ItemProductCartView> {
 
     //margin
     return Container(
-      child: crop,
       margin: EdgeInsets.only(
           left: DSDimen.space_level_2,
           top: DSDimen.space_level_2,
           bottom: DSDimen.space_level_2),
+      child: crop,
     );
   }
 
@@ -148,9 +148,9 @@ class ItemProductCartState extends State<ItemProductCartView> {
     );
 
     return Container(
-      child: bt,
       margin: EdgeInsets.only(
           top: DSDimen.space_level_2, right: DSDimen.space_level_2),
+      child: bt,
     );
   }
 

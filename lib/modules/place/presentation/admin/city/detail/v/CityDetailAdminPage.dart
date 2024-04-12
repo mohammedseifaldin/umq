@@ -1,4 +1,3 @@
-
 import 'package:fastor_app_ui_widget/fastor_app_ui_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:need_resume/need_resume.dart';
@@ -10,26 +9,22 @@ import 'package:umq/toolsUI/textfield/mobileCountry/MobileCountryView.dart';
 //import 'package:umq/toolsUI/toolbar/ToolbarSimpleFastor.dart';
 
 class CityDetailAdminPage extends StatefulWidget {
+  MCity? mEdit;
 
-  MCity? mEdit  ;
-
-  CityDetailAdminPage( { MCity? edit }) {
-    this.mEdit = edit;
+  CityDetailAdminPage({super.key, MCity? edit}) {
+    mEdit = edit;
   }
 
   @override
   CityDetailAdminState createState() {
-    return CityDetailAdminState( edit: mEdit );
+    return CityDetailAdminState(edit: mEdit);
   }
-
-
 }
 
-class CityDetailAdminState extends ResumableState<CityDetailAdminPage > {
-
+class CityDetailAdminState extends ResumableState<CityDetailAdminPage> {
   //-------------------------------------------------------------------- variable
   String pageTitle = "City";
-  MCity? mEdit  ;
+  MCity? mEdit;
 
   //name
   var nameEn_txt = "";
@@ -44,14 +39,12 @@ class CityDetailAdminState extends ResumableState<CityDetailAdminPage > {
   //mobile
   MobileCountryViewState? mobileState;
 
-
   //constructor
-  CityDetailAdminState( { MCity? edit }) {
-    this.mEdit = edit;
+  CityDetailAdminState({MCity? edit}) {
+    mEdit = edit;
   }
 
   //------------------------------------------------------------------- life cycle
-
 
   @override
   void initState() {
@@ -60,67 +53,49 @@ class CityDetailAdminState extends ResumableState<CityDetailAdminPage > {
     setEditDataIfFound();
   }
 
-
   @override
   void onReady() {
     super.onReady();
     onResume();
   }
 
-
-  @override
-  void onResume(){
-    super.onResume();
-    //Log.i( "lifecycle - onResume - cityDetail");
-  }
-
-
   //-------------------------------------------------------------------- build
 
   BuildContext? contextPage;
-   ProgressCircleState? prg;
+  ProgressCircleState? prg;
 
   @override
   Widget build(BuildContext context) {
-    this.contextPage = context;
+    contextPage = context;
 
     return getPageTemplate();
   }
 
-
-  Widget getPageTemplate(){
-
-    if( mEdit != null ) {
-      pageTitle = "Edit" + " " + pageTitle;
+  Widget getPageTemplate() {
+    if (mEdit != null) {
+      pageTitle = "Edit $pageTitle";
     }
 
-    return PageTemplate.t( this,
+    return PageTemplate.t(this,
         title: pageTitle,
         content: pageContent(),
         // assetBackgroundOpacity: 0.3,
         // assetBackground: DrawableProject.exampleAdmin(  "01"),
-        toolbar: ToolbarSimpleFastor(  contextPage!,  pageTitle , iconColorBack: Colors.black),
+        toolbar: ToolbarSimpleFastor(contextPage!, pageTitle,
+            iconColorBack: Colors.black),
         toolbar_height: ToolbarSimpleFastor.frameHeight,
-        onChangeProgressState: (value) => prg = value
-    );
+        onChangeProgressState: (value) => prg = value);
   }
 
-
   Widget pageContent() {
-    return ResponsiveFourmMobile.wrapHeight(  contextPage!, getContent() );
+    return ResponsiveFourmMobile.wrapHeight(contextPage!, getContent());
   }
 
   Widget getContent() {
-    return ColumnTemplate.t( children: [
-      name_en(),
-      name_ar(),
-      save()
-    ],
-    mainAxisAlignment: MainAxisAlignment.start,
-    mainAxisSize: MainAxisSize.max,
-    crossAxisAlignment: CrossAxisAlignment.start
-    );
+    return ColumnTemplate.t(
+        children: [name_en(), name_ar(), save()],
+        mainAxisAlignment: MainAxisAlignment.start,
+        mainAxisSize: MainAxisSize.max,
+        crossAxisAlignment: CrossAxisAlignment.start);
   }
-
-
 }

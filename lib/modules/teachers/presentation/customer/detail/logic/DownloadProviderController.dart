@@ -4,49 +4,41 @@ import 'package:umq/modules/teachers/data/source/TeacherDetailAPI.dart';
 import 'package:umq/modules/teachers/presentation/customer/detail/TeacherDetailsPage.dart';
 import 'package:umq/toolsUI/toast/ToastTools.dart';
 
-
 extension DownloadProviderController on ProviderDetailsState {
-
   Future startDownloadData() async {
-
     //check mounted
     /**
      at chat page "the next page" when setState()" callred at chat, th profile
         allso change
      */
-    Log.i( "startDownloadData() - mounted $mounted" );
-    if( mounted == false ) return;
-
+    Log.i("startDownloadData() - mounted $mounted");
+    if (mounted == false) return;
 
     //initl
-    responseSingleProvider = new ResponseSingleProvider();
-
+    responseSingleProvider = ResponseSingleProvider();
 
     //update prgress
     loadingGallery = true;
 
     //get id
     int providerIdToDownload = 0;
-    if( widget.provider != null ) {
+    if (widget.provider != null) {
       providerIdToDownload = widget.provider!.id!;
-    }else {
+    } else {
       providerIdToDownload = widget.providerId!;
     }
 
-
     //listener
-    await ProviderDetailAPI().getData( providerIdToDownload, (status, msg, response ) {
-
-
+    await ProviderDetailAPI().getData(providerIdToDownload,
+        (status, msg, response) {
       //update prgress
       loadingGallery = false;
 
       //check failed
-      if( status == false ) {
+      if (status == false) {
         ToolsToast.i(context, msg);
         return;
       }
-
 
       setState(() {
         //now set data
@@ -54,7 +46,6 @@ extension DownloadProviderController on ProviderDetailsState {
 
         widget.provider = response.data!.providerContent!;
       });
-    }
-    );
+    });
   }
 }

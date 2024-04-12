@@ -3,25 +3,24 @@ import 'package:flutter/material.dart';
 import 'package:umq/tools/resourceProject/FontProject.dart';
 
 class TextFieldBorderedLong extends StatelessWidget {
-
   final TextEditingController controller;
   final String hint;
   final Widget prefix;
   final TextInputType type;
 
   const TextFieldBorderedLong({
-    Key? key,
+    super.key,
     required this.controller,
     required this.hint,
     required this.prefix,
     required this.type,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      child: getTextField(),
+    return SizedBox(
       height: 200,
+      child: getTextField(),
     );
   }
 
@@ -34,32 +33,31 @@ class TextFieldBorderedLong extends StatelessWidget {
       minLines: 5,
       maxLines: 5,
 
-      style:  TextStyle( color: DSColor.ds_textfield_text,
+      style: TextStyle(
+          color: DSColor.ds_textfield_text,
           fontFamily: FontProject.beach,
-          fontSize: DSDimen.text_level_2 ),
+          fontSize: DSDimen.text_level_2),
       decoration: getInputDecoration(),
     );
   }
 
-
   InputDecoration getInputDecoration() {
     return InputDecoration(
-
       /**
        * fix the "city picker" dropdown view same height
        */
-      contentPadding: EdgeInsets.all( DSDimen.textfield_auto_padding),
-
+      contentPadding: EdgeInsets.all(DSDimen.textfield_auto_padding),
       focusedBorder: OutlineInputBorder(
-        borderRadius: BorderRadius.circular( DSDimen.ds_size_corner_level_2), //32.0
-        borderSide:   BorderSide(
+        borderRadius:
+            BorderRadius.circular(DSDimen.ds_size_corner_level_2), //32.0
+        borderSide: BorderSide(
           width: 1.1,
-          color:  DSColor.ds_textfield_boarder_line,
+          color: DSColor.ds_textfield_boarder_line,
         ),
       ),
       enabledBorder: OutlineInputBorder(
         borderRadius: BorderRadius.circular(DSDimen.ds_size_corner_level_2),
-        borderSide:   BorderSide(
+        borderSide: BorderSide(
           color: DSColor.ds_textfield_boarder_line,
           width: 1.0,
         ),
@@ -68,6 +66,4 @@ class TextFieldBorderedLong extends StatelessWidget {
       prefixIcon: prefix,
     );
   }
-
-
 }

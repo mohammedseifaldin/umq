@@ -1,7 +1,4 @@
-import 'package:fastor_app_ui_widget/fastor_app_ui_widget.dart';
-
 class ToolsAPI {
-
   /**
    - example success:
       {
@@ -16,22 +13,22 @@ class ToolsAPI {
       }
 
    */
-  static bool isSuccess(int? n ) {
-      if ( n == null ) return false;
-      if ( n == 0 ) return false;
-      if ( n == 1 ) return true;
-      return false;
+  static bool isSuccess(int? n) {
+    if (n == null) return false;
+    if (n == 0) return false;
+    if (n == 1) return true;
+    return false;
   }
 
-  static bool isTrue(int? n ) {
-    return isSuccess( n );
+  static bool isTrue(int? n) {
+    return isSuccess(n);
   }
 
-  static bool isFalse(int? n ) {
-    return ! isSuccess( n );
+  static bool isFalse(int? n) {
+    return !isSuccess(n);
   }
 
-  static bool isFailed(int? n ) {
+  static bool isFailed(int? n) {
     return !isSuccess(n);
   }
 
@@ -43,10 +40,10 @@ class ToolsAPI {
       "block": "0",  >> means false
    */
   static bool parseBoolean(String? n) {
-    if( n == null )return false;
+    if (n == null) return false;
 
     //case true
-    if( n == "1" )return true;
+    if (n == "1") return true;
 
     //default
     return false;
@@ -56,9 +53,11 @@ class ToolsAPI {
    * used to change status from "favorite" to "unfavorite" and vise versa
    */
   static int changeStatus(int? i) {
-    if( i == null ) return 0;
-    if( i == 0 ) return 1;// change status
-    else return 0;
+    if (i == null) return 0;
+    if (i == 0)
+      return 1; // change status
+    else
+      return 0;
   }
 
   /**
@@ -80,26 +79,23 @@ class ToolsAPI {
    *  >> result true "there is no next pages"
    */
   static bool isPaginateLaravelEnd(int? currentPage, int? last_page) {
-    if( currentPage == null ) return false;
-    if( last_page == null ) return false;
+    if (currentPage == null) return false;
+    if (last_page == null) return false;
     /**
      * why write <= not write == ?
      * in case zero record the "to" is zero while current page is "1"
      */
-    bool result =  last_page <= currentPage;
-   // Log.i( "isPaginateLaravelEnd() - currentPage: " + currentPage.toString() +
-   //  " /last_page: " + last_page.toString() + " /result: " + result.toString()  );
+    bool result = last_page <= currentPage;
+    // Log.i( "isPaginateLaravelEnd() - currentPage: " + currentPage.toString() +
+    //  " /last_page: " + last_page.toString() + " /result: " + result.toString()  );
     return result;
   }
 
   static booleanToZeroAndOne(bool b) {
-    if( b ) {
+    if (b) {
       return 1;
     } else {
       return 0;
     }
   }
-
-
-
 }

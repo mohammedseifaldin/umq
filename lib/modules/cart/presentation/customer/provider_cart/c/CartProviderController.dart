@@ -17,7 +17,7 @@ extension CartProviderController on CartProviderState {
 
   Future getCartListApi() async {
     //check guest
-    bool isGuestType = await UserSingleTone.instance().isGuest();
+    bool isGuestType = UserSingleTone.instance().isGuest();
     if (isGuestType) {
       setState(() {
         isGuest = true;
@@ -121,7 +121,7 @@ extension CartProviderController on CartProviderState {
     //validate
     if (validateCheckout(totalPrice) == false) return;
 
-    Log.i("clickNext() - response!.data!: " + response!.data!.toString());
+    Log.i("clickNext() - response!.data!: ${response!.data!}");
 
     //save data
     // OrderCurrentSingletone.instance().cartList = response!.data!;

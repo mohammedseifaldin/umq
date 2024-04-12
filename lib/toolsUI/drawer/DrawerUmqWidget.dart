@@ -4,10 +4,9 @@ import 'package:umq/tools/resourceProject/ColorProject.dart';
 import 'package:umq/toolsUI/drawer/widgets/HeaderDrawer.dart';
 
 class DrawerUmqWidget extends StatelessWidget {
-
   BuildContext? context;
 
-  DrawerUmqWidget( this.context);
+  DrawerUmqWidget(this.context, {super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -21,11 +20,9 @@ class DrawerUmqWidget extends StatelessWidget {
     );
   }
 
-  Widget contentDrawer(){
+  Widget contentDrawer() {
     return ColumnFastor(children: [
       header(),
-
     ]);
   }
-
 }

@@ -18,19 +18,18 @@
  */
 
 import 'dart:async';
+
 import 'package:audio_session/audio_session.dart';
 import 'package:fastor_app_ui_widget/fastor_app_ui_widget.dart';
 import 'package:flutter/foundation.dart' show kIsWeb;
 import 'package:flutter/material.dart';
 import 'package:flutter_sound/flutter_sound.dart';
 import 'package:flutter_sound_platform_interface/flutter_sound_recorder_platform_interface.dart';
-import 'package:permission_handler/permission_handler.dart';
-import 'package:umq/tools/network/BackendConstant.dart';
-import 'package:umq/tools/laravel/upload/UploadFileLaravelAPI.dart';
 import 'package:path_provider/path_provider.dart';
-import 'package:fastor_app_ui_widget/fastor_app_ui_widget.dart';
+import 'package:permission_handler/permission_handler.dart';
+import 'package:umq/tools/laravel/upload/UploadFileLaravelAPI.dart';
+import 'package:umq/tools/network/BackendConstant.dart';
 import 'package:umq/tools/time/TimeTools.dart';
-
 
 ///
 typedef _Fn = void Function();
@@ -60,6 +59,8 @@ const theSource = AudioSource.microphone;
 
 /// Example app.
 class SimpleRecorder extends StatefulWidget {
+  const SimpleRecorder({super.key});
+
   @override
   _SimpleRecorderState createState() => _SimpleRecorderState();
 }
@@ -75,7 +76,6 @@ class _SimpleRecorderState extends State<SimpleRecorder> {
 
   @override
   void initState() {
-
     _initPath();
 
     _mPlayer!.openPlayer().then((value) {
@@ -90,7 +90,6 @@ class _SimpleRecorderState extends State<SimpleRecorder> {
       });
     });
     super.initState();
-
   }
 
   @override
@@ -103,20 +102,19 @@ class _SimpleRecorderState extends State<SimpleRecorder> {
     super.dispose();
   }
 
-   Future _initPath() async  {
+  Future _initPath() async {
     String unique = TimeTools.getCurrentTimestamp().toString();
     var directory = await getApplicationDocumentsDirectory();
     var directoryPath = directory.path;
-    _mPath = directoryPath + "/time" + unique + "record.mp4";
+    _mPath = "$directoryPath/time${unique}record.mp4";
 
     //check type web
-    if( DeviceTools.isPlatformWeb() ) {
-      _mPath = directoryPath + "/time" + unique + "record.webm";
+    if (DeviceTools.isPlatformWeb()) {
+      _mPath = "$directoryPath/time${unique}record.webm";
     }
 
-    Log.i( "_initPath() - _mPath: " +  _mPath );
+    Log.i("_initPath() - _mPath: $_mPath");
   }
-
 
   Future<void> openTheRecorder() async {
     if (!kIsWeb) {
@@ -138,11 +136,11 @@ class _SimpleRecorderState extends State<SimpleRecorder> {
     await session.configure(AudioSessionConfiguration(
       avAudioSessionCategory: AVAudioSessionCategory.playAndRecord,
       avAudioSessionCategoryOptions:
-      AVAudioSessionCategoryOptions.allowBluetooth |
-      AVAudioSessionCategoryOptions.defaultToSpeaker,
+          AVAudioSessionCategoryOptions.allowBluetooth |
+              AVAudioSessionCategoryOptions.defaultToSpeaker,
       avAudioSessionMode: AVAudioSessionMode.spokenAudio,
       avAudioSessionRouteSharingPolicy:
-      AVAudioSessionRouteSharingPolicy.defaultPolicy,
+          AVAudioSessionRouteSharingPolicy.defaultPolicy,
       avAudioSessionSetActiveOptions: AVAudioSessionSetActiveOptions.none,
       androidAudioAttributes: const AndroidAudioAttributes(
         contentType: AndroidAudioContentType.speech,
@@ -188,36 +186,30 @@ class _SimpleRecorderState extends State<SimpleRecorder> {
     //play
     _mPlayer!
         .startPlayer(
-        fromURI: _mPath,
-        //codec: kIsWeb ? Codec.opusWebM : Codec.aacADTS,
-        whenFinished: () {
-          setState(() {});
-        })
+            fromURI: _mPath,
+            //codec: kIsWeb ? Codec.opusWebM : Codec.aacADTS,
+            whenFinished: () {
+              setState(() {});
+            })
         .then((value) {
       setState(() {});
     });
 
-
     //abdallah: upload
-     uploadFile();
-
+    uploadFile();
   }
 
   void uploadFile() async {
-
     //info
-    String urlApiLink = BackendConstant.getUploadFileUrl() ;
+    String urlApiLink = BackendConstant.getUploadFileUrl();
     String filePath = _mPath;
 
     //listener
-    await UploadFileLaravelAPI().getDataByFileUrl(urlAPILink: urlApiLink,
-        filePath:    filePath ,
-        callBack: ( status, msg, responseLaravelUpload ) {
-
-
-        });
+    await UploadFileLaravelAPI().getDataByFileUrl(
+        urlAPILink: urlApiLink,
+        filePath: filePath,
+        callBack: (status, msg, responseLaravelUpload) {});
   }
-
 
   void stopPlayer() {
     _mPlayer!.stopPlayer().then((value) {
@@ -253,7 +245,7 @@ class _SimpleRecorderState extends State<SimpleRecorder> {
             width: double.infinity,
             alignment: Alignment.center,
             decoration: BoxDecoration(
-              color: Color(0xFFFAF0E6),
+              color: const Color(0xFFFAF0E6),
               border: Border.all(
                 color: Colors.indigo,
                 width: 3,
@@ -266,7 +258,7 @@ class _SimpleRecorderState extends State<SimpleRecorder> {
                 //disabledColor: Colors.grey,
                 child: Text(_mRecorder!.isRecording ? 'Stop' : 'Record'),
               ),
-              SizedBox(
+              const SizedBox(
                 width: 20,
               ),
               Text(_mRecorder!.isRecording
@@ -281,7 +273,7 @@ class _SimpleRecorderState extends State<SimpleRecorder> {
             width: double.infinity,
             alignment: Alignment.center,
             decoration: BoxDecoration(
-              color: Color(0xFFFAF0E6),
+              color: const Color(0xFFFAF0E6),
               border: Border.all(
                 color: Colors.indigo,
                 width: 3,
@@ -294,7 +286,7 @@ class _SimpleRecorderState extends State<SimpleRecorder> {
                 //disabledColor: Colors.grey,
                 child: Text(_mPlayer!.isPlaying ? 'Stop' : 'Play'),
               ),
-              SizedBox(
+              const SizedBox(
                 width: 20,
               ),
               Text(_mPlayer!.isPlaying
@@ -324,6 +316,4 @@ class _SimpleRecorderState extends State<SimpleRecorder> {
       }
 
    */
-
-
 }

@@ -4,22 +4,17 @@ import 'package:umq/tools/navigate/GoTo.dart';
 import 'package:umq/tools/resourceProject/ColorProject.dart';
 
 class ButtonLoginGuestView extends StatelessWidget {
-
   BuildContext pageContext;
 
-  ButtonLoginGuestView( this.pageContext );
+  ButtonLoginGuestView(this.pageContext, {super.key});
 
   @override
   Widget build(BuildContext context) {
-    return TextTemplate.t( "Login to your Account" ,
-        onPressed: (){
-          GoTo.splashLogin( pageContext );
-        },
+    return TextTemplate.t("Login to your Account", onPressed: () {
+      GoTo.splashLogin(pageContext);
+    },
         textAlign: TextAlign.center,
-        color: HexColor( ColorProject.blue_fish_front ),
-        margin: EdgeInsets.all( 20)
-    );
+        color: HexColor(ColorProject.blue_fish_front),
+        margin: const EdgeInsets.all(20));
   }
-
-
 }

@@ -51,7 +51,7 @@ dependencies:
 
   #--------------------------------------------------------------- other plugins
 
-  fastor_app_ui_widget: ^1.3.44
+  fastor_app_ui_widget: ^1.0.255
 
   fluttertoast: ^8.2.2
   flutter_svg: ^2.0.7

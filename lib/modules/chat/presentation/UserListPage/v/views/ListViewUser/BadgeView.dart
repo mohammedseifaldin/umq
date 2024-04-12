@@ -5,12 +5,10 @@ import 'package:umq/modules/chat/data/model/MChatMessage.dart';
 double badgeFrame = 25;
 
 class BadgeView extends StatelessWidget {
-
   MChatMessage mMessage;
   int counterNotReaded;
 
-  BadgeView(this.mMessage, this.counterNotReaded );
-
+  BadgeView(this.mMessage, this.counterNotReaded, {super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -19,9 +17,9 @@ class BadgeView extends StatelessWidget {
 
   //--------------------------------------------------------- _badgeView
 
-  Widget _badgeView(){
+  Widget _badgeView() {
     //check have counter
-    if( counterNotReaded == 0 ) {
+    if (counterNotReaded == 0) {
       return EmptyView.zero();
     }
 
@@ -29,15 +27,13 @@ class BadgeView extends StatelessWidget {
 
     //circle
     var ct = Container(
-        child: _badgeTv( counterNotReaded),
         alignment: Alignment.center,
         width: badgeFrame,
         height: badgeFrame,
-        padding: EdgeInsets.all(5 ), //boarder width
-        decoration: BoxDecoration(
-            shape: BoxShape.circle,
-            color: Colors.white
-        ));
+        padding: const EdgeInsets.all(5), //boarder width
+        decoration:
+            const BoxDecoration(shape: BoxShape.circle, color: Colors.white),
+        child: _badgeTv(counterNotReaded));
     return ct;
   }
 
@@ -45,12 +41,12 @@ class BadgeView extends StatelessWidget {
       //when counter from 1 to 99 width is 25
    */
   void _calculateFrame() {
-    if( counterNotReaded <= 99 ) {
+    if (counterNotReaded <= 99) {
       badgeFrame = 25;
       return;
-    } else if( counterNotReaded <= 999) {
+    } else if (counterNotReaded <= 999) {
       badgeFrame = 30;
-    } else if( counterNotReaded <= 9999) {
+    } else if (counterNotReaded <= 9999) {
       badgeFrame = 55;
     } else {
       badgeFrame = 65;
@@ -58,14 +54,12 @@ class BadgeView extends StatelessWidget {
   }
 
   Widget _badgeTv(int counterNotReaded) {
-    return TextTemplate.t( counterNotReaded.toString(),
+    return TextTemplate.t(counterNotReaded.toString(),
         levelDS: LevelDS.l3,
         color: Colors.black87,
         width: badgeFrame,
         height: badgeFrame,
         textAlign: TextAlign.center,
-      gravityLayoutAlign: Alignment.center
-    );
+        gravityLayoutAlign: Alignment.center);
   }
-
 }

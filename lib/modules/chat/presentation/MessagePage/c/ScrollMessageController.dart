@@ -44,8 +44,8 @@ extension ScrollMessageController on ChatMessageState {
   Future typeAddNewPageHistory() async {
     //set previous
     scrollPreviousPositionMaxLenght = scrollController.position.maxScrollExtent;
-    Log.i("typeAddNewPageHistory() - scrollPreviousPosition_maxLenght: " +
-        scrollPreviousPositionMaxLenght.toString());
+    Log.i(
+        "typeAddNewPageHistory() - scrollPreviousPosition_maxLenght: $scrollPreviousPositionMaxLenght");
 
     //1- show list
     setState(() {});
@@ -67,7 +67,7 @@ extension ScrollMessageController on ChatMessageState {
 
         c- case last page in history
      */
-    Log.i("_startFocus() - page: " + page.toString());
+    Log.i("_startFocus() - page: $page");
     if (page == 2) {
       await focusNowBottomScreenWithAnimate();
     } else if (isFinishAllPages) {
@@ -103,7 +103,7 @@ extension ScrollMessageController on ChatMessageState {
 
   Future focusNowBottomScreenWithAnimate() async {
     double max = scrollController.position.maxScrollExtent;
-    Log.i("focusNowBottomScreenWithAnimate() - max: " + max.toString());
+    Log.i("focusNowBottomScreenWithAnimate() - max: $max");
 
     // Scroll to that position.
     scrollController.position.animateTo(
@@ -140,10 +140,9 @@ extension ScrollMessageController on ChatMessageState {
   Future focusToPreviousPosition() async {
     var currentMax = scrollController.position.maxScrollExtent;
     var distanceAddedNew = currentMax - scrollPreviousPositionMaxLenght;
-    Log.i("focusToPreviousPosition() - scrollPreviousPosition: " +
-        scrollPreviousPositionMaxLenght.toString());
-    Log.i("focusToPreviousPosition() - distanceAddedNew: " +
-        distanceAddedNew.toString());
+    Log.i(
+        "focusToPreviousPosition() - scrollPreviousPosition: $scrollPreviousPositionMaxLenght");
+    Log.i("focusToPreviousPosition() - distanceAddedNew: $distanceAddedNew");
 
     scrollController.position.jumpTo(distanceAddedNew);
   }

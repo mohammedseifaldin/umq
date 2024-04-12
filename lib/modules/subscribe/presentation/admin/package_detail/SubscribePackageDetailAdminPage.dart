@@ -12,7 +12,7 @@ import 'package:umq/tools/responsive/fourm/ResponsiveFormMobile.dart';
 class SubscribePackageDetailAdminPage extends StatefulWidget {
   MSubscribePackage? mEdit;
 
-  SubscribePackageDetailAdminPage({this.mEdit});
+  SubscribePackageDetailAdminPage({super.key, this.mEdit});
 
   @override
   SubscribePackageDetailAdminState createState() {
@@ -26,7 +26,7 @@ class SubscribePackageDetailAdminState
   String pageTitle = "Package";
 
   SubscribeChangeNotifier? provider;
-  var request = new RequestCreateSubscribePackage();
+  var request = RequestCreateSubscribePackage();
 
   //------------------------------------------------------------------- life cycle
 
@@ -54,7 +54,7 @@ class SubscribePackageDetailAdminState
 
   @override
   Widget build(BuildContext context) {
-    this.contextPage = context;
+    contextPage = context;
     provider = SubscribeChangeNotifier.getListenFalse(context);
 
     return PageFastor(

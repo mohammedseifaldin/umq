@@ -8,10 +8,11 @@ class FABBottomAppBarItem {
 
 class FABBottomAppBar extends StatefulWidget {
   FABBottomAppBar({
+    super.key,
     required this.items,
     this.centerItemText,
     this.height = 60.0,
-    this.iconSize =  30.0,
+    this.iconSize = 30.0,
     required this.backgroundColor,
     required this.color,
     required this.selectedColor,
@@ -53,12 +54,12 @@ class FABBottomAppBarState extends State<FABBottomAppBar> {
     });
 
     return BottomAppBar(
+      color: widget.backgroundColor,
       child: Row(
         mainAxisSize: MainAxisSize.max,
         mainAxisAlignment: MainAxisAlignment.spaceAround,
         children: items,
       ),
-      color: widget.backgroundColor,
     );
   }
 
@@ -73,7 +74,10 @@ class FABBottomAppBarState extends State<FABBottomAppBar> {
             SizedBox(height: widget.iconSize),
             Text(
               widget.centerItemText ?? '',
-              style: TextStyle(color: widget.color,    decoration: TextDecoration.none,),
+              style: TextStyle(
+                color: widget.color,
+                decoration: TextDecoration.none,
+              ),
             ),
           ],
         ),
@@ -98,12 +102,16 @@ class FABBottomAppBarState extends State<FABBottomAppBar> {
               mainAxisSize: MainAxisSize.min,
               mainAxisAlignment: MainAxisAlignment.center,
               children: <Widget>[
-                Icon(item!.icon,color: color,size:widget.iconSize,),
-                if(item.text!=null)
-                Text(
-                  item.text!,
-                  style: TextStyle(color: color),
-                )
+                Icon(
+                  item!.icon,
+                  color: color,
+                  size: widget.iconSize,
+                ),
+                if (item.text != null)
+                  Text(
+                    item.text!,
+                    style: TextStyle(color: color),
+                  )
               ],
             ),
           ),

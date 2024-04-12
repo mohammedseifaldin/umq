@@ -6,87 +6,77 @@ import 'package:umq/modules/chat/presentation/MessagePage/v/views/inputMessage/B
 import 'package:umq/modules/chat/shared/toolsChat/resource/ChatColor.dart';
 import 'package:umq/toolsUI/textField/CheckerHeightTextField.dart';
 
-
 class InputMessageWidget extends StatefulWidget {
-
-
   ChatMessageState chatMessageState;
 
-  InputMessageWidget(this.chatMessageState);
+  InputMessageWidget(this.chatMessageState, {super.key});
 
   @override
   InputMessageState createState() {
     return InputMessageState(chatMessageState);
   }
-
 }
-class InputMessageState extends State<InputMessageWidget> {
 
+class InputMessageState extends State<InputMessageWidget> {
   //------------------------------------------------------------------- variable
 
-
   //frame
- static double height_Frame  = 50 ;
- double frame_width_cameraAndAttachView = 80;
- double buttonSave_frame_widht = 62;
+  static double height_Frame = 50;
+  double frame_width_cameraAndAttachView = 80;
+  double buttonSave_frame_widht = 62;
 
- // save
+  // save
   var isSaveButtonType_text = false;
   var isSaveButtonType_record = true;
 
- //textfield
+  //textfield
   CheckerHeightTextField? checkerHeightTextField;
   var msg_txt = "";
   var msg_valid = AutovalidateMode.disabled;
   var msg_controller = TextEditingController();
 
- //recorder
- bool isRecorderRun = false;
+  //recorder
+  bool isRecorderRun = false;
 
   //parent
- ChatMessageState chatMessageState;
+  ChatMessageState chatMessageState;
 
- //progress
- bool prg_attachFile = false;
- bool prg_capture = false;
- bool prg_recorder = false;
+  //progress
+  bool prg_attachFile = false;
+  bool prg_capture = false;
+  bool prg_recorder = false;
 
- InputMessageState(this.chatMessageState);
+  InputMessageState(this.chatMessageState);
 
+  //------------------------------------------------------------------- build
 
- //------------------------------------------------------------------- build
-
- @override
- Widget build(BuildContext context) {
-
-   return getInputMessageView();
-   // return getContainerLayoutInput(); prg_capture
- }
-
- //--------------------------------------------------------------- input view
-
-  Widget getInputMessageView(){
-    return Stack( children: [
-
-      //frame height
-      EmptyView.colored(DeviceTools.getWidth(context ),
-          height_Frame,
-          ChatColor.inputView_background
-      ),
-
-     // emotionIcon(),
-
-      //boarder
-      getContainerLayoutInput(),
-
-      //button save
-       Positioned(child:  getButtonSave(), right: 0 )
-
-    ],);
+  @override
+  Widget build(BuildContext context) {
+    return getInputMessageView();
+    // return getContainerLayoutInput(); prg_capture
   }
 
+  //--------------------------------------------------------------- input view
 
- /** -- not at this app need emotion
+  Widget getInputMessageView() {
+    return Stack(
+      children: [
+        //frame height
+        EmptyView.colored(DeviceTools.getWidth(context), height_Frame,
+            ChatColor.inputView_background),
+
+        // emotionIcon(),
+
+        //boarder
+        getContainerLayoutInput(),
+
+        //button save
+        Positioned(right: 0, child: getButtonSave())
+      ],
+    );
+  }
+
+  /** -- not at this app need emotion
   *
      Widget emotionIcon() {
      return ImageView(width:  40, height: 40 ,
@@ -95,8 +85,4 @@ class InputMessageState extends State<InputMessageWidget> {
      );
      }
   */
-
-
-
-
 }

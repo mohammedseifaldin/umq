@@ -9,12 +9,12 @@ class ResponseGenerateFile {
 
   ResponseGenerateFile(
       {this.status,
-        this.code,
-        this.result,
-        this.message,
-        this.type,
-        this.finalName,
-        this.fullPath});
+      this.code,
+      this.result,
+      this.message,
+      this.type,
+      this.finalName,
+      this.fullPath});
 
   ResponseGenerateFile.fromJson(Map<String, dynamic> json) {
     status = json['status'];
@@ -27,14 +27,14 @@ class ResponseGenerateFile {
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
-    data['status'] = this.status;
-    data['code'] = this.code;
-    data['result'] = this.result;
-    data['message'] = this.message;
-    data['type'] = this.type;
-    data['finalName'] = this.finalName;
-    data['fullPath'] = this.fullPath;
+    final Map<String, dynamic> data = <String, dynamic>{};
+    data['status'] = status;
+    data['code'] = code;
+    data['result'] = result;
+    data['message'] = message;
+    data['type'] = type;
+    data['finalName'] = finalName;
+    data['fullPath'] = fullPath;
     return data;
   }
 }

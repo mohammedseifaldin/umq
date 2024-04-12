@@ -1,4 +1,3 @@
-
 import 'package:fastor_app_ui_widget/fastor_app_ui_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:need_resume/need_resume.dart';
@@ -12,26 +11,22 @@ import 'package:umq/toolsUI/textfield/mobileCountry/MobileCountryView.dart';
 //import 'package:umq/toolsUI/toolbar/ToolbarSimpleFastor.dart';
 
 class UserDetailAdminPage extends StatefulWidget {
+  MUser? mEdit;
 
-  MUser? mEdit  ;
-
-  UserDetailAdminPage( {super.key,  MUser? edit }) {
+  UserDetailAdminPage({super.key, MUser? edit}) {
     mEdit = edit;
   }
 
   @override
   UserDetailAdminState createState() {
-    return UserDetailAdminState( edit: mEdit );
+    return UserDetailAdminState(edit: mEdit);
   }
-
-
 }
 
-class UserDetailAdminState extends ResumableState<UserDetailAdminPage > {
-
+class UserDetailAdminState extends ResumableState<UserDetailAdminPage> {
   //-------------------------------------------------------------------- variable
   String pageTitle = "User";
-  MUser? mEdit  ;
+  MUser? mEdit;
 
   //name
   var name_txt = "";
@@ -58,17 +53,16 @@ class UserDetailAdminState extends ResumableState<UserDetailAdminPage > {
 
   //photo
   String photo_url_selected = "";
-  late String photo_pathFile  ;
+  late String photo_pathFile;
   ImageViewState? photo_state;
-  var photo_progress_status = false ;
+  var photo_progress_status = false;
 
   //constructor
-  UserDetailAdminState( { MUser? edit }) {
-    this.mEdit = edit;
+  UserDetailAdminState({MUser? edit}) {
+    mEdit = edit;
   }
 
   //------------------------------------------------------------------- life cycle
-
 
   @override
   void initState() {
@@ -78,72 +72,66 @@ class UserDetailAdminState extends ResumableState<UserDetailAdminPage > {
     setEditDataIfFound();
   }
 
-
   @override
   void onReady() {
     super.onReady();
     onResume();
   }
 
-
   @override
-  void onResume(){
+  void onResume() {
     super.onResume();
-    Log.i( "lifecycle - onResume - userDetail");
+    Log.i("lifecycle - onResume - userDetail");
   }
-
 
   //-------------------------------------------------------------------- build
 
   BuildContext? contextPage;
-   ProgressCircleState? prg;
+  ProgressCircleState? prg;
 
   @override
   Widget build(BuildContext context) {
-    this.contextPage = context;
+    contextPage = context;
 
     return getPageTemplate();
   }
 
-
-  Widget getPageTemplate(){
-
-    if( mEdit != null ) {
-      pageTitle = "Edit" + " " + pageTitle;
+  Widget getPageTemplate() {
+    if (mEdit != null) {
+      pageTitle = "Edit $pageTitle";
     }
 
-    return PageTemplate.t( this,
+    return PageTemplate.t(this,
         title: pageTitle,
-
         content: pageContent(),
         // assetBackgroundOpacity: 0.3,
         // assetBackground: DrawableProject.exampleAdmin(  "01"),
-        toolbar: ToolbarSimpleFastor(  contextPage!,  pageTitle , iconColorBack: Colors.black,),
+        toolbar: ToolbarSimpleFastor(
+          contextPage!,
+          pageTitle,
+          iconColorBack: Colors.black,
+        ),
         toolbar_height: ToolbarSimpleFastor.frameHeight,
-        onChangeProgressState: (value) => prg = value
-    );
+        onChangeProgressState: (value) => prg = value);
   }
 
-
   Widget pageContent() {
-    return ResponsiveFourmMobile.wrapHeight(  contextPage!, getContent() );
+    return ResponsiveFourmMobile.wrapHeight(contextPage!, getContent());
   }
 
   Widget getContent() {
-    return ColumnTemplate.t( children: [
-      name(),
-      email(),
-     // password(),
-      city(),
-      mobile(),
-      photo(),
-      save()
-    ],
-    mainAxisAlignment: MainAxisAlignment.start,
-    mainAxisSize: MainAxisSize.max,
-    crossAxisAlignment: CrossAxisAlignment.start
-    );
+    return ColumnTemplate.t(
+        children: [
+          name(),
+          email(),
+          // password(),
+          city(),
+          mobile(),
+          photo(),
+          save()
+        ],
+        mainAxisAlignment: MainAxisAlignment.start,
+        mainAxisSize: MainAxisSize.max,
+        crossAxisAlignment: CrossAxisAlignment.start);
   }
-
-
 }

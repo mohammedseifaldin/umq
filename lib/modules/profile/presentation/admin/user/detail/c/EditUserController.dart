@@ -46,9 +46,9 @@ extension EditUserController on UserDetailAdminState {
 
   void setPreviousCity() {
     if (mEdit == null) return;
-    Log.i("_setPreviousCity() - length: " +
-        UserDetailAdminState.city_list.length.toString());
-    Log.i("_setPreviousCity() - mEdit: " + mEdit.toString());
+    Log.i(
+        "_setPreviousCity() - length: ${UserDetailAdminState.city_list.length}");
+    Log.i("_setPreviousCity() - mEdit: $mEdit");
 
     //check data downloaded or wait for wait for next setstate change
     if (UserDetailAdminState.city_list.isEmpty) return;
@@ -70,7 +70,8 @@ extension EditUserController on UserDetailAdminState {
     if (mEdit == null) return;
 
     photo_url_selected = mEdit!.photo ?? "";
-    if (photo_state != null)
+    if (photo_state != null) {
       photo_state!.setImageBackgroundUrl(mEdit!.photo ?? "");
+    }
   }
 }

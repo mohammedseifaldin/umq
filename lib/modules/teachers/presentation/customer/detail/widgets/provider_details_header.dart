@@ -1,4 +1,3 @@
-
 import 'package:fastor_app_ui_widget/fastor_app_ui_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:umq/modules/teachers/presentation/customer/detail/TeacherDetailsPage.dart';
@@ -12,33 +11,24 @@ import 'package:umq/toolsUI/app_colors.dart';
 import 'package:umq/toolsUI/dialog/CheckoutLoginDialog.dart';
 import 'package:umq/toolsUI/rating_stars.dart';
 
-
-
-
 extension ProviderDetailsHeader on ProviderDetailsState {
-
-
-
-  Widget getProviderDetailsHeader( ) {
+  Widget getProviderDetailsHeader() {
     return frameViewContent();
   }
 
-
-  Widget frameViewContent(){
+  Widget frameViewContent() {
     return Stack(
       children: [
-
         cardMain(),
-        manImage( ),
+        manImage(),
       ],
     );
   }
 
-  
   // name, rate, buttons
-   
-  Widget cardMain(){
-    var col =   Column(
+
+  Widget cardMain() {
+    var col = Column(
       crossAxisAlignment: CrossAxisAlignment.center,
       children: [
         const SizedBox(
@@ -63,17 +53,17 @@ extension ProviderDetailsHeader on ProviderDetailsState {
       padding: const EdgeInsets.fromLTRB(15, 10, 15, 10),
       decoration: const BoxDecoration(
           color: Color.fromARGB(255, 220, 247, 248),
-          borderRadius: BorderRadius.all(Radius.circular( DimenProject.radiusScaffoldCorner))),
-      child:  col,
+          borderRadius: BorderRadius.all(
+              Radius.circular(DimenProject.radiusScaffoldCorner))),
+      child: col,
     );
   }
 
-
   Widget providerName() {
     return Text(
-      widget.provider!.users!.name??"NA",
-      style:
-          const TextStyle(color: darkBlue, fontSize: 18, fontWeight: FontWeight.w800),
+      widget.provider!.users!.name ?? "NA",
+      style: const TextStyle(
+          color: darkBlue, fontSize: 18, fontWeight: FontWeight.w800),
     );
   }
 
@@ -93,9 +83,8 @@ extension ProviderDetailsHeader on ProviderDetailsState {
       children: [
         ProviderDetailsButton(
           title: 'chat',
-          buttonFn: ()  async {
-
-            int targetUserId = widget.provider!.users!.id!;
+          buttonFn: () async {
+            int targetUserId = widget.provider!.users!.id;
             GoTo.chatSpecificUser(context, targetUserId);
             //launch('tel://${widget.provider!.users!.mobile ??""}');
           },
@@ -115,8 +104,6 @@ extension ProviderDetailsHeader on ProviderDetailsState {
         ProviderDetailsButton(
           title: 'favorite',
           buttonFn: () async {
-
-
             await favProvider(widget.provider!.id.toString(), context);
           },
         )
@@ -126,20 +113,22 @@ extension ProviderDetailsHeader on ProviderDetailsState {
 
   //------------------------------------------------------------------------ photo man
 
-  Widget manImage( ) {
-    return Align( child:  imageCircle(), alignment: Alignment.center );
+  Widget manImage() {
+    return Align(alignment: Alignment.center, child: imageCircle());
   }
 
-  Widget imageCircle(){
-    String url =   widget.provider!.users!.photo??"";
-    return ImageView(width: 60, height: 60,
-    radius_all: 30,
-    assetAspectRatio: DrawableProject.placeholderImage,
-  //  colorBackground: Colors.yellow,
-    onPressed: (){
-      GoTo.fullScreenImage(context, url);
-    },
-    urlBackground: url );
+  Widget imageCircle() {
+    String url = widget.provider!.users!.photo ?? "";
+    return ImageView(
+        width: 60,
+        height: 60,
+        radius_all: 30,
+        assetAspectRatio: DrawableProject.placeholderImage,
+        //  colorBackground: Colors.yellow,
+        onPressed: () {
+          GoTo.fullScreenImage(context, url);
+        },
+        urlBackground: url);
   }
 
   // Widget paddingClickOnImagePhoto (){
@@ -156,13 +145,11 @@ extension ProviderDetailsHeader on ProviderDetailsState {
 
   Future showRateDialog() async {
     //check login
-    if( await UserSingleTone.instance().isGuest() ) {
+    if (UserSingleTone.instance().isGuest()) {
       CheckoutLoginDialog.show(context);
       return;
     }
 
-    GoTo.rateDialog( context, widget.provider!, this );
+    GoTo.rateDialog(context, widget.provider!, this);
   }
-
 }
-

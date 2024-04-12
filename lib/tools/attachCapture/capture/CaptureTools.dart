@@ -1,21 +1,9 @@
-
-
-import 'dart:typed_data';
-
-import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
-
-import 'package:umq/tools/File/ToolsFile.dart';
-
-import 'package:fastor_app_ui_widget/fastor_app_ui_widget.dart';
-import 'package:umq/tools/firebase/storage/KeyFirebaseStorage.dart';
-import 'package:umq/tools/firebase/storage/UploadFileFirebaseAPI.dart';
-
-import 'package:fastor_app_ui_widget/fastor_app_ui_widget.dart';
-import 'package:image_picker/image_picker.dart';
-
 import 'dart:io';
 
+import 'package:fastor_app_ui_widget/fastor_app_ui_widget.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
+import 'package:image_picker/image_picker.dart';
 
 // import 'package:universal_io/io.dart';
 
@@ -24,8 +12,10 @@ import 'dart:io';
  */
 // typedef PickerImageUploadCallBack = Function(bool status, String msg, String filePath, Image image, String uploadedUrl );
 // typedef PickerImageCallBack = Function(bool status, String msg, String filePath, Image image, Uint8List unitFile  );
-typedef PickerImageUploadCallBack = Function(bool status, String msg, String filePath, Image? image, String uploadedUrl );
-typedef PickerImageCallBack = Function(bool status, String msg, String filePath, Image? image, XFile? xFile  );
+typedef PickerImageUploadCallBack = Function(
+    bool status, String msg, String filePath, Image? image, String uploadedUrl);
+typedef PickerImageCallBack = Function(
+    bool status, String msg, String filePath, Image? image, XFile? xFile);
 
 //upload image while attach
 /**
@@ -49,43 +39,39 @@ typedef PickerImageCallBack = Function(bool status, String msg, String filePath,
     }
  */
 
-
 class CaptureTools {
-
-
   //------------------------------------------------------------------------- picker only
 
-  static Future<void> typeCaptureOnly(AssetImage placeHolder, PickerImageCallBack callBack) async {
-
-    Image placeHolderImage = Image(image:  placeHolder);
+  static Future<void> typeCaptureOnly(
+      AssetImage placeHolder, PickerImageCallBack callBack) async {
+    Image placeHolderImage = Image(image: placeHolder);
 
     try {
-      XFile?  photoPickered =  await ImagePicker().pickImage(source: ImageSource.camera) ;
+      XFile? photoPickered =
+          await ImagePicker().pickImage(source: ImageSource.camera);
 
       //check mobile cancel picker image
-      if( photoPickered == null ) {
-        Log.i( "pickerImage() - photo == null - stop! "  );
+      if (photoPickered == null) {
+        Log.i("pickerImage() - photo == null - stop! ");
         //return failed
-        callBack(false, "Picker Image canceled", "", placeHolderImage, null  );
+        callBack(false, "Picker Image canceled", "", placeHolderImage, null);
         return;
       }
 
       //get path
-      Log.i( "pickerImage() - photoPickered.path: " + photoPickered.path  );
-
+      Log.i("pickerImage() - photoPickered.path: " + photoPickered.path);
 
       //get image
       Image myImage;
       // Uint8List unitFile = await photoPickered.readAsBytes();
       // Log.i( "pickerImage() - unitFile: " + unitFile.toString()  );
 
-      if( DeviceTools.isPlatformWeb() ) {
-        myImage  =  Image.network( photoPickered.path) ;
+      if (DeviceTools.isPlatformWeb()) {
+        myImage = Image.network(photoPickered.path);
       } else {
-        File myFile =    File( photoPickered.path);
-        myImage  =  Image.file( myFile) ;
+        File myFile = File(photoPickered.path);
+        myImage = Image.file(myFile);
       }
-
 
       //log
 
@@ -97,16 +83,13 @@ class CaptureTools {
        */
 
       //success
-      callBack(true, "success", photoPickered.path, myImage, photoPickered );
-
-    } on PlatformException catch(e){
-      Log.i( "pickerImage() - exc: " + e.toString() );
+      callBack(true, "success", photoPickered.path, myImage, photoPickered);
+    } on PlatformException catch (e) {
+      Log.i("pickerImage() - exc: " + e.toString());
       //return failed
-      callBack(false, "Picker image failed, error: " + e.toString() ,"", placeHolderImage, null  );
+      callBack(false, "Picker image failed, error: " + e.toString(), "",
+          placeHolderImage, null);
       return;
     }
   }
-
-
-
 }

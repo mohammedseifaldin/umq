@@ -6,7 +6,7 @@ snackBar({context, text, duration = 3}) =>
       SnackBar(
         content: Text(
           text.toString(),
-          style: TextStyle(
+          style: const TextStyle(
             color: Colors.white,
             fontSize: 18,
             fontWeight: FontWeight.normal,

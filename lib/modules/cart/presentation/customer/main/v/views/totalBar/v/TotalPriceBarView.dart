@@ -11,7 +11,7 @@ TotalPriceBarState? totalPriceState;
 class TotalPriceBarView extends StatefulWidget {
   MainCartState parentState;
 
-  TotalPriceBarView(this.parentState);
+  TotalPriceBarView(this.parentState, {super.key});
 
   @override
   TotalPriceBarState createState() {
@@ -76,14 +76,13 @@ class TotalPriceBarState extends State<TotalPriceBarView> {
   Widget _showBar() {
     //card
     return Container(
-      child: _getContent(),
-      //decoration
       decoration: BoarderHelper.cardView(),
       padding: EdgeInsets.all(DSDimen.space_level_3),
       margin: EdgeInsets.only(
           left: DSDimen.space_level_2,
           right: DSDimen.space_level_2,
           top: DSDimen.space_level_2),
+      child: _getContent(),
     );
   }
 
@@ -111,8 +110,9 @@ class TotalPriceBarState extends State<TotalPriceBarView> {
 
     //alignment
     return Container(
-      child: bt, width: DeviceTools.getWidth(context),
+      width: DeviceTools.getWidth(context),
       alignment: Alignment.center,
+      child: bt,
       //   margin: EdgeInsets.only(top: DSDimen.space_level_3),
     );
   }
@@ -125,8 +125,8 @@ class TotalPriceBarState extends State<TotalPriceBarView> {
         EmptyView.allDeviceWidth(context),
         title(),
         Positioned(
-          child: _priceValueTv(),
           right: 0,
+          child: _priceValueTv(),
         )
       ],
     );

@@ -23,7 +23,7 @@ extension ProductDetailController on ProductDetailState {
     // await ApiHelper.apiHelper.singleProduct(id).then((value) {
 
     String url = "${BackendConstant.baseUrlv2Public}/product/$id";
-    String token =  UserSingleTone.instance().getToken();
+    String token = UserSingleTone.instance().getToken();
 
     Map<String, String> header = NetworkHeaderTools.bearerToken(token);
 
@@ -44,7 +44,7 @@ extension ProductDetailController on ProductDetailState {
 
   Future changeFavoriteStatus() async {
     //check login
-    if ( UserSingleTone.instance().isGuest()) {
+    if (UserSingleTone.instance().isGuest()) {
       CheckoutLoginDialog.show(context);
       return;
     }
@@ -70,7 +70,7 @@ extension ProductDetailController on ProductDetailState {
 
   postIncrement() async {
     //check login
-    if ( UserSingleTone.instance().isGuest()) {
+    if (UserSingleTone.instance().isGuest()) {
       CheckoutLoginDialog.show(context);
       return;
     }
@@ -83,8 +83,10 @@ extension ProductDetailController on ProductDetailState {
     await CartChangeNotifier.getListenFalse(context)
         .increment(context, productId, providerId, productName);
 
-    if (CartChangeNotifier.getListenFalse(context).responseCartCounter == null)
+    if (CartChangeNotifier.getListenFalse(context).responseCartCounter ==
+        null) {
       return;
+    }
 
     //update counter
     setState(() {
@@ -117,7 +119,7 @@ extension ProductDetailController on ProductDetailState {
 
   postDecrement() async {
     //check login
-    if ( UserSingleTone.instance().isGuest()) {
+    if (UserSingleTone.instance().isGuest()) {
       CheckoutLoginDialog.show(context);
       return;
     }
@@ -130,8 +132,10 @@ extension ProductDetailController on ProductDetailState {
     await CartChangeNotifier.getListenFalse(context)
         .decrement(context, productId, providerId, productName);
 
-    if (CartChangeNotifier.getListenFalse(context).responseCartCounter == null)
+    if (CartChangeNotifier.getListenFalse(context).responseCartCounter ==
+        null) {
       return;
+    }
 
     //update counter
     setState(() {

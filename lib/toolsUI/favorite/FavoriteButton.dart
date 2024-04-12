@@ -35,15 +35,15 @@ import 'package:umq/tools/resourceProject/ColorProject.dart';
 
  */
 class FavoriteButton extends StatelessWidget {
-
   GestureTapCallback onTap;
   int favorite;
   Color backgroundColor;
 
-  FavoriteButton({required this.favorite,
-    required this.backgroundColor,
-    required  this.onTap });
-
+  FavoriteButton(
+      {super.key,
+      required this.favorite,
+      required this.backgroundColor,
+      required this.onTap});
 
   @override
   Widget build(BuildContext context) {
@@ -51,23 +51,21 @@ class FavoriteButton extends StatelessWidget {
   }
 
   Widget bt_favorite() {
-    var click =   GestureDetector(
+    var click = GestureDetector(
       onTap: onTap,
       child: Icon(
         Icons.favorite_sharp,
-
         color: favorite == 1
-            ? HexColor( ColorProject.blue_fish_front )
-            : HexColor( ColorProject.greyDark ),
+            ? HexColor(ColorProject.blue_fish_front)
+            : HexColor(ColorProject.greyDark),
         size: 35,
       ),
     );
 
-    var cont = Container(child: click,
+    var cont = Container(
       color: backgroundColor,
+      child: click,
     );
-    return Material( child: cont );
+    return Material(child: cont);
   }
-
-
 }

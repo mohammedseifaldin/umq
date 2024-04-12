@@ -4,7 +4,6 @@ import 'package:need_resume/need_resume.dart';
 import 'package:umq/modules/auth/presentation/customer/BecomeTeacher/BecomeTeacherPage.dart';
 import 'package:umq/modules/auth/presentation/customer/CompleteRegisterStudent/RegisterStudentPage.dart';
 import 'package:umq/modules/auth/presentation/customer/Login/login_page.dart';
-import 'package:umq/modules/auth/presentation/customer/MobileVerification/SignWithMobilePage.dart';
 import 'package:umq/modules/auth/presentation/customer/UserType/user_type_page.dart';
 import 'package:umq/modules/auth/presentation/customer/register_student/register_student_with_emailpage.dart';
 import 'package:umq/modules/auth/presentation/customer/splashLogin/SplashLoginPage.dart';
@@ -54,19 +53,19 @@ class GoTo {
 
   static Future chooseHomeByTypeRoleUser(BuildContext context) async {
     //admin
-    if (await UserSingleTone.instance().isRoleAdmin()) {
+    if (UserSingleTone.instance().isRoleAdmin()) {
       GoToAdmin.dashboard(context);
       return;
     }
 
     //student
-    if (await UserSingleTone.instance().isRoleStudent()) {
+    if (UserSingleTone.instance().isRoleStudent()) {
       GoTo.homeStudent(context);
       return;
     }
 
     //provider
-    if (await UserSingleTone.instance().isRoleProvider()) {
+    if (UserSingleTone.instance().isRoleProvider()) {
       GoTo.homeProvider(context);
       return;
     }
@@ -93,7 +92,7 @@ class GoTo {
   //------------------------------------------------------------------ auth
 
   static void splashLogin(BuildContext context) {
-    NavigationTools.pushAndRemoveUntil(context, SplashLoginPage());
+    NavigationTools.pushAndRemoveUntil(context, const SplashLoginPage());
   }
 
   static void login(BuildContext context) {
@@ -184,14 +183,14 @@ class GoTo {
   }
 
   static void productDetail(BuildContext context, MProduct m) {
-    Log.i("GoTo - productDetail() - id: " + m.id.toString());
+    Log.i("GoTo - productDetail() - id: ${m.id}");
     var w = ProductDetailView(mProduct: m);
     NavigationTools.push(context, w);
   }
 
   static void providerDetail(BuildContext context, MProvider m) {
     // Log.i( "providerDetail() -context " + context.toString() );
-    Log.i("GoTo - providerDetail() - id: " + m.id.toString());
+    Log.i("GoTo - providerDetail() - id: ${m.id}");
     var w = ProviderDetailsPage(provider: m);
     NavigationTools.push(context, w);
   }
@@ -261,7 +260,7 @@ class GoTo {
   // }
 
   static void cartShipmentPage(BuildContext context) {
-    NavigationTools.push(context, CartShipmentPage());
+    NavigationTools.push(context, const CartShipmentPage());
   }
 
   static void cartPaymentMethod(BuildContext context) {

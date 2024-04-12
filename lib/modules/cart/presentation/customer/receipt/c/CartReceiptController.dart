@@ -25,11 +25,11 @@ extension CartReceiptController on CartReceiptState {
   }
 
   Future _apiListener() async {
-    this.response = await CartListAPI().getData();
+    response = await CartListAPI().getData();
 
     //set
     setState(() {
-      this.response = response;
+      response = response;
       progress = false;
     });
 
@@ -120,7 +120,7 @@ extension CartReceiptController on CartReceiptState {
             context);
 
     //api
-     OrderCreateAPI().create(request, (status, msg, response) {
+    OrderCreateAPI().create(request, (status, msg, response) {
       //progress
       setState(() {
         progress = false;

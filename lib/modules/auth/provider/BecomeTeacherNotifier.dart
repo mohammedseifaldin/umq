@@ -4,8 +4,8 @@ import 'package:umq/modules/auth/provider/AuthChangeNotifier.dart';
 import 'package:umq/modules/place/data/response/city_response.dart';
 import 'package:umq/modules/profile/data/response/organization_response.dart';
 import 'package:umq/tools/Dios/fresh_dio.dart' as dio;
-import 'package:umq/tools/cache/user_single_tone.dart';
 import 'package:umq/tools/cache/session_repo.dart';
+import 'package:umq/tools/cache/user_single_tone.dart';
 import 'package:umq/tools/fcm/abdo/general/FCMSubscribe.dart';
 import 'package:umq/tools/navigate/GoTo.dart';
 import 'package:umq/toolsUI/dialog/snack_bar_message.dart';
@@ -68,7 +68,7 @@ extension BecomeTeacherNotifier on AuthChangeNotifier {
     String UserID = await getUserID();
     print(UserID);
     var response = await dio.httpClient().post("v1/auth/provider", data: {
-      "user_id": "${UserID}",
+      "user_id": UserID,
       "whats": "010",
       "city_id": "${becomeTeacherSelectedCity!.id}",
       "org_id": "${becomeTeacherSelectedOrganization!.id}",
@@ -94,7 +94,7 @@ extension BecomeTeacherNotifier on AuthChangeNotifier {
 
   Future successBecomeProvider(BecomeProviderResponse response) async {
     //fcm remove old
-    if (await UserSingleTone.instance().isLogin()) {
+    if (UserSingleTone.instance().isLogin()) {
       await FCMSubscribe.userRemoveRole();
     }
 
@@ -102,7 +102,7 @@ extension BecomeTeacherNotifier on AuthChangeNotifier {
     await UserSingleTone.instance().setRoleType("provider");
 
     //fcm
-    if (await UserSingleTone.instance().isLogin()) {
+    if (UserSingleTone.instance().isLogin()) {
       await FCMSubscribe.userUpdateRole();
     }
 

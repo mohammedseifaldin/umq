@@ -1,16 +1,11 @@
 import 'package:awesome_dialog/awesome_dialog.dart';
-
 import 'package:fastor_app_ui_widget/fastor_app_ui_widget.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:umq/tools/navigate/GoTo.dart';
-import 'package:umq/toolsUI/toast/ToastTools.dart';
 
-
-class CheckoutLoginDialog   {
-
-
+class CheckoutLoginDialog {
   static Future show(BuildContext context) async {
-    Log.i( "CheckoutLoginDialog");
+    Log.i("CheckoutLoginDialog");
     AwesomeDialog(
       context: context,
       dialogType: DialogType.info,

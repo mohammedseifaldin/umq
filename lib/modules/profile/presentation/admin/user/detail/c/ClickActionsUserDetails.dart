@@ -124,9 +124,10 @@ extension ClickActionsUserDetails on UserDetailAdminState {
     if (prg != null) prg!.show();
 
     //listener
-    int target_user_id = mEdit!.id!;
-    await UserUpdateAPI().getData(target_user_id, name_txt, email_txt,
-        city_selected_id, photo_url_selected, (code, msg) {
+    int targetUserId = mEdit!.id;
+    await UserUpdateAPI().getData(
+        targetUserId, name_txt, email_txt, city_selected_id, photo_url_selected,
+        (code, msg) {
       if (prg != null) prg!.dismiss();
 
       //check failed
@@ -181,11 +182,11 @@ extension ClickActionsUserDetails on UserDetailAdminState {
       }
 
       setState(() {
-        this.photo_pathFile = pathFile;
-        this.photo_url_selected = uploadedUrl;
-        Log.i("success upload file: " + uploadedUrl);
+        photo_pathFile = pathFile;
+        photo_url_selected = uploadedUrl;
+        Log.i("success upload file: $uploadedUrl");
 
-        this.photo_state!.setImageBackgroundUrl(uploadedUrl);
+        photo_state!.setImageBackgroundUrl(uploadedUrl);
       });
     });
   }

@@ -16,29 +16,22 @@ import 'package:umq/toolsUI/textview/ErrorMessageView.dart';
 import 'views/toolbar/ToolbarChatHome.dart';
 
 class ChatUserListPage extends StatefulWidget {
-
   int? navigateToSpecificUserId; //when have value go to specific user id
 
   static int pageScroll = 1;
 
-  ChatUserListPage( {
-    int? navigateToSpecificUserId
-}) {
+  ChatUserListPage({super.key, int? navigateToSpecificUserId}) {
     this.navigateToSpecificUserId = navigateToSpecificUserId;
   }
-
 
   @override
   ChatUserListState createState() {
     return ChatUserListState();
   }
-
 }
 
 class ChatUserListState extends ResumableState<ChatUserListPage> {
-
   //--------------------------------------------------------------------- varaible
-
 
   //user list
   List<MChatUser> listUserData = [];
@@ -65,9 +58,8 @@ class ChatUserListState extends ResumableState<ChatUserListPage> {
     Log.i("ChatUserListPage - onResume");
 
     //set life
-    LifeCycleSingletone.instance().setChatListPage( this  );
+    LifeCycleSingletone.instance().setChatListPage(this);
   }
-
 
   @override
   void initState() {
@@ -75,7 +67,7 @@ class ChatUserListState extends ResumableState<ChatUserListPage> {
     Log.i("ChatUserListPage - initState");
 
     //set life
-    LifeCycleSingletone.instance().setChatListPage( this  );
+    LifeCycleSingletone.instance().setChatListPage(this);
 
     //waiter of socket
     initWaiter();
@@ -84,51 +76,48 @@ class ChatUserListState extends ResumableState<ChatUserListPage> {
     initIsGuestUser();
 
     //start socket
-    NewMessageSingleTone.instance().startSocketMessageAndDownloadFirstPageData();
-
+    NewMessageSingleTone.instance()
+        .startSocketMessageAndDownloadFirstPageData();
 
     WidgetsBinding.instance.addPostFrameCallback((timeStamp) async {
       await setupFcmFromMainPage(context);
     });
   }
 
-
   //--------------------------------------------------------------------- build
 
   @override
   Widget build(BuildContext context) {
-    return PageTemplate.t( this,
-        title: "Chats" ,
+    return PageTemplate.t(this,
+        title: "Chats",
         //resizeToAvoidBottomInset: false,
         //status
-        statusBarColorCustom : ChatColor.statusBarColor,
+        statusBarColorCustom: ChatColor.statusBarColor,
 
         //home button theme
         homeButtonsBackgroundColor: ChatColor.homeButtonBarColor,
 
         // assetBackground: DrawableProject.exampleMobile( "example_chat"),
         // assetBackgroundOpacity: 0.6,
-        toolbar: ToolbarChatHome( context, "Chats"   ),
-        toolbar_height:  ToolbarChatHome.toolbarHome_height,
-        content: getContent() );
+        toolbar: ToolbarChatHome(context, "Chats"),
+        toolbar_height: ToolbarChatHome.toolbarHome_height,
+        content: getContent());
   }
 
-
   Widget getContent() {
-
     //check guest
-    if( isGuest ) {
+    if (isGuest) {
       return guestView();
     }
 
     //check error
-    if( ToolsValidation.isValid( errorMsg ) )  {
-      return ErrorMessageView(errorMsg!) ;
+    if (ToolsValidation.isValid(errorMsg)) {
+      return ErrorMessageView(errorMsg!);
     }
 
     return ColumnTemplate.t(children: [
       // dialogSyncLargeData(),
-     listUserView()
+      listUserView()
     ]);
   }
 
@@ -137,24 +126,18 @@ class ChatUserListState extends ResumableState<ChatUserListPage> {
   bool isGuest = false;
 
   void initIsGuestUser() async {
-    isGuest = await UserSingleTone.instance().isGuest();
-    if( isGuest ) {
-      setState((){});
+    isGuest = UserSingleTone.instance().isGuest();
+    if (isGuest) {
+      setState(() {});
     }
   }
 
-
-  Widget guestView(){
-    return TextTemplate.t( "Login First",
-        padding: EdgeInsets.all( 10 ),
-        margin: EdgeInsets.only(top: 50 ),
-        color: DSColor.link,
-        onPressed: (){
-
-          GoTo.splashLogin(context);
+  Widget guestView() {
+    return TextTemplate.t("Login First",
+        padding: const EdgeInsets.all(10),
+        margin: const EdgeInsets.only(top: 50),
+        color: DSColor.link, onPressed: () {
+      GoTo.splashLogin(context);
     });
   }
-
-
-
 }

@@ -1,7 +1,6 @@
 import 'package:umq/tools/network/ToolsAPI.dart';
 
 class RequestCreateSubscribePackage {
-
   int? editObjectId;
 
   String? nameEn;
@@ -11,32 +10,29 @@ class RequestCreateSubscribePackage {
   int? price;
   int? period;
   int? allowedProductNumbers;
-  bool  allowedChat = true; //default is true
+  bool allowedChat = true; //default is true
 
-  RequestCreateSubscribePackage(
-      {this.nameEn,
-        this.nameAr,
-        this.descriptionEn,
-        this.descriptionAr,
-        this.price,
-        this.period,
-        this.allowedProductNumbers,
-        });
-
-
-
+  RequestCreateSubscribePackage({
+    this.nameEn,
+    this.nameAr,
+    this.descriptionEn,
+    this.descriptionAr,
+    this.price,
+    this.period,
+    this.allowedProductNumbers,
+  });
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
-    data["id"] = this.editObjectId;
-    data['name_en'] = this.nameEn;
-    data['name_ar'] = this.nameAr;
-    data['description_en'] = this.descriptionEn;
-    data['description_ar'] = this.descriptionAr;
-    data['price'] = this.price;
-    data['period'] = this.period;
-    data['allowed_product_numers'] = this.allowedProductNumbers;
-    data['allowed_chat'] = ToolsAPI.booleanToZeroAndOne( allowedChat??false);
+    final Map<String, dynamic> data = <String, dynamic>{};
+    data["id"] = editObjectId;
+    data['name_en'] = nameEn;
+    data['name_ar'] = nameAr;
+    data['description_en'] = descriptionEn;
+    data['description_ar'] = descriptionAr;
+    data['price'] = price;
+    data['period'] = period;
+    data['allowed_product_numers'] = allowedProductNumbers;
+    data['allowed_chat'] = ToolsAPI.booleanToZeroAndOne(allowedChat ?? false);
     return data;
   }
 }

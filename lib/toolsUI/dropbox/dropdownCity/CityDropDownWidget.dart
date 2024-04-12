@@ -1,10 +1,8 @@
-
 import 'package:fastor_app_ui_widget/fastor_app_ui_widget.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:umq/modules/place/data/model/MCity.dart';
 import 'package:umq/modules/place/data/model/MCityTools.dart';
-import 'package:umq/modules/profile/presentation/customer/profileEdit/m/city_model.dart';
 
 /**
  ----------------------------- How to use
@@ -62,22 +60,21 @@ class CityDropDownWidget extends StatelessWidget {
   final String? selectedValue;
   final Function(MCity data, String city) onTap;
 
-   CityDropDownWidget({
-    Key? key,
+  CityDropDownWidget({
+    super.key,
     required this.items,
     required this.selectedValue,
     required this.onTap,
-  }) : super(key: key);
+  });
 
   BuildContext? context;
 
-
   @override
   Widget build(BuildContext context) {
-    this.context =context;
+    this.context = context;
 
     return Container(
-    //  margin: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+      //  margin: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
 
       //
       child: FormField<String>(
@@ -88,32 +85,30 @@ class CityDropDownWidget extends StatelessWidget {
     );
   }
 
-
-  InputDecorator getInputDecorator(){
+  InputDecorator getInputDecorator() {
     return InputDecorator(
       decoration: getInputDecoration(),
       child: dropDownCityPicker(),
     );
   }
 
-
-  InputDecoration   getInputDecoration(){
-    return  InputDecoration(
+  InputDecoration getInputDecoration() {
+    return InputDecoration(
       focusedBorder: OutlineInputBorder(
-        borderRadius: BorderRadius.circular( DSDimen.ds_size_corner_level_2),
-        borderSide:   BorderSide(
-          color:  DSColor.ds_textfield_boarder_line ,// Color(0xFF52b4f6),
+        borderRadius: BorderRadius.circular(DSDimen.ds_size_corner_level_2),
+        borderSide: BorderSide(
+          color: DSColor.ds_textfield_boarder_line, // Color(0xFF52b4f6),
           width: 1.0,
         ),
       ),
       enabledBorder: OutlineInputBorder(
-        borderRadius: BorderRadius.circular( DSDimen.ds_size_corner_level_2 ),
-        borderSide:   BorderSide(
+        borderRadius: BorderRadius.circular(DSDimen.ds_size_corner_level_2),
+        borderSide: BorderSide(
           color: DSColor.ds_textfield_boarder_line, //Color(0xFF52b4f6),
           width: 1.0,
         ),
       ),
-      prefixIcon:   Icon(
+      prefixIcon: Icon(
         CupertinoIcons.location_solid,
         color: DSColor.ds_textfield_hint, //Color(0xFF09184c)
       ),
@@ -129,17 +124,16 @@ class CityDropDownWidget extends StatelessWidget {
 
   Widget getHintWidget() {
     return Text(
-      selectedValue?? "Select City",
-      style:   TextStyle(
-        color: getColorHint() , // Colors.black,
+      selectedValue ?? "Select City",
+      style: TextStyle(
+        color: getColorHint(), // Colors.black,
         fontSize: DSDimen.text_level_2,
       ),
     );
   }
 
-
-  Color getColorHint(){
-    if( selectedValue == null ) {
+  Color getColorHint() {
+    if (selectedValue == null) {
       return DSColor.ds_textfield_hint;
     }
     return DSColor.ds_textfield_text;
@@ -148,22 +142,21 @@ class CityDropDownWidget extends StatelessWidget {
   Widget dropDownCityPicker() {
     return DropdownButtonHideUnderline(
       child: DropdownButton<List<MCity>>(
-        style:  getStyle() ,
+        style: getStyle(),
         hint: getHintWidget(),
         isExpanded: true,
         isDense: true,
         onChanged: (List<MCity>? newValue) {},
         items: items.map<DropdownMenuItem<List<MCity>>>((MCity valueItem) {
           return getItemMenu(valueItem);
-        }
-        ).toList(),
+        }).toList(),
       ),
     );
   }
 
   //------------------------------------------------------------- item menu
 
-  DropdownMenuItem<List<MCity>> getItemMenu(MCity valueItem){
+  DropdownMenuItem<List<MCity>> getItemMenu(MCity valueItem) {
     return DropdownMenuItem(
       onTap: () {
         onTap(valueItem, getName(valueItem));
@@ -182,11 +175,8 @@ class CityDropDownWidget extends StatelessWidget {
     );
   }
 
-
-  String getName(MCity valueItem){
+  String getName(MCity valueItem) {
     String name = MCityTools.getNameByLang(context!, valueItem);
     return name;
   }
-
-
 }
