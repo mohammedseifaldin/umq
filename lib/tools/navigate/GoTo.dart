@@ -1,8 +1,8 @@
 import 'package:fastor_app_ui_widget/fastor_app_ui_widget.dart';
 import 'package:flutter/material.dart' hide SearchController;
 import 'package:need_resume/need_resume.dart';
-import 'package:umq/modules/auth/presentation/customer/BecomeTeacher/become_teacher_page.dart';
-import 'package:umq/modules/auth/presentation/customer/CompleteRegisterStudent/register_student_page.dart';
+import 'package:umq/modules/auth/presentation/customer/BecomeTeacher/BecomeTeacherPage.dart';
+import 'package:umq/modules/auth/presentation/customer/CompleteRegisterStudent/RegisterStudentPage.dart';
 import 'package:umq/modules/auth/presentation/customer/Login/login_page.dart';
 import 'package:umq/modules/auth/presentation/customer/UserType/user_type_page.dart';
 import 'package:umq/modules/auth/presentation/customer/register_student/register_student_with_emailpage.dart';

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:umq/modules/auth/data/response/become_provider_response.dart';
-import 'package:umq/modules/auth/provider/auth_change_notifier.dart';
+import 'package:umq/modules/auth/provider/AuthChangeNotifier.dart';
 import 'package:umq/modules/place/data/response/city_response.dart';
 import 'package:umq/modules/profile/data/response/organization_response.dart';
 import 'package:umq/tools/Dios/fresh_dio.dart' as dio;
@@ -15,12 +15,12 @@ extension BecomeTeacherNotifier on AuthChangeNotifier {
   void registerProvider() async {
     //_updateProgressBecomeTeacher(true);
     FocusScope.of(becomeTeacherScaffoldKey.currentContext!).unfocus();
-    if (becomeTeacherSelectedCity!.id == null) {
+    if (becomeTeacherSelectedCity!.id == "") {
       SnackBarHelper.ShowErrorMessage(
           becomeTeacherScaffoldKey.currentContext, "Select City");
       return;
     }
-    if (becomeTeacherSelectedOrganization!.id == null) {
+    if (becomeTeacherSelectedOrganization!.id == "") {
       SnackBarHelper.ShowErrorMessage(
           becomeTeacherScaffoldKey.currentContext, "Select Organization");
       return;

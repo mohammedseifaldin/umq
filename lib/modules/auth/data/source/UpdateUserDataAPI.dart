@@ -1,10 +1,9 @@
 import 'package:fastor_app_ui_widget/fastor_app_ui_widget.dart';
-
-import '../../../../tools/cache/user_single_tone.dart';
-import '../../../../tools/network/BackendConstant.dart';
-import '../../../../tools/network/ToolsAPI.dart';
-import '../response/response_register_student.dart';
-import 'register_student_api.dart';
+import 'package:umq/modules/auth/data/response/ResponseRegisterStudent.dart';
+import 'package:umq/modules/auth/data/source/RegisterStudentAPI.dart';
+import 'package:umq/tools/cache/user_single_tone.dart';
+import 'package:umq/tools/network/BackendConstant.dart';
+import 'package:umq/tools/network/ToolsAPI.dart';
 
 class UpdateUserDataAPI {
   String userId;
@@ -24,11 +23,11 @@ class UpdateUserDataAPI {
     String url = "${BackendConstant.baseUrlv2}/user/updateData";
 
     //header
-    var token = UserSingleTone.instance().getToken();
+    var token = await UserSingleTone.instance().getToken();
     Map<String, String> header = NetworkHeaderTools.bearerToken(token);
 
     //body
-    Map<String, dynamic> body = {};
+    Map<String, dynamic> body = Map();
     body["name"] = name; //name
     body["email"] = email;
     body["photo"] = photo;
@@ -90,7 +89,7 @@ class UpdateUserDataAPI {
       }
 
       //get token current
-      String tokenCurrent = UserSingleTone.instance().getToken();
+      String tokenCurrent = await UserSingleTone.instance().getToken();
 
       //save object
       UserSingleTone.instance().saveUserLogin(response.data!, tokenCurrent, () {

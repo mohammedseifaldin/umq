@@ -1,16 +1,16 @@
 import 'package:fastor_app_ui_widget/fastor_app_ui_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:need_resume/need_resume.dart';
-import 'widget/login_form_widget.dart';
-import '../../../provider/auth_change_notifier.dart';
-import '../../../provider/login_notifier.dart';
-import '../../../provider/register_notifier.dart';
-import '../../../../../tools/constant/EnvironmentConstant.dart';
-import '../../../../../tools/fcm/abdo/FCMRegister.dart';
-import '../../../../../toolsUI/Widgets/button_primary_widget.dart';
-import '../../../../../toolsUI/Widgets/button_secoundry_widget.dart';
-import '../../../../../toolsUI/background/ScubaBackgroundImage.dart';
-import '../../../../../toolsUI/textview/SubTextHelper.dart';
+import 'package:umq/modules/auth/presentation/customer/Login/widget/LoginFourmWidget.dart';
+import 'package:umq/modules/auth/provider/AuthChangeNotifier.dart';
+import 'package:umq/modules/auth/provider/login_notifier.dart';
+import 'package:umq/modules/auth/provider/register_notifier.dart';
+import 'package:umq/tools/constant/EnvironmentConstant.dart';
+import 'package:umq/tools/fcm/abdo/FCMRegister.dart';
+import 'package:umq/toolsUI/Widgets/button_primary_widget.dart';
+import 'package:umq/toolsUI/Widgets/button_secoundry_widget.dart';
+import 'package:umq/toolsUI/background/ScubaBackgroundImage.dart';
+import 'package:umq/toolsUI/textview/SubTextHelper.dart';
 
 class LoginMobilePage extends StatefulWidget {
   const LoginMobilePage({super.key});

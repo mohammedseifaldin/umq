@@ -1,23 +1,22 @@
 import 'package:fastor_app_ui_widget/fastor_app_ui_widget.dart';
-
-import '../../../../tools/cache/user_single_tone.dart';
-import '../../../../tools/network/BackendConstant.dart';
-import '../../../../tools/network/ToolsAPI.dart';
-import '../response/response_register_student.dart';
+import 'package:umq/modules/auth/data/response/ResponseRegisterStudent.dart';
+import 'package:umq/tools/cache/user_single_tone.dart';
+import 'package:umq/tools/network/BackendConstant.dart';
+import 'package:umq/tools/network/ToolsAPI.dart';
 
 typedef RegisterCallBack = Function(
     bool status, String msg, ResponseRegisterStudent response);
 
 class RegisterStudentAPI {
-  String mobileCountry;
-  String phone;
+  String mobile_country;
+  String mobile_phone;
   String pass;
   String tokenMessage;
 
   late ResponseRegisterStudent response;
   RegisterCallBack callBack;
 
-  RegisterStudentAPI(this.mobileCountry, this.phone, this.pass,
+  RegisterStudentAPI(this.mobile_country, this.mobile_phone, this.pass,
       this.tokenMessage, this.callBack) {
     startAPI();
   }
@@ -25,10 +24,10 @@ class RegisterStudentAPI {
   void startAPI() {
     String url = "${BackendConstant.baseUrlv1}/register";
 
-    Map<String, dynamic> body = {};
+    Map<String, dynamic> body = Map();
     // body[ "mobile_country"] = mobile_country;
-    body["mobile"] = phone;
-    body["country"] = mobileCountry;
+    body["mobile"] = mobile_phone;
+    body["country"] = mobile_country;
     body["password"] = pass;
     body["password_confirmation"] = pass;
     body["fid"] = tokenMessage;
@@ -75,7 +74,7 @@ class RegisterStudentAPI {
         callBack(true, response.message!, response);
       });
     } catch (e) {
-      Log.i("RegisterStudentAPI - excep: $e");
+      Log.i("RegisterStudentAPI - excep: " + e.toString());
       callBack(false, e.toString(), response);
     }
   }

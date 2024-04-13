@@ -57,7 +57,7 @@ PODS:
   - Firebase/Database (10.10.0):
     - Firebase/CoreOnly
     - FirebaseDatabase (~> 10.10.0)
-  - Firebase/Messaging (10.22.0):
+  - Firebase/Messaging (10.10.0):
     - Firebase/CoreOnly
     - FirebaseMessaging (~> 10.10.0)
   - firebase_analytics (10.4.3):

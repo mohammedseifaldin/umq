@@ -1,22 +1,21 @@
 import 'package:flutter/material.dart';
 import 'package:mvc_pattern/mvc_pattern.dart';
-
-import '../../../../../toolsUI/ThemeColor.dart';
-import '../../../../../toolsUI/Widgets/button_primary_widget.dart';
-import '../../../../../toolsUI/textview/HeaderTextHelper.dart';
-import '../../../../place/data/model/MCity.dart';
-import '../../../../place/data/model/MCityTools.dart';
-import '../../../../profile/data/model/MOrganization.dart';
-import '../../../provider/auth_change_notifier.dart';
-import '../../../provider/become_teacher_notifier.dart';
+import 'package:umq/modules/auth/provider/AuthChangeNotifier.dart';
+import 'package:umq/modules/auth/provider/BecomeTeacherNotifier.dart';
+import 'package:umq/modules/place/data/model/MCity.dart';
+import 'package:umq/modules/place/data/model/MCityTools.dart';
+import 'package:umq/modules/profile/data/model/MOrganization.dart';
+import 'package:umq/toolsUI/ThemeColor.dart';
+import 'package:umq/toolsUI/Widgets/button_primary_widget.dart';
+import 'package:umq/toolsUI/textview/HeaderTextHelper.dart';
 
 class BecomeTeacherPage extends StatefulWidget {
   @override
-  PageState createState() => PageState();
-  const BecomeTeacherPage({super.key});
+  _PageState createState() => _PageState();
+  BecomeTeacherPage();
 }
 
-class PageState extends StateMVC<BecomeTeacherPage> {
+class _PageState extends StateMVC<BecomeTeacherPage> {
   AuthChangeNotifier? provider;
 
   @override
@@ -33,7 +32,7 @@ class PageState extends StateMVC<BecomeTeacherPage> {
     double height = MediaQuery.of(context).size.height;
     return Scaffold(
       key: provider!.becomeTeacherScaffoldKey,
-      backgroundColor: Theme.of(context).colorScheme.background,
+      backgroundColor: Theme.of(context).backgroundColor,
       body: SafeArea(
         child: Container(
           padding: const EdgeInsets.symmetric(horizontal: 20),
@@ -61,14 +60,12 @@ class PageState extends StateMVC<BecomeTeacherPage> {
                     left: 10,
                     right: 10,
                   ),
-                  margin:
-                      const EdgeInsets.symmetric(vertical: 5, horizontal: 5),
+                  margin: EdgeInsets.symmetric(vertical: 5, horizontal: 5),
+                  child: sp_city(),
                   decoration: BoxDecoration(
-                      borderRadius:
-                          const BorderRadius.all(Radius.circular(50.0)),
+                      borderRadius: BorderRadius.all(Radius.circular(50.0)),
                       color: ThemeColor.colorSecoundry.withOpacity(.5),
                       border: Border.all(color: Colors.white, width: 0.5)),
-                  child: sp_city(),
                 ),
                 Container(
                   height: 45,
@@ -76,14 +73,12 @@ class PageState extends StateMVC<BecomeTeacherPage> {
                     left: 10,
                     right: 10,
                   ),
-                  margin:
-                      const EdgeInsets.symmetric(vertical: 5, horizontal: 5),
+                  margin: EdgeInsets.symmetric(vertical: 5, horizontal: 5),
+                  child: sp_orginization(),
                   decoration: BoxDecoration(
-                      borderRadius:
-                          const BorderRadius.all(Radius.circular(50.0)),
+                      borderRadius: BorderRadius.all(Radius.circular(50.0)),
                       color: ThemeColor.colorSecoundry.withOpacity(.5),
                       border: Border.all(color: Colors.white, width: 0.5)),
-                  child: sp_orginization(),
                 ),
                 const SizedBox(
                   height: 20,
@@ -118,7 +113,7 @@ class PageState extends StateMVC<BecomeTeacherPage> {
             value: value,
             child: Text(
               getCityNameByLang(value),
-              style: const TextStyle(fontSize: 14, color: Colors.white),
+              style: TextStyle(fontSize: 14, color: Colors.white),
             ));
       }).toList(),
       dropdownColor: ThemeColor.colorSecoundry.withOpacity(.5),
@@ -149,7 +144,7 @@ class PageState extends StateMVC<BecomeTeacherPage> {
             child: Text(
               getOrgNameByLang(value),
               //  value.name,
-              style: const TextStyle(fontSize: 14, color: Colors.white),
+              style: TextStyle(fontSize: 14, color: Colors.white),
             ));
       }).toList(),
       dropdownColor: ThemeColor.colorSecoundry.withOpacity(.5),

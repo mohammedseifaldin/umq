@@ -1,6 +1,5 @@
 import 'package:fastor_app_ui_widget/fastor_app_ui_widget.dart';
-
-import '../../../../tools/network/BackendConstant.dart';
+import 'package:umq/tools/network/BackendConstant.dart';
 
 typedef RegisterCallBack = Future Function(
     bool status, String msg, Map<String, dynamic> response);

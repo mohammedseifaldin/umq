@@ -1,26 +1,32 @@
+
 import 'package:fastor_app_ui_widget/fastor_app_ui_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:need_resume/need_resume.dart';
+import 'package:umq/modules/profile/presentation/admin/orginization/detail/v/OrgDetailAdminPage.dart';
+import 'package:umq/modules/profile/presentation/admin/orginization/list/c/SearchDownloadController.dart';
+import 'package:umq/modules/profile/presentation/admin/orginization/list/v/ExtenstionSearchFilterBar.dart';
 
-import '../../../../../../../tools/constant/EnvironmentConstant.dart';
-import '../../../../../../../toolsUI/admin/paginate/v/PaginateAdminWidget.dart';
-import '../../../../../../../toolsUI/admin/toolbar/AdminToolbar.dart';
-import '../../../../../data/model/MOrganization.dart';
-import '../../../../../data/source/ResponseOrgList.dart';
-import '../../detail/v/OrgDetailAdminPage.dart';
-import '../c/SearchDownloadController.dart';
-import 'ExtenstionSearchFilterBar.dart';
+import 'package:umq/toolsUI/admin/toolbar/AdminToolbar.dart';
+
+import 'package:umq/toolsUI/admin/paginate/v/PaginateAdminWidget.dart';
+import 'package:umq/modules/profile/data/source/ResponseOrgList.dart';
+
+import 'package:umq/modules/profile/data/model/MOrganization.dart';
+
+
+
+import 'package:umq/tools/constant/EnvironmentConstant.dart';
 
 class OrgListAdminPage extends StatefulWidget {
-  const OrgListAdminPage({super.key});
 
   @override
   OrgListAdminState createState() {
-    return OrgListAdminState();
+    return  OrgListAdminState();
   }
 }
 
-class OrgListAdminState extends ResumableState<OrgListAdminPage> {
+class OrgListAdminState extends ResumableState<OrgListAdminPage > {
+
   //--------------------------------------------------------------- data and varaible
 
   //title
@@ -29,9 +35,8 @@ class OrgListAdminState extends ResumableState<OrgListAdminPage> {
   //response and table
   late TableViewFastorState tbState;
   ResponseOrgList response = ResponseOrgList();
-  List<MOrganization> listProjectFiltered =
-      []; //the list of project after fliter done
-  List<Widget> listRow = []; //header + result
+  List<MOrganization> listProjectFiltered = []; //the list of project after fliter done
+  List<Widget> listRow = [];  //header + result
 
   //search text
   var search_txt = "";
@@ -53,21 +58,21 @@ class OrgListAdminState extends ResumableState<OrgListAdminPage> {
   }
 
   @override
-  void onResume() {
+  void onResume(){
     super.onResume();
-    Log.i("lifecycle - onResume - userListPage");
+    Log.i( "lifecycle - onResume - userListPage");
     debugMode();
 
     /**
         must to refresh the page after edit the record of table
      */
-    refreshFunction(isResetPage: false);
+    refreshFunction(isResetPage: false );
   }
 
   //--------------------------------------------------------------- debug mode
 
-  void debugMode() {
-    if (EnvironmentConstant.isLive) return;
+  void debugMode(){
+    if( EnvironmentConstant.isLive ) return;
     // search_controller.text = "abdo";
     // search_txt = "abdo";
   }
@@ -80,67 +85,75 @@ class OrgListAdminState extends ResumableState<OrgListAdminPage> {
   @override
   Widget build(BuildContext context) {
     // Log.i( "lifecycle - build()");
-    contextPage = context;
+    this.contextPage = context;
 
-    return PageTemplate.t(this,
-        title: pageTitle,
+    return PageTemplate.t( this,
+        title: pageTitle ,
 
         //toolbarMessage
-        toolbar: tooblar(),
-        toolbar_height: AdminToolbar.toolbarHeightLayer,
+        toolbar: tooblar() ,
+        toolbar_height:  AdminToolbar.toolbarHeightLayer,
 
         //navigate
         navigationBottom: getPaginateBar(),
-        navigationBottom_height: PaginateAdminWidget.getHeightFrame(context),
-        content: pageContent(), onChangeProgressState: (s) {
-      if (mounted == false) {
-        return;
-      }
+        navigationBottom_height: PaginateAdminWidget.getHeightFrame( context),
 
-      progressState = s;
-    });
+        content: pageContent(),
+        onChangeProgressState: (s){
+
+          if (mounted == false ){
+            return;
+          }
+
+          progressState = s;
+    }
+    );
   }
 
   //------------------------------------------------------------------ tooblar
 
-  Widget tooblar() {
+  Widget tooblar(){
     return AdminToolbar(
-      contextPage: context,
-      pageTitle: pageTitle,
-      clickRefresh: (b) {
-        refreshFunction(isResetPage: true);
+        contextPage: context,
+        pageTitle: pageTitle,
+      clickRefresh : (b){
+        refreshFunction(isResetPage: true );
       },
-      createPageNameGoTo: OrgDetailAdminPage(),
+
+        createPageNameGoTo: OrgDetailAdminPage(),
       resume: this,
+
     );
   }
 
   //----------------------------------------------------------------- navigate
 
-  Widget getPaginateBar() {
-    var paginateWidget = PaginateAdminWidget(
-      (page) {
-        pageChangeTo(page);
-      },
-      stateListener: (state) {
-        paginateState = state;
-      },
+  Widget getPaginateBar(){
+    var paginateWidget =  PaginateAdminWidget((page){
+      pageChangeTo(page);
+    }, stateListener: (state){
+      paginateState = state;
+    },
       //maxPage : 1000,
     );
     return paginateWidget;
   }
 
-  void pageChangeTo(int updatePage) {
-    Log.i("pageChangeTo() - updatePage: $updatePage");
+
+  void pageChangeTo(int updatePage ){
+    Log.i("pageChangeTo() - updatePage: " + updatePage.toString() );
     page = updatePage;
-    refreshFunction(isResetPage: false);
+    refreshFunction(isResetPage: false );
   }
 
   //----------------------------------------------------------------- content
 
   Widget pageContent() {
     // return ;
-    return ColumnTemplate.t(children: [barFilterAndSearchView(), table()]);
+    return ColumnTemplate.t( children: [
+      barFilterAndSearchView(),
+      table()
+    ]);
   }
 
   //-------------------------------------------------------------------- table
@@ -148,14 +161,14 @@ class OrgListAdminState extends ResumableState<OrgListAdminPage> {
   Widget table() {
     // var listView =  ListViewTemplate.t(children: listRow,
     //     axis: Axis.vertical, axisBoth: true);
-    var tb = TableViewFastor(listRow, stateListener: (state) {
+    var tb = TableViewFastor( listRow , stateListener: (state) {
       tbState = state;
     });
 
-    return Container(
-      child: tb,
+    return Container( child:  tb,
       // padding: EdgeInsets.only(top : DSDimen.space_level_2 ),
       // margin: EdgeInsets.symmetric(horizontal: DSDimen.space_level_1 ),
     );
   }
+
 }

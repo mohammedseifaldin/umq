@@ -3,22 +3,21 @@ import 'dart:io';
 import 'package:fastor_app_ui_widget/fastor_app_ui_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:mvc_pattern/mvc_pattern.dart';
-
-import '../../../../../tools/resourceProject/ColorProject.dart';
-import '../../../../../tools/resourceProject/DrawableProject.dart';
-import '../../../../../toolsUI/Widgets/CircularImage.dart';
-import '../../../../../toolsUI/Widgets/button_primary_widget.dart';
-import '../../../../../toolsUI/Widgets/login_input_widget.dart';
-import '../../../../../toolsUI/textview/HeaderTextHelper.dart';
-import '../../../../../toolsUI/textview/SubTextHelper.dart';
-import '../../../provider/auth_change_notifier.dart';
-import '../../../provider/register_notifier.dart';
+import 'package:umq/modules/auth/provider/AuthChangeNotifier.dart';
+import 'package:umq/modules/auth/provider/register_notifier.dart';
+import 'package:umq/tools/resourceProject/ColorProject.dart';
+import 'package:umq/tools/resourceProject/DrawableProject.dart';
+import 'package:umq/toolsUI/Widgets/CircularImage.dart';
+import 'package:umq/toolsUI/Widgets/button_primary_widget.dart';
+import 'package:umq/toolsUI/Widgets/login_input_widget.dart';
+import 'package:umq/toolsUI/textview/HeaderTextHelper.dart';
+import 'package:umq/toolsUI/textview/SubTextHelper.dart';
 
 class RegisterStudentPage extends StatefulWidget {
-  final String phone;
+  String phone;
   @override
   RegisterStudentState createState() => RegisterStudentState();
-  const RegisterStudentPage(this.phone, {super.key});
+  RegisterStudentPage(this.phone, {super.key});
 }
 
 class RegisterStudentState extends StateMVC<RegisterStudentPage> {
@@ -28,6 +27,7 @@ class RegisterStudentState extends StateMVC<RegisterStudentPage> {
 
   @override
   void initState() {
+    // TODO: implement initState
     super.initState();
     provider = AuthChangeNotifier.getListenFalse(context);
     provider!.firebaseTokenListener();
@@ -46,10 +46,10 @@ class RegisterStudentState extends StateMVC<RegisterStudentPage> {
         title: "Register",
         statusBarColorCustom: HexColor(ColorProject.blueCerulean_3),
         assetBackground: DrawableProject.backgroundAuth,
-        content: formBody());
+        content: FormBody());
   }
 
-  Widget imageView() {
+  Widget ImageView() {
     return Stack(
       children: [
         imagePickerWidget(),
@@ -82,7 +82,7 @@ class RegisterStudentState extends StateMVC<RegisterStudentPage> {
     );
   }
 
-  Widget formBody() {
+  Widget FormBody() {
     return Form(
       key: provider!.registerFormKey,
       child: Column(
@@ -91,7 +91,7 @@ class RegisterStudentState extends StateMVC<RegisterStudentPage> {
           const SizedBox(
             height: 20,
           ),
-          imageView(),
+          ImageView(),
           const SizedBox(
             height: 20,
           ),
@@ -117,7 +117,7 @@ class RegisterStudentState extends StateMVC<RegisterStudentPage> {
             height: 20,
           ),
 
-          registerBtn(),
+          bt_register(),
 
           const SizedBox(
             height: 10,
@@ -151,7 +151,7 @@ class RegisterStudentState extends StateMVC<RegisterStudentPage> {
             fit: BoxFit.cover));
   }
 
-  Widget registerBtn() {
+  Widget bt_register() {
     return ButtonPrimaryWidget(
       'Register',
       onTap: () {

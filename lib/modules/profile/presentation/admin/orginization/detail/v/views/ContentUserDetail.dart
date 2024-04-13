@@ -1,9 +1,10 @@
 import 'package:fastor_app_ui_widget/fastor_app_ui_widget.dart';
 import 'package:flutter/material.dart';
-import '../../c/ClickActionsUserDetails.dart';
-import '../../c/EditController.dart';
-import '../OrgDetailAdminPage.dart';
-import '../../../../../../../../tools/resourceProject/ResourceDimenAdmin.dart';
+import 'package:umq/modules/profile/presentation/admin/orginization/detail/c/ClickActionsUserDetails.dart';
+import 'package:umq/modules/profile/presentation/admin/orginization/detail/c/EditController.dart';
+import 'package:umq/modules/profile/presentation/admin/orginization/detail/v/OrgDetailAdminPage.dart';
+
+import 'package:umq/tools/resourceProject/ResourceDimenAdmin.dart';
 
 extension ContentUserDetail on OrgDetailAdminState {
   //---------------------------------------------------------------------- name
@@ -12,9 +13,9 @@ extension ContentUserDetail on OrgDetailAdminState {
     var row = RowTemplate.scroll(contextPage!, [tv_nameEn(), tf_nameEn()]);
 
     return Container(
+      child: row,
       margin: EdgeInsets.only(
           top: DSDimen.space_level_2, left: DSDimen.space_level_2),
-      child: row,
     );
   }
 
@@ -45,8 +46,8 @@ extension ContentUserDetail on OrgDetailAdminState {
             top: DSDimen.space_level_2 + 2, bottom: DSDimen.space_level_1));
 
     return Container(
-      alignment: Alignment.center,
       child: bt,
+      alignment: Alignment.center,
     );
   }
 }

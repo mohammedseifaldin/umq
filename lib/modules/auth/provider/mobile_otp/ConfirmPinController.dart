@@ -1,4 +1,5 @@
-import 'package:umq/modules/auth/provider/auth_change_notifier.dart';
+import 'package:umq/modules/auth/provider/AuthChangeNotifier.dart';
+
 
 extension ConfirmPinController on AuthChangeNotifier {
   bool isFirstTimeOpenPage() {

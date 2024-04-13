@@ -1,16 +1,18 @@
+
+
 class UploadResponse {
   bool status;
   String message;
   Data? data;
 
   UploadResponse(
-    this.status,
-    this.message,
-    this.data,
-  );
+      this.status,
+      this.message,
+      this.data,
+      );
 
   UploadResponse.fromJson(Map<String, dynamic> json)
-      : status = json["status"] == 'success',
+      : status = json["status"]=='success',
         message = json["message"],
         data = Data.fromJson(json["data"]);
 
@@ -19,13 +21,15 @@ class UploadResponse {
         'message': message,
       };
 }
-
 class Data {
   String path;
 
   Data(
-    this.path,
-  );
+      this.path,
+      );
 
-  Data.fromJson(Map<String, dynamic> json) : path = json["path"];
+  Data.fromJson(Map<String, dynamic> json)
+      :path = json["path"];
+
+
 }

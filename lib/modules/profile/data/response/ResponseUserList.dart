@@ -1,4 +1,4 @@
-import '../model/m_user.dart';
+import 'package:umq/modules/profile/data/model/m_user.dart';
 
 class ResponseUserList {
   String? status;
@@ -17,10 +17,10 @@ class ResponseUserList {
 
   Map<String, dynamic> toJson() {
     final Map<String, dynamic> data = {};
-    data['status'] = status;
-    data['code'] = code;
-    if (dataLaravel != null) {
-      data['data'] = dataLaravel!.toJson();
+    data['status'] = this.status;
+    data['code'] = this.code;
+    if (this.dataLaravel != null) {
+      data['data'] = this.dataLaravel!.toJson();
     }
     return data;
   }
@@ -72,13 +72,13 @@ class LaravelUserList {
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = <String, dynamic>{};
+    final Map<String, dynamic> data = Map<String, dynamic>();
 
     // if (this.dataUsers != null) {
     //   data['data'] = this.dataUsers!.map((v) => v.toJson()).toList();
     // }
-    data['current_page'] = currentPage;
-    data['total'] = total;
+    data['current_page'] = this.currentPage;
+    data['total'] = this.total;
 
     // data['first_page_url'] = this.firstPageUrl;
     // data['from'] = this.from;

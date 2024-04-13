@@ -1,7 +1,7 @@
 import 'package:fastor_app_ui_widget/fastor_app_ui_widget.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:provider/provider.dart';
-import 'package:umq/modules/auth/provider/auth_change_notifier.dart';
+import 'package:umq/modules/auth/provider/AuthChangeNotifier.dart';
 import 'package:umq/modules/category_products/provider/category_products_notifier.dart';
 import 'package:umq/modules/home/provider/HomeChangeNotifier.dart';
 import 'package:umq/modules/cart/provider/CartChangeNotifier.dart';
