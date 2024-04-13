@@ -1,5 +1,4 @@
-
-import 'package:umq/modules/product/data/model/MProduct.dart';
+import '../../../product/data/model/MProduct.dart';
 
 class MCartSingleProduct {
   int? id;
@@ -10,15 +9,15 @@ class MCartSingleProduct {
   MProduct? product;
   // Users? users;
 
-  MCartSingleProduct(
-      {this.id,
-        this.userId,
-        this.productId,
-        this.counter,
-        this.updatedAt,
-        this.product,
-        //  this.users
-      });
+  MCartSingleProduct({
+    this.id,
+    this.userId,
+    this.productId,
+    this.counter,
+    this.updatedAt,
+    this.product,
+    //  this.users
+  });
 
   MCartSingleProduct.fromJson(Map<String, dynamic> json) {
     id = json['id'];
@@ -26,10 +25,12 @@ class MCartSingleProduct {
     productId = json['product_id'];
     counter = json['counter'];
     updatedAt = json['updated_at'];
-    product = json['product'] != null ? new MProduct().fromJson(json['product']) : null;
+    product = json['product'] != null
+        ? new MProduct().fromJson(json['product'])
+        : null;
     // users = json['users'] != null ? new Users.fromJson(json['users']) : null;
   }
-
+//
   Map<String, dynamic> toJson() {
     final Map<String, dynamic> data = new Map<String, dynamic>();
     data['id'] = this.id;
@@ -38,7 +39,7 @@ class MCartSingleProduct {
     data['counter'] = this.counter;
     data['updated_at'] = this.updatedAt;
     if (this.product != null) {
-       data['product'] = this.product!.toString();
+      data['product'] = this.product!.toString();
     }
     // if (this.users != null) {
     //   data['users'] = this.users!.toJson();
@@ -51,4 +52,3 @@ class MCartSingleProduct {
     return 'MCart{id: $id, userId: $userId, productId: $productId, counter: $counter, updatedAt: $updatedAt, product: $product}';
   }
 }
-
