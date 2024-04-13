@@ -1,13 +1,12 @@
 import 'package:fastor_app_ui_widget/fastor_app_ui_widget.dart';
 
-import 'package:umq/tools/navigate/GoTo.dart';
-import 'package:umq/tools/cache/user_single_tone.dart';
-import 'package:umq/tools/constant/EnvironmentConstant.dart';
-import 'package:umq/toolsUI/html/editior/HtmlEditiorPage.dart';
-import 'package:umq/toolsUI/toast/ToastTools.dart';
-import 'package:umq/splash_screen.dart';
-
+import 'splash_screen.dart';
 import 'tools/cache/constant_save.dart';
+import 'tools/cache/user_single_tone.dart';
+import 'tools/constant/EnvironmentConstant.dart';
+import 'tools/navigate/GoTo.dart';
+import 'toolsUI/html/editior/HtmlEditiorPage.dart';
+import 'toolsUI/toast/ToastTools.dart';
 
 // next page after splash
 
@@ -201,7 +200,7 @@ extension NextPage on SplashScreenState {
         edit_url_content:
             "https://scubaworld.000webhostapp.com/scuba_laravel/storage/app/public/terms.html",
         callback: (result) {
-          Log.i("openEditorHtmlTerms() - result: " + result);
+          Log.i("openEditorHtmlTerms() - result: $result");
         });
     NavigationTools.push(context, page);
   }

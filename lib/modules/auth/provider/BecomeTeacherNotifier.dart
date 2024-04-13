@@ -1,15 +1,15 @@
 import 'package:flutter/material.dart';
-import 'package:umq/modules/auth/data/response/become_provider_response.dart';
-import 'package:umq/modules/auth/provider/AuthChangeNotifier.dart';
-import 'package:umq/modules/place/data/response/city_response.dart';
-import 'package:umq/modules/profile/data/response/organization_response.dart';
-import 'package:umq/tools/Dios/fresh_dio.dart' as dio;
-import 'package:umq/tools/cache/session_repo.dart';
-import 'package:umq/tools/cache/user_single_tone.dart';
-import 'package:umq/tools/fcm/abdo/general/FCMSubscribe.dart';
-import 'package:umq/tools/navigate/GoTo.dart';
-import 'package:umq/toolsUI/dialog/snack_bar_message.dart';
-import 'package:umq/toolsUI/progress/lock_overlay/lock_overlay.dart';
+import '../data/response/become_provider_response.dart';
+import 'AuthChangeNotifier.dart';
+import '../../place/data/response/city_response.dart';
+import '../../profile/data/response/organization_response.dart';
+import '../../../tools/Dios/fresh_dio.dart' as dio;
+import '../../../tools/cache/session_repo.dart';
+import '../../../tools/cache/user_single_tone.dart';
+import '../../../tools/fcm/abdo/general/FCMSubscribe.dart';
+import '../../../tools/navigate/GoTo.dart';
+import '../../../toolsUI/dialog/snack_bar_message.dart';
+import '../../../toolsUI/progress/lock_overlay/lock_overlay.dart';
 
 extension BecomeTeacherNotifier on AuthChangeNotifier {
   void registerProvider() async {
