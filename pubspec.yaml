@@ -87,7 +87,7 @@ dependencies:
   country_dial_code: ^1.2.0
 
   #paypal-webview-payment
-  flutter_inappwebview: ^6.0.0
+  # flutter_inappwebview: ^6.0.0
 
   #--------------------------------------------------------------- developer
 
