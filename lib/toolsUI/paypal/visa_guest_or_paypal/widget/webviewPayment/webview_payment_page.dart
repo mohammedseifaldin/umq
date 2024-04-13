@@ -6,31 +6,23 @@ import 'package:umq/toolsUI/paypal/visa_guest_or_paypal/shared/ToolsPayment.dart
 typedef WebviewPaymentUrlChange = Function(String urlChangeTo);
 
 class WebviewPaymentPage extends StatefulWidget {
-  String? url;
-  WebviewPaymentUrlChange? urlChange;
+  final String url;
+  final WebviewPaymentUrlChange urlChange;
 
-  WebviewPaymentPage({
-    required String this.url,
-    required WebviewPaymentUrlChange this.urlChange,
+  const WebviewPaymentPage({
+    super.key,
+    required this.url,
+    required this.urlChange,
   });
 
   @override
-  WebviewPaymentState createState() {
-    var state = WebviewPaymentState(url: url!, urlChange: urlChange!);
-    return state;
-  }
+  WebviewPaymentState createState() => WebviewPaymentState();
 }
 
 class WebviewPaymentState extends State<WebviewPaymentPage> {
   int progress = 0;
 
-  String? url;
-
-  WebviewPaymentUrlChange? urlChange;
-
-  WebviewPaymentState(
-      {required String this.url,
-      required WebviewPaymentUrlChange this.urlChange});
+  WebviewPaymentState();
 
   //------------------------------------------------------------------- build
 
@@ -63,8 +55,8 @@ class WebviewPaymentState extends State<WebviewPaymentPage> {
   //--------------------------------------------------------------- webview widget
 
   Widget InAppWebWidgetCustom() {
-    URLRequest uri = URLRequest(url: WebUri.uri(Uri.parse(url!)));
-    Log.i("InAppWebWidgetCustom() - url: $url");
+    URLRequest uri = URLRequest(url: WebUri.uri(Uri.parse(widget.url)));
+    Log.i("InAppWebWidgetCustom() - url: ${widget.url}");
 
     return InAppWebView(
       initialUrlRequest: uri,
@@ -80,8 +72,8 @@ class WebviewPaymentState extends State<WebviewPaymentPage> {
         }
       },
       onLoadStart: (controller, url) {
-        Log.i("InAppWebWidgetCustom() - url: $url");
-        urlChange!(url.toString());
+        Log.i("InAppWebWidgetCustom() - url: ${widget.url}");
+        widget.urlChange(url.toString());
       },
       onLoadHttpError: (InAppWebViewController controller, Uri? url,
           int statusCode, String description) {
@@ -107,9 +99,9 @@ class WebviewPaymentState extends State<WebviewPaymentPage> {
       return LinearProgressIndicator(
           value: progress.toDouble(),
           backgroundColor: Colors.blue[200],
-          valueColor: AlwaysStoppedAnimation<Color>(Colors.blue));
+          valueColor: const AlwaysStoppedAnimation<Color>(Colors.blue));
     } else {
-      return Placeholder(
+      return const Placeholder(
           strokeWidth: 0,
           color: Colors.transparent,
           fallbackWidth: 0,

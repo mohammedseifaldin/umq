@@ -39,7 +39,7 @@ extension CheckerPaymentStatusComplete on PaypalGenericState {
   //---------------------------------------------------------------------- what to do when failed
 
   Future whatToDoAfterFailedStatus() async {
-    ToolsPayment.toast(context, "Payment Failed");
+    ToolsPayment.toast(context, msg: "Payment Failed");
   }
 
   //--------------------------------------------------------------------- what to after success
@@ -58,7 +58,7 @@ extension CheckerPaymentStatusComplete on PaypalGenericState {
   }
 
   void showMessageSuccess() {
-    ToolsPayment.toast(context, "Payment Have Been Done Successfully",
+    ToolsPayment.toast(context, msg: "Payment Have Been Done Successfully",
         wait_callBack: () {
       finishClassAndMakeCallback();
     });
