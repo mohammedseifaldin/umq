@@ -1,5 +1,5 @@
-import 'package:umq/modules/cart/data/model/MCartSingleProduct.dart';
-import 'package:umq/modules/teachers/data/model/MTeacher.dart';
+import 'MCartSingleProduct.dart';
+import '../../../teachers/data/model/MTeacher.dart';
 
 
 class MCartProvider {
