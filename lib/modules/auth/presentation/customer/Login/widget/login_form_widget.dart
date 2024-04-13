@@ -1,14 +1,15 @@
 import 'package:country_code_picker/country_code_picker.dart';
 import 'package:fastor_app_ui_widget/fastor_app_ui_widget.dart';
 import 'package:flutter/material.dart';
-import 'package:umq/modules/auth/presentation/customer/Login/login_page.dart';
-import 'package:umq/tools/navigate/GoTo.dart';
-import 'package:umq/tools/resourceProject/FontProject.dart';
-import 'package:umq/toolsUI/ThemeColor.dart';
-import 'package:umq/toolsUI/Widgets/button_secoundry_widget.dart';
-import 'package:umq/toolsUI/Widgets/login_input_widget.dart';
 
-extension LoginFourmWidget on LoginMobileState {
+import '../../../../../../tools/navigate/GoTo.dart';
+import '../../../../../../tools/resourceProject/FontProject.dart';
+import '../../../../../../toolsUI/ThemeColor.dart';
+import '../../../../../../toolsUI/Widgets/button_secoundry_widget.dart';
+import '../../../../../../toolsUI/Widgets/login_input_widget.dart';
+import '../login_page.dart';
+
+extension LoginFormWidget on LoginMobileState {
   Widget buttonGuest() {
     return ButtonSecoundryWidget("Continue as a Guest", onTap: () {
       GoTo.homeStudent(context);

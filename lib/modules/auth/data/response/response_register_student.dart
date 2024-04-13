@@ -1,5 +1,6 @@
-import 'package:fastor_app_ui_widget/fastor_app_ui_widget.dart';
-import 'package:umq/modules/profile/data/model/m_user.dart';
+// import 'package:fastor_app_ui_widget/fastor_app_ui_widget.dart';
+
+import '../../../profile/data/model/m_user.dart';
 
 class ResponseRegisterStudent {
   String? status;
@@ -15,16 +16,9 @@ class ResponseRegisterStudent {
     token = json['token'];
     message = json['message'];
     userAlreadyFound = json['user_already_found'];
-
-    //optional value
-    /**
-     * in api regsiter case user phone already found
-     */
+    //in api regsiter case user phone already found
     if (json.containsKey("data")) {
-      Log.i("ResponseRegisterStudent - fromJson() - containsKey yes ");
       data = json['data'] != null ? MUser.fromJson(json['data']) : null;
-    } else {
-      Log.i("ResponseRegisterStudent - fromJson() - containsKey no ");
     }
   }
 

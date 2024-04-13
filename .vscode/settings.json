@@ -1,3 +1,9 @@
 {
-    "editor.formatOnSave": true
+    "editor.formatOnSave": true,
+    "dartImport.fixOnSave": true,
+    "dartImport.excludeGeneratedFiles": [
+        "g.dart",
+        "config.dart",
+        "freezed.dart"
+    ]
 }

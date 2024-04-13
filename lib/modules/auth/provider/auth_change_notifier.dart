@@ -28,7 +28,6 @@ class AuthChangeNotifier extends ChangeNotifier {
   GlobalKey<ScaffoldState> registerScaffoldKey = GlobalKey<ScaffoldState>();
   GlobalKey<ScaffoldState> registerScaffoldKeyState =
       GlobalKey<ScaffoldState>();
-  
 
   String registerSelectedGender = 'City';
   String? registerPhoto;
@@ -55,8 +54,8 @@ class AuthChangeNotifier extends ChangeNotifier {
   GlobalKey<ScaffoldState> scaffoldKey = GlobalKey<ScaffoldState>();
   // TextEditingController phoneController=TextEditingController();
   // String countryCode=''; //+20
-  String VERIFICATIONID = '';
-  String PIN = ""; //pin 6 number user enter by himself
+  String verificationId = '';
+  String pin = ""; //pin 6 number user enter by himself
   bool isSendedOTP = false; //true: cause the ui of "OTP" textfield to be show
   bool isRetryToSendOTP = false; // true: casue the ui will resend otp"
 

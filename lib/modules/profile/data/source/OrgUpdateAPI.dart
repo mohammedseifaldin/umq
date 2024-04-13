@@ -1,9 +1,10 @@
 import 'package:fastor_app_ui_widget/fastor_app_ui_widget.dart';
-import 'package:umq/tools/cache/user_single_tone.dart';
-import 'package:umq/tools/data/general/GeneralCallBack.dart';
-import 'package:umq/tools/data/general/ResponseGeneral.dart';
-import 'package:umq/tools/network/BackendConstant.dart';
-import 'package:umq/tools/network/ToolsAPI.dart';
+
+import '../../../../tools/cache/user_single_tone.dart';
+import '../../../../tools/data/general/GeneralCallBack.dart';
+import '../../../../tools/data/general/ResponseGeneral.dart';
+import '../../../../tools/network/BackendConstant.dart';
+import '../../../../tools/network/ToolsAPI.dart';
 
 class OrgUpdateAPI {
   int targetId = 0;
@@ -11,8 +12,7 @@ class OrgUpdateAPI {
 
   late GeneralCallBack callBack;
 
-  Future getData(
-      int targetId, String nameEn, GeneralCallBack callBack) async {
+  Future getData(int targetId, String nameEn, GeneralCallBack callBack) async {
     this.callBack = callBack;
     this.targetId = targetId;
     this.nameEn = nameEn;
@@ -21,14 +21,14 @@ class OrgUpdateAPI {
   }
 
   Future _startAPI() async {
-    String url = BackendConstant.baseUrlv2 + "/org/updateData";
+    String url = "${BackendConstant.baseUrlv2}/org/updateData";
 
     //header
-    var token = await UserSingleTone.instance().getToken();
+    var token = UserSingleTone.instance().getToken();
     Map<String, String> header = NetworkHeaderTools.bearerToken(token);
 
     //body
-    Map<String, dynamic> body = Map();
+    Map<String, dynamic> body = {};
     body["name"] = nameEn;
 
     body["id"] = targetId;
@@ -63,7 +63,7 @@ class OrgUpdateAPI {
       //callback
       callBack(1, "Success");
     } catch (e) {
-      Log.i("action api - excep: " + e.toString());
+      Log.i("action api - excep: $e");
       callBack(0, e.toString());
     }
   }

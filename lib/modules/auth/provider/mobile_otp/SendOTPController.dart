@@ -1,4 +1,4 @@
-import 'package:umq/modules/auth/provider/AuthChangeNotifier.dart';
+import 'package:umq/modules/auth/provider/auth_change_notifier.dart';
 
 extension SendOTPController on AuthChangeNotifier {
   //---------------------------------------------------------------------- send otp

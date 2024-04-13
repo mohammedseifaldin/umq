@@ -1,4 +1,4 @@
-import 'package:umq/modules/profile/data/model/m_user.dart';
+import '../../../profile/data/model/m_user.dart';
 
 class ResponseLoginAdmin {
   String? status;

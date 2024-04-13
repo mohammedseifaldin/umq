@@ -1,9 +1,8 @@
 import 'package:fastor_app_ui_widget/fastor_app_ui_widget.dart';
 import 'package:flutter/material.dart';
-import 'package:umq/modules/auth/data/response/ResponseLoginAdmin.dart';
-import 'package:umq/modules/auth/data/source/LoginPhoneAPI.dart';
+import 'package:umq/modules/auth/data/response/response_login_admin.dart';
 import 'package:umq/modules/auth/data/source/login_email_api.dart';
-import 'package:umq/modules/auth/provider/AuthChangeNotifier.dart';
+import 'package:umq/modules/auth/provider/auth_change_notifier.dart';
 import 'package:umq/modules/auth/provider/get_user_data_notifier.dart';
 import 'package:umq/modules/auth/provider/register_notifier.dart';
 import 'package:umq/tools/cache/user_single_tone.dart';
@@ -78,26 +77,26 @@ extension LoginNotifier on AuthChangeNotifier {
   //   );
   // }
 
-  Future _loginOrCreateAccount(BuildContext context) async {
-    Log.i("login - loginApiStart() - start");
+  // Future _loginOrCreateAccount(BuildContext context) async {
+  //   Log.i("login - loginApiStart() - start");
 
-    LoginPhoneAPI(
-        loginCountryCode, emailController.value.text.toString(), loginUid!,
-        (status, msg, response) {
-      // progress_end();
-      Log.i("login - loginApiStart() - status: $status");
-      Log.i("login - loginApiStart() - msg: $msg");
+  //   LoginPhoneAPI(
+  //       loginCountryCode, emailController.value.text.toString(), loginUid!,
+  //       (status, msg, response) {
+  //     // progress_end();
+  //     Log.i("login - loginApiStart() - status: $status");
+  //     Log.i("login - loginApiStart() - msg: $msg");
 
-      //check status
-      if (status == false) {
-        checkFailedUserNewNeedToRegister(context, msg, response);
-        return;
-      }
+  //     //check status
+  //     if (status == false) {
+  //       checkFailedUserNewNeedToRegister(context, msg, response);
+  //       return;
+  //     }
 
-      //success login, make local validateion
-      validateResponseChooseNewUserOrNotCompletedProfile(context, response);
-    });
-  }
+  //     //success login, make local validateion
+  //     validateResponseChooseNewUserOrNotCompletedProfile(context, response);
+  //   });
+  // }
 
   Future checkFailedUserNewNeedToRegister(
       BuildContext context, String msg, ResponseLoginAdmin response) async {

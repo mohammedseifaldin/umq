@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:umq/modules/auth/presentation/admin/logout/LogoutAdminPage.dart';
+import 'package:umq/modules/auth/presentation/admin/logout/logout_admin_page.dart';
 import 'package:umq/modules/cart/presentation/admin/list/v/OrderListAdminPage.dart';
 import 'package:umq/modules/dashboard/presentation/admin/dashboard/v/DashboardPage.dart';
 import 'package:umq/modules/home/presentation/home/HomePage.dart';

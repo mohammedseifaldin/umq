@@ -1,8 +1,9 @@
 import 'package:fastor_app_ui_widget/resource/template/textfield/mobile/MobileCountryFastor.dart';
 import 'package:fastor_app_ui_widget/resource/toolsFastor/device/DeviceTools.dart';
 import 'package:flutter/material.dart';
-import 'package:umq/tools/resourceProject/FontProject.dart';
-import 'package:umq/toolsUI/ThemeColor.dart';
+
+import '../../../../../tools/resourceProject/FontProject.dart';
+import '../../../../../toolsUI/ThemeColor.dart';
 
 class MobileInputView extends StatelessWidget {
   final TextEditingController phoneCtrl;
