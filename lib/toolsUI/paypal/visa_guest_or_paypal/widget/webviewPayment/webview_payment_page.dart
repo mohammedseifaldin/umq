@@ -1,7 +1,8 @@
 import 'package:fastor_app_ui_widget/fastor_app_ui_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_inappwebview/flutter_inappwebview.dart';
-import 'package:umq/toolsUI/paypal/visa_guest_or_paypal/shared/ToolsPayment.dart';
+
+import '../../shared/ToolsPayment.dart';
 
 typedef WebviewPaymentUrlChange = Function(String urlChangeTo);
 
@@ -37,7 +38,7 @@ class WebviewPaymentState extends State<WebviewPaymentPage> {
           fallbackHeight: ToolsPayment.getHeight(context, "")),
 
       //webview
-      InAppWebWidgetCustom(),
+      inAppWebWidgetCustom(),
 
       //progress
       Align(alignment: Alignment.topLeft, child: progressViewLinear())
@@ -54,8 +55,8 @@ class WebviewPaymentState extends State<WebviewPaymentPage> {
 
   //--------------------------------------------------------------- webview widget
 
-  Widget InAppWebWidgetCustom() {
-    URLRequest uri = URLRequest(url: WebUri.uri(Uri.parse(widget.url)));
+  Widget inAppWebWidgetCustom() {
+    URLRequest uri = URLRequest(url: Uri.parse(widget.url));
     Log.i("InAppWebWidgetCustom() - url: ${widget.url}");
 
     return InAppWebView(
