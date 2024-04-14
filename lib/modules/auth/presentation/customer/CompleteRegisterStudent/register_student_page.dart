@@ -17,7 +17,7 @@ class RegisterStudentPage extends StatefulWidget {
   final String phone;
   @override
   RegisterStudentState createState() => RegisterStudentState();
-  RegisterStudentPage(this.phone, {super.key});
+  const RegisterStudentPage(this.phone, {super.key});
 }
 
 class RegisterStudentState extends StateMVC<RegisterStudentPage> {

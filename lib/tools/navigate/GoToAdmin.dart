@@ -3,7 +3,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:need_resume/need_resume.dart';
 import 'package:umq/modules/cart/data/model/MOrder.dart';
-import 'package:umq/modules/cart/presentation/admin/detail/v/OrderDetailAdminPage.dart';
+import 'package:umq/modules/cart/presentation/admin/detail/v/order_detail_admin_page.dart';
 import 'package:umq/modules/cart/presentation/admin/list/v/OrderListAdminPage.dart';
 import 'package:umq/modules/dashboard/presentation/admin/dashboard/v/DashboardPage.dart';
 import 'package:umq/modules/home/data/model/MSlider.dart';

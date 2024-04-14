@@ -1,7 +1,7 @@
 import 'package:fastor_app_ui_widget/fastor_app_ui_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:umq/modules/cart/data/model/MOrderVendor.dart';
-import 'package:umq/modules/cart/presentation/admin/detail/v/OrderDetailAdminPage.dart';
+import 'package:umq/modules/cart/presentation/admin/detail/v/order_detail_admin_page.dart';
 import 'package:umq/modules/product/data/model/MProductTools.dart';
 import 'package:umq/tools/resourceProject/ResourceDimenAdmin.dart';
 import 'package:umq/toolsUI/admin/itemRowTable/cell_price.dart';
