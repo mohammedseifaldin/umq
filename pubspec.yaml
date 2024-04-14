@@ -38,9 +38,9 @@ dependencies:
   # firebase_auth: ^4.6.3
   firebase_analytics: ^10.4.3
   # firebase_crashlytics: ^3.4.19
-  firebase_messaging: ^14.7.10
-  flutter_local_notifications: ^17.0.0
-  clear_all_notifications: ^1.0.0
+  firebase_messaging: ^14.6.4
+  flutter_local_notifications: ^15.0.1
+  clear_all_notifications: ^0.0.3
   permission_handler: ^10.4.1
 
   #--------------------------------------------------------------- state manager
@@ -72,7 +72,7 @@ dependencies:
   country_code_picker: ^3.0.0
 
   #time stamp
-  intl: ^0.19.0
+  intl: ^0.17.0
 
   #recorder and audio and file picker
   flutter_sound: ^9.2.13
@@ -87,7 +87,7 @@ dependencies:
   country_dial_code: ^1.2.0
 
   #paypal-webview-payment
-  flutter_inappwebview: ^6.0.0
+  flutter_inappwebview: ^5.7.2+3
 
   #--------------------------------------------------------------- developer
 
@@ -121,7 +121,7 @@ dependencies:
 
   #html editior
   quill_html_editor: ^2.2.6
-  flutter_widget_from_html: ^0.14.11
+  flutter_widget_from_html: ^0.10.4
 
 flutter_icons:
   android: "launcher_icon"
