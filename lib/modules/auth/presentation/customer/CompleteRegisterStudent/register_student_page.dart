@@ -3,18 +3,18 @@ import 'dart:io';
 import 'package:fastor_app_ui_widget/fastor_app_ui_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:mvc_pattern/mvc_pattern.dart';
-import 'package:umq/modules/auth/provider/AuthChangeNotifier.dart';
-import 'package:umq/modules/auth/provider/register_notifier.dart';
-import 'package:umq/tools/resourceProject/ColorProject.dart';
-import 'package:umq/tools/resourceProject/DrawableProject.dart';
-import 'package:umq/toolsUI/Widgets/CircularImage.dart';
-import 'package:umq/toolsUI/Widgets/button_primary_widget.dart';
-import 'package:umq/toolsUI/Widgets/login_input_widget.dart';
-import 'package:umq/toolsUI/textview/HeaderTextHelper.dart';
-import 'package:umq/toolsUI/textview/SubTextHelper.dart';
+import '../../../provider/AuthChangeNotifier.dart';
+import '../../../provider/register_notifier.dart';
+import '../../../../../tools/resourceProject/ColorProject.dart';
+import '../../../../../tools/resourceProject/DrawableProject.dart';
+import '../../../../../toolsUI/Widgets/CircularImage.dart';
+import '../../../../../toolsUI/Widgets/button_primary_widget.dart';
+import '../../../../../toolsUI/Widgets/login_input_widget.dart';
+import '../../../../../toolsUI/textview/HeaderTextHelper.dart';
+import '../../../../../toolsUI/textview/SubTextHelper.dart';
 
 class RegisterStudentPage extends StatefulWidget {
-  String phone;
+  final String phone;
   @override
   RegisterStudentState createState() => RegisterStudentState();
   RegisterStudentPage(this.phone, {super.key});
