@@ -1,0 +1,89 @@
+workflows:
+  ios-workflow:
+    name:  ios Workflow
+    instance_type: mac_mini_m1
+    max_build_duration: 120
+    integration:
+      app_store_connect:  codemagic
+    enviroment:
+      ios_signing:
+        distribution_type:  app_store
+        bundle_identifier: umq.app.umq
+      vars:
+        App_ID:  
+      flutter:  ^3.16.5
+      xcode: latest
+      cocoapods: default
+    scripts:
+      - script:  keychain initialize
+      - script:  keychain add-certificates
+
+      - script:  xcode-project use-profiles
+      - script:  flutter clean
+      - script:  flutter packeges get
+      - script:  flutter pub get
+      - script:  cd ios
+      - script:  rm -rf Pods
+      - script:  pod cache clean
+      - script:  pod setup
+      - script:  pod deintegrate
+      - script:  pod install --repo-update
+      - script:  pod install Firebase/CoreOnle
+      - script:  pod install Firebase/Messaging
+      - script:  cd ..
+      - script:  rm -R ../.pub-cache/hosted/pub.dev/fastor_app_ui_widget-1.0.255/lib
+      - script:  mv lib/lib ../.pub-cache/hosted/pub.dev/fastor_app_ui_widget-1.0.255
+      - name: Flutter build ipa and automatic versioning
+        script:  /
+          flutter build ipa --export-options-plist=/Users/builder/eport_options.plist
+    artifacts:
+      - build/ios/ipa/*.ipa
+      publishing:
+        email:
+          recipients:
+            -Scubaworld02@gmail.com
+    # ios-method-2:
+    #   name: ios signing method-2 workflow
+    #   instance_type: mac_mini_m1
+    #   max_build_duration: 120
+    #   integration:
+    #     app_store_connect:  codemagic
+    #   environment:
+    #     ios_signing:
+    #       provisioning_profiles:
+    #         - Seif profile
+    #       certificates:
+    #         - Seif codemagic cert
+    #     vars:
+    #       App_ID:  
+    #     flutter:  ^3.16.5
+    #     xcode: latest
+    #     cocoapods: default
+    #   scripts:
+    #     - script:  keychain initialize
+    #     - script:  keychain add-certificates
+
+    #     - script:  xcode-project use-profiles
+    #     - script:  flutter clean
+    #     - script:  flutter packeges get
+    #     - script:  flutter pub get
+    #     - script:  cd ios
+    #     - script:  rm -rf Pods
+    #     - script:  pod cache clean
+    #     - script:  pod setup
+    #     - script:  pod deintegrate
+    #     - script:  pod install --repo-update
+    #     - script:  pod install Firebase/CoreOnle
+    #     - script:  pod install Firebase/Messaging
+    #     - script:  cd ..
+    #     - script:  rm -R ../.pub-cache/hosted/pub.dev/fastor_app_ui_widget-1.0.255/lib
+    #     - script:  mv lib/lib ../.pub-cache/hosted/pub.dev/fastor_app_ui_widget-1.0.255
+    #     - name: Flutter build ipa and automatic versioning
+    #       script:  /
+    #         flutter build ipa --export-options-plist=/Users/builder/eport_options.plist
+    #   artifcats:
+    #     - build/ios/ipa/*.ipa
+    #     publishing:
+    #       email:
+    #         recipients:
+    #           - Scubaworld02@gmail.com
